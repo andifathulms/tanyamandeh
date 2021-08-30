@@ -164,8 +164,8 @@ def home_view(request, *args, **kwargs):
 
 				return render(request, "quiz.html", context)
 	else:
-		print("request = " + str(request))
-		print(regions[0])
+		#print("request = " + str(request))
+		#print(regions[0])
 		return render(request, "quiz.html", context)
 
 def about_view(request, *args, **kwargs):
