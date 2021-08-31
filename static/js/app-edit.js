@@ -1,5 +1,8 @@
 const questionNumber = document.querySelector(".question-number");
 const questionText = document.querySelector(".question-text");
+const kognitifText = document.querySelector(".kognitif-text");
+const sosioText = document.querySelector(".sosio-text");
+const fisikText = document.querySelector(".fisik-text");
 const optionContainer = document.querySelector(".option-container");
 const answerIndicatorContainer = document.querySelector(".answer-indicator")
 const homeBox = document.querySelector(".home-box");
@@ -14,6 +17,7 @@ const dialogDesc = document.querySelector(".confirm .confirm-desc");
 const menu = document.querySelector(".menu");
 const register = document.querySelector(".register-box");
 const intro = document.querySelector(".intro-box");
+const comment = document.querySelector(".comment-box");
 const form = document.querySelector(".login-form");
 
 let questionCounter = 0;
@@ -86,7 +90,7 @@ function getOptionOrder(){
 }
 
 function getNewQuestion(){
-	questionNumber.innerHTML = "Question " + (currentPage) + " of " + quiz.length;
+	questionNumber.innerHTML = "Pertanyaan " + (currentPage) + " dari " + quiz.length;
 
 	/*
 	// random
@@ -97,8 +101,6 @@ function getNewQuestion(){
 	//availableQuestion.splice(index1,1);
 	*/
 	const questionIndex = availableQuestion[arrayReady[currentPage-1]];
-	//console.log(arrayReady);
-	//console.log(currentPage);
 	currentQuestion = questionIndex;
 	questionText.innerHTML = currentQuestion.q;
 
@@ -131,7 +133,7 @@ function getQuestionNo(page){
 	const questionIndex = availableQuestion[arrayReady[page-1]];
 	currentQuestion = questionIndex;
 	questionText.innerHTML = currentQuestion.q;
-	questionNumber.innerHTML = "Question " + (page) + " of " + quiz.length + " - " + currentQuestion.category;
+	questionNumber.innerHTML = "Pertanyaan " + (page) + " dari " + quiz.length + " - " + currentQuestion.category;
 
 	optionContainer.innerHTML = '';
 	let animationDelay = 0.15;
@@ -285,6 +287,7 @@ function countResult(){
 function quizOver(){
 	quizBox.classList.add("hide");
 	resultBox.classList.remove("hide");
+	comment.classList.remove("hide");
 	menu.classList.add("hide");
 	clearInterval(counter);
     clearInterval(counterLine);
@@ -314,9 +317,12 @@ function quizResult(){
 	resultBox.querySelector(".kognitif").innerHTML = correctKognitif + " / 29 (" + kogScore.toFixed(2) + "%)";
 	resultBox.querySelector(".sosio").innerHTML = correctSosio + " / 30 (" + sosScore.toFixed(2) + "%)";
 	resultBox.querySelector(".fisik").innerHTML = correctFisik + " / 28 (" + fisScore.toFixed(2) + "%)";
-
+	kognitifText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait bagaimana proses berfikir dan belajar anak usia 0-2 tahun sebesar <strong>" + kogScore.toFixed(2) + "%</strong>"
+	sosioText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait  kemampuan anak usia 0-2 tahun dalam berinteraksi sosial dan emosi sebesar <strong>" + sosScore.toFixed(2) + "%</strong>"
+	fisikText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait kemampuan  anak usia 0-2 tahun dalam menggunakan gerak tubuhnya sebesar <strong>" + fisScore.toFixed(2) + "%</strong>"
 	//for canvas
 	let myChart = document.getElementById('myChart').getContext('2d');
+	let specCanvas = document.getElementById('spec-canvas').getContext('2d');
 
 	// Global Options
 	Chart.defaults.global.defaultFontFamily = 'sans-serif';
@@ -325,18 +331,14 @@ function quizResult(){
 
 	var chartData = {
 		  labels: [
-		    'Kognititf',
-		    'Fisik',
-		    'Sosio',
-		    'Wrong',
-		    'Not Answered'
+		    'Benar',
+		    'Salah',
+		    'Tidak menjawab'
 		  ],
 		  datasets: [{
 		    label: 'Datasets',
-		    data: [correctKognitif, correctFisik, correctSosio, attempt - correctAnswer, 91-attempt],
+		    data: [correctAnswer, attempt - correctAnswer, 87-attempt],
 		    backgroundColor: [
-		      'rgb(252, 186, 3)',
-		      'rgb(10, 188, 242)',
 		      'rgb(18, 204, 59)',
 		      'rgb(212, 58, 28)',
 		      'rgb(166, 157, 156)'
@@ -344,6 +346,21 @@ function quizResult(){
 		    hoverOffset: 4
 		  }]
 	};
+
+	var dataSpec = {
+		labels: ['Kognititf','Sosio Emosional', 'Fisik'],
+		datasets: [{
+			label: 'Persen benar',
+			data: [kogScore.toFixed(2), sosScore.toFixed(2), fisScore.toFixed(2)],
+			fill: true,
+		    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+		    borderColor: 'rgb(54, 162, 235)',
+		    pointBackgroundColor: 'rgb(54, 162, 235)',
+		    pointBorderColor: '#fff',
+		    pointHoverBackgroundColor: '#fff',
+		    pointHoverBorderColor: 'rgb(54, 162, 235)'
+		}]
+	}
 	let massPopChart = new Chart(myChart, {
 	  type:'doughnut',
 	  data: chartData,
@@ -371,8 +388,38 @@ function quizResult(){
 	    }
 	  }
 	});
+	let specChart = new Chart(specCanvas, {
+		type:'radar',
+		data:dataSpec,
+		options: {
+		    elements: {
+		      line: {
+		        borderWidth: 3
+		      }
+		    },
+		    scale: {
+			    ticks: {
+			        beginAtZero: true,
+			        max: 100,
+			        min: 0
+			    }
+			},
+		    responsive: true,
+		    plugins: {
+		      title: {
+		        display: true,
+		        text: 'Sebaran skor Kognitif, Sosio Emosional, dan Fisik'
+		      }
+		    },
+		    scale: {
+	            min: 0,
+	            max: 100,
+	        }
+		},
+	})
 
 }
+
 
 function resetQuiz(){
 	questionCounter = 0;

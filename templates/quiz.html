@@ -31,12 +31,32 @@
 		<p align="justify">Tugas Ayah/Bunda adalah memilih salah satu jawaban yang tersedia sesuai dengan yang Ayah/Bunda ketahui. Informasi mengenai orang tua yang kami peroleh selama proses penelitian ini akan dijaga kerahasiaannya dan hanya digunakan untuk kepentingan penelitian.</p><br>
 		<p>Atas partisipasi dan waktu yang telah diberikan, kami ucapkan terimakasih.</p><br>
 		<p>Jika ada pertanyaan bisa menghubungi email : <b>siskaoktari@med.unand.ac.id</b></p><br>
-		<h4>Tim Peneliti : </h4>
-		<p>Siska Oktari, M.Psi.,Psikolog</p>
-		<p>Nelia Afriyeni, S.Psi.,M.A</p>
-		<p>Dr. Rozi Sastra Purna, M.Psi.,Psikolog </p>
+		<h4>Tim Peneliti : </h4><br><br>
+		<div class="clearfix">
+			<img class="img-home" src="static/img/anonym-modified.png" alt="">
+			<div class="research">
+				<div></div><div><p><strong>Siska Oktari, M.Psi.,Psikolog</strong></p></div><div></div>
+				<div></div><div><p>No. HP/WA : 08xxxxxxxxx</p></div><div></div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<img class="img-home" src="static/img/anonym-modified.png" alt="">
+			<div class="research">
+				<div></div><div><p><strong>Nelia Afriyeni, S.Psi.,M.A</strong></p></div><div></div>
+				<div></div><div><p>No. HP/WA : 08xxxxxxxxx</p></div><div></div>
+			</div>
+			
+		</div>
+		<div class="clearfix">
+			<img class="img-home" src="static/img/anonym-modified.png" alt="">
+			<div class="research">
+				<div></div><div><p><strong>Dr. Rozi Sastra Purna, M.Psi.,Psikolog </strong></p></div><div></div>
+				<div></div><div><p>No. HP/WA : 08xxxxxxxxx</p></div><div></div>
+			</div>
+			
+		</div>
 		<br>
-		<button type="submit" class="btn" onclick="showRegister()" id="submit">Start Quiz</button>
+		<button type="submit" class="btn" onclick="showRegister()" id="submit">Mulai Kuis</button>
 		<!--<canvas id="myChart" width="600" height="480"></canvas>-->
 	</div>
 
@@ -155,24 +175,35 @@
 	      	<option value="Pekerjaan non medis/kesehatan">Pekerjaan non medis/kesehatan</option>
 	      </select>
 	      <br><br>
-	      <button data-url='{% url "home" %}' type="submit" class="btn" onclick="showInstruction()" id="submit">Quiz Instruction</button>
+	      <button data-url='{% url "home" %}' type="submit" class="btn" onclick="showInstruction()" id="submit">Instruksi Kuis</button>
 	    </form>
 	  </div>
 	</div>
 
 	<!-- Home Box -->
 	<div class="home-box custom-box hide">
-		<h3>Quiz Instruction:</h3>
-		<p>Total number of questions : <span class="total-question"></span></p>
-		<p>Time : <span class="quiz-time"></span></p>
-		<button type="button" class="btn" onclick="startQuiz()">Start Quiz</button>
+		<p align="justify">Pengetahuan orang tua terkait dengan perkembangan anak usia  0-2 tahun ini akan  kami nilai melalui 3 Ranah yaitu</p>
+		<br>
+		<div class="clearfix">
+			<img class="img-home" src="static/img/kognitif-modified.png" alt=""><p align="justify">(1)  <strong>Kognitif</strong> yaitu ranah perkembangan anak terkait dengan proses berfikir anak, pengetahuan dan kegiatan belajar anak</p>
+		</div>
+		<div class="clearfix">
+			<img class="img-home-1" src="static/img/sosio-modified.png" alt=""><p align="justify">(2) <strong>Sosial-emosi</strong> yaitu ranah yang menilai bagaimana kemampuan anak dalam melakukan proses interaksi social dan perilaku yang menunjukan kondisi emosi</p>
+		</div>
+		<div class="clearfix">
+			<img class="img-home" src="static/img/fisik-modified.png" alt=""><p align="justify">(3) <strong>Fisik dan motorik</strong> yaitu ranah perkembangan anak terkait kemampuan gerak tubuh anak dalam menjalani berbagai kegiatan untuk proses adaptasinya di dalam lingkungan. </p>
+		</div>
+		
+		<!--<p>Total number of questions : <span class="total-question"></span></p>
+		<p>Time : <span class="quiz-time"></span></p>-->
+		<button type="button" class="btn" onclick="startQuiz()">Mulai Kuis</button>
 	</div>
 	<!-- Quiz Box -->
 	<div class="quiz-box custom-box hide">
 		<header>
 			<div class="question-number"> </div>
 			<div class="timer">
-                <div class="time_left_txt">Time Left</div>
+                <div class="time_left_txt">Sisa Waktu</div>
                 <div class="timer_sec"></div>
             </div>
             <div class="time_line"></div>
@@ -183,7 +214,7 @@
 		<div class="next-question-btn">
 			<button type="button" class="btn" onclick="prev()">Prev</button>
 			<button type="button" class="btn" onclick="next()">Next</button>
-			<button type="button" class="btn" id="finishAttempt" onclick="showDialog()">Finish Attempt</button>
+			<button type="button" class="btn" id="finishAttempt" onclick="showDialog()">Selesaikan Kuis</button>
 		</div>
 		<div class="answer-indicator">
 			<div></div>
@@ -201,48 +232,99 @@
 
 	<!-- Result Box -->
 	<div class="result-box custom-box hide">
-		<h1>Quiz Result</h1>
+		<h1>Hasil Kuis</h1>
 		<canvas id="myChart" width="600" height="480"></canvas>
 		<table>
 			<tr>
-				<td>Total Question</td>
+				<td>Jumlah Pertanyaan</td>
 				<td><span class="total-question"></span></td>
 			</tr>
 			<tr>
-				<td>Attempt</td>
+				<td>Jumlah Percobaan</td>
 				<td><span class="total-attempt"></span></td>
 			</tr>
 			<tr>
-				<td>Correct</td>
+				<td>Total Benar</td>
 				<td><span class="total-correct"></span></td>
 			</tr>
 			<tr>
-				<td>Wrong</td>
+				<td>Total Salah</td>
 				<td><span class="total-wrong"></span></td>
 			</tr>
+			<tr>
+				<td>Persentase</td>
+				<td><span class="percentage"></span></td>
+			</tr>
+			<tr>
+				<td>Skor Total</td>
+				<td><span class="total-score"></span></td>
+			</tr>
+		</table>
+		<canvas id="spec-canvas" width="600" height="480"></canvas>
+		<h3>Pengetahuan Ranah Kognitif</h3>
+		<table>
 			<tr>
 				<td>Kognitif</td>
 				<td><span class="kognitif"></span></td>
 			</tr>
+		</table>
+		<div class="parallelogram">
+		  <div class="text">
+		    <div class="shape"></div>
+		    <div class="kognitif-text">
+		    </div>
+		  </div>
+		</div>
+		<h3>Pengetahuan Ranah Sosio Emosional</h3>
+		<table>
 			<tr>
 				<td>Sosio Emosional</td>
 				<td><span class="sosio"></span></td>
 			</tr>
+		</table>
+		<div class="parallelogram">
+		  <div class="text">
+		    <div class="shape"></div>
+		    <div class="sosio-text">
+		    </div>
+		  </div>
+		</div>
+		<h3>Pengetahuan Ranah Fisik</h3>
+		<table>
 			<tr>
 				<td>Fisik</td>
 				<td><span class="fisik"></span></td>
 			</tr>
-			<tr>
-				<td>Percentage</td>
-				<td><span class="percentage"></span></td>
-			</tr>
-			<tr>
-				<td>Your Total Score</td>
-				<td><span class="total-score"></span></td>
-			</tr>
 		</table>
-		<button type="button" class="btn" onclick="tryAgainQuiz()">Try Again</button>
-		<button type="button" class="btn" onclick="goToHome()">Go To Home</button>
+		<div class="parallelogram">
+		  <div class="text">
+		    <div class="shape"></div>
+		    <div class="fisik-text">
+		    </div>
+		  </div>
+		</div>
+		<button type="button" class="btn" onclick="tryAgainQuiz()">Coba Lagi</button>
+		<button type="button" class="btn" onclick="goToHome()">Home</button>
+	</div>
+	<!-- Comment Box -->
+	<div class="comment-box hide">
+		<section id="app">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <div class="comment">
+            <p v-for="items in item" v-text="items"></p>
+              </div><!--End Comment-->
+              </div><!--End col -->
+              </div><!-- End row -->
+          <div class="row">
+            <div class="col-6">
+          <textarea type="text" class="input" placeholder="Write a comment"></textarea>
+              <button class='primaryContained float-right' type="submit">Kirim Saran</button>
+            </div><!-- End col -->
+          </div><!--End Row -->
+        </div><!--End Container -->
+      </section><!-- end App -->
 	</div>
 	
     <!-- Pop Up -->

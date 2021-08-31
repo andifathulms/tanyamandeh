@@ -2,7 +2,7 @@
 const quiz = [
 	{
 		id: 1,
-		q:'Berikut ini yang bukan termasuk kemampuan bawaan bayi  yang sering kali muncul pada usia 0-1 bulan yaitu ',
+		q:'Berikut ini yang <strong>bukan</strong> termasuk kemampuan bawaan bayi  yang sering kali muncul pada usia 0-1 bulan yaitu ',
 		options:['Bayi sering kali mengedipkan matanya',
 				 'Bayi akan menghisap puting atau ujung botol susu saat ditempelkan pada bibirnya',
 				 'Bayi cenderung mengamati objek yang berwarna hitam dan putih',
@@ -29,7 +29,7 @@ const quiz = [
 	},
 	{
 		id: 4,
-		q:'Respon yang akan ditunjukan oleh bayi usia 1-4 bulan pada saat berinteraksi dengan orang yang familiar dengannya adalah, kecuali',
+		q:'Respon yang akan ditunjukan oleh bayi usia 1-4 bulan pada saat berinteraksi dengan orang yang familiar dengannya adalah, <strong>kecuali</strong>',
 		options:['Bayi hanya diam saja sambil sesekali menatap ke sumber suara ', 
 			     'Bayi akan meresponnya dengan mengeluarkan suara ',
 			     'Bayi berespon ke arah sumber suara dengan menatap mata dan mulut ', 
@@ -50,7 +50,7 @@ const quiz = [
 	},
 	{
 		id: 6,
-		q:"Berikut ini aktivitas fisik yang ditunjukan oleh bayi berusia 1 bulan, kecuali",
+		q:"Berikut ini aktivitas fisik yang ditunjukan oleh bayi berusia 1 bulan, <strong>kecuali</strong>",
 		options:['Memegang kedua kakinya dengan menggunakan tangannya',
 				 'Mengangkat dagu saat diposisikan telungkup',
 				 'Menoleh saat diposisikan telentang',
@@ -61,7 +61,7 @@ const quiz = [
 	},
 	{
 		id: 7,
-		q:'Respon yang ditunjukan oleh bayi yang berusia 1-4 bulan sebagai bentuk kegiatan dalam  mengenal lingkungannya, kecuali',
+		q:'Respon yang ditunjukan oleh bayi yang berusia 1-4 bulan sebagai bentuk kegiatan dalam  mengenal lingkungannya, <strong>kecuali</strong>',
 		options:['Bayi yang masih menangis pada saat kebutuhannya sudah dipenuhi oleh orang tua ', 
 			     'Bayi memanjangkan kontak mata saat menatap orang tua ',
 			     'Bayi memasukan tangannya ke dalam mulut secara berulang ', 
@@ -143,7 +143,7 @@ const quiz = [
 	},
 	{
 		id: 15,
-		q:'Berikut ini yang bukan termasuk perkembangan emosi yang sudah ditunjukan anak usia 1-3 bulan yaitu :',
+		q:'Berikut ini yang <strong>bukan</strong> termasuk perkembangan emosi yang sudah ditunjukan anak usia 1-3 bulan yaitu :',
 		options:['Tidak  tersenyum atau menatap ketika orang tua tersenyum padanya ',
 				 'Tersenyum ketika melihat orang tuanya tersenyum',
 				 'Berespon pada saat  mendengar suara yang familiar',
@@ -187,7 +187,7 @@ const quiz = [
 	},
 	{
 		id: 19,
-		q:"Berikut ini kemampuan signifikan yang terlihat pada bayi usia 1-4 bulan, kecuali",
+		q:"Berikut ini kemampuan signifikan yang terlihat pada bayi usia 1-4 bulan, <strong>kecuali</strong>",
 		options:['Bayi sudah mulai bisa duduk dengan dibantu',
 				 'Bayi sudah menunjukan pola tidur yang lebih terjadwal',
 				 'Bayi sudah mampu menggerakan tangannya ke arah muka dan terkadang memasukan jari ke dalam mulut',
@@ -275,7 +275,7 @@ const quiz = [
 	},
 	{
 		id: 27,
-		q:'Berikut ini perkembangan sosial-emosi yang ditunjukan anak usia 4-6 bulan kecuali',
+		q:'Berikut ini perkembangan sosial-emosi yang ditunjukan anak usia 4-6 bulan <strong>kecuali</strong>',
 		options:['Bayi tertawa dan mengeluarkan suara dari mulutnya untuk tanpa adanya rangsangan dari lingkungan',
 				 'Bayi tersenyum spontan saat mendengar suara yang menangkan dari pengasuhnya',
 				 'Bayi akan berhenti menangis ketika mendengar suara orang tua',
@@ -297,7 +297,7 @@ const quiz = [
 	},
 	{
 		id: 29,
-		q:'Kemampuan belajar yang sudah terlihat pada bayi berusia 8-12 bulan yaitu, kecuali',
+		q:'Kemampuan belajar yang sudah terlihat pada bayi berusia 8-12 bulan yaitu, <strong>kecuali</strong>',
 		options:['Bayi sudah mampu menyebutkan bagian tubuhnya ',
 			 	 'Bayi melihat mainan kemudian memeriksanya, dan mengekplorasi mainan itu',
 			 	 'Bayi memindahkan satu benda ke tangan lainnya karena ingin mengambil mainan dengan menggunakan tangan lainnya ',
@@ -319,7 +319,7 @@ const quiz = [
 	},
 	{
 		id: 31,
-		q:'Respon dalam hal kemampuan sosial yang ditunjukan oleh bayi usia 4-6 bulan pada saat diajak berbicara oleh orang tuanya, kecuali',
+		q:'Respon dalam hal kemampuan sosial yang ditunjukan oleh bayi usia 4-6 bulan pada saat diajak berbicara oleh orang tuanya, <strong>kecuali</strong>',
 		options:['Bayi mengeluarkan ocehannya, menjalin kontak mata dan tersenyum kearah wajah orang tua',
 				 'Bayi menggeliatkan badannya, dengan kontak mata yang melihat kearah kiri dan kanan',
 				 'Bayi akan merespon menangis dan menggeliatkan badannya  ',
@@ -330,7 +330,7 @@ const quiz = [
 	},
 	{
 		id: 32,
-		q:"Berikut ini kemampuan yang sudah bisa ditunjukan oleh bayi yang sudah memiliki kekuatan pada otot lehernya di usia 1-4 bulan, kecuali",
+		q:"Berikut ini kemampuan yang sudah bisa ditunjukan oleh bayi yang sudah memiliki kekuatan pada otot lehernya di usia 1-4 bulan, <strong>kecuali</strong>",
 		options:['Bayi meneggakan kepalanya pada saat duduk sendiri',
 				 'Bayi memutar kepalanya saat mengamati benda yang bergerak yang dihadapkan ke depan wajahnya',
 				 'Bayi menenggakan kepalanya dengan di sangga dada, sambil sesekali memutar kepalanya',
@@ -341,7 +341,7 @@ const quiz = [
 	},
 	{
 		id: 33,
-		q:'Berikut ini pemahaman bayi usia 8-12 bulan dalam perihal Bahasa yang sudah mulai ia capai, kecuali',
+		q:'Berikut ini pemahaman bayi usia 8-12 bulan dalam perihal Bahasa yang sudah mulai ia capai, <strong>kecuali</strong>',
 		options:['Bayi  sudah mampu berbicara 1-2 kata dengan jelas',
 			 	 'Bayi mulai mengeluarkan respon yang menolak seperti menggerakan tangan pada saat ia menunjukan ketidak inginannya terhadap suatu hal',
 			 	 'Bayi mulai menggunakan intonasi pada saat mengoceh kepada orang tuanya',
@@ -396,7 +396,7 @@ const quiz = [
 	},
 	{
 		id: 38,
-		q:"Berikut ini kemampuan yang bisa ditunjukan oleh bayi untuk menguatkan postur tubuhnya pada usia 4-6 bulan, kecuali",
+		q:"Berikut ini kemampuan yang bisa ditunjukan oleh bayi untuk menguatkan postur tubuhnya pada usia 4-6 bulan, <strong>kecuali</strong>",
 		options:['Menggulingkan badannya kemudian duduk dengan sendiri',
 				 'Menggulingkan badannya ke samping',
 				 'Menggulingkan badannya dari belakang kearah perut seperti ingin menelungkup',
@@ -462,7 +462,7 @@ const quiz = [
 	},
 	{
 		id: 44,
-		q:"Berikut ini yang bukan kemampuan motorik yang ditunjukan oleh bayi berusia 6-9 bulan adalah",
+		q:"Berikut ini yang <strong>bukan</strong> kemampuan motorik yang ditunjukan oleh bayi berusia 6-9 bulan adalah",
 		options:['Berjalan dengan satu atau dua langkah',
 				 'Duduk sendiri tanpa bantuan',
 				 'Mulai untuk melangkah satu persatu di akhir bulan dengan berpengan pada benda untuk menarik dirinya',
@@ -473,7 +473,7 @@ const quiz = [
 	},
 	{
 		id: 45,
-		q:'Berikut ini perkembangan kemampuan belajar yang ditunjukan oleh anak usia 13-18 bulan, kecuali',
+		q:'Berikut ini perkembangan kemampuan belajar yang ditunjukan oleh anak usia 13-18 bulan, <strong>kecuali</strong>',
 		options:['Anak mampu mengenali warna dasar',
 			 	 'Anak gemar membongkar barang-barang dari tempatnya',
 			 	 'Anak gemar memindahkan barang dari satu wadah ke wadah yang lainnya yang berbeda',
@@ -495,7 +495,7 @@ const quiz = [
 	},
 	{
 		id: 47,
-		q:"Berikut ini  adalah upaya yang ditunjukan oleh bayi usia 6-12 bulan untuk memperkuat otot, dan postur tubuh bagian bawahnya dalam rangka untuk proses berjalan kecuali",
+		q:"Berikut ini  adalah upaya yang ditunjukan oleh bayi usia 6-12 bulan untuk memperkuat otot, dan postur tubuh bagian bawahnya dalam rangka untuk proses berjalan <strong>kecuali</strong>",
 		options:['Duduk sambil memegang kakinya dengan menggunakan kedua tangannya',
 				 'Mencoba untuk duduk sendiri, dan kemudian berdiri sendiri ',
 				 'Merangkak(bergerak dengan tangan dan menggerakan lututnya)',
@@ -528,7 +528,7 @@ const quiz = [
 	},
 	{
 		id: 50,
-		q:"Salah satu  pencapaian penting yang ditujukan oleh bayi yang sdh berusia 9-12 bulan yaitu kemampuan untuk berjalan, berikut pernyataan yang mendukung hal ini kecuali ",
+		q:"Salah satu  pencapaian penting yang ditujukan oleh bayi yang sdh berusia 9-12 bulan yaitu kemampuan untuk berjalan, berikut pernyataan yang mendukung hal ini <strong>kecuali</strong> ",
 		options:['Bayi yang mampu berjalan tidak perlu untuk mahir duduk terlebih dahulu',
 				 'Bayi mampu berjalan 9-12 bulan dengan variasi masing-masing anak dlm mencapainya sekitar 2-4 bulan',
 				 'Bayi yang mampu berjalan dimulai dari beberapa langkah yang masih di pegang oleh orang dewasa',
@@ -627,7 +627,7 @@ const quiz = [
 	},
 	{
 		id: 59,
-		q:"Berikut ini kemampuan penting dalam perkembangan  motorik bayi berusia 13-18 bulan , kecuali",
+		q:"Berikut ini kemampuan penting dalam perkembangan  motorik bayi berusia 13-18 bulan , <strong>kecuali</strong>",
 		options:['Bayi masih memerlukan bantuan orang tua dalam berjalan ',
 				 'Bayi gemar mencoret-coret',
 				 'Bayi mulai belajar untuk menyuapi dirinya sendiri dan memindahkan sendok sendiri saat makan',
@@ -649,7 +649,7 @@ const quiz = [
 	},
 	{
 		id: 61,
-		q:'Berikut ini kemampuan sosial emosi dalam merespon interaksi sosial yang ditunjukan anak usia 9-12 bulan, kecuali',
+		q:'Berikut ini kemampuan sosial emosi dalam merespon interaksi sosial yang ditunjukan anak usia 9-12 bulan, <strong>kecuali</strong>',
 		options:['Anak sulit melakukan kontak mata dan lebih memilih untuk bermain sendiri dengan mainannya',
 				 'Anak akan banyak merespon senyum saat menanggapi orang tuanya dengan senyuman pipi mengangkat',
 				 'Anak menunjukan senyum lebar saar diajak bermain dengan orang tua',
@@ -671,7 +671,7 @@ const quiz = [
 	},
 	{
 		id: 63,
-		q:'Berikut ini yang termasuk respon  bayi usia 13 bulan  yang menunjukan kemampuannya dalam memahami kata-kata yang disampaikan oleh orang tua kecuali ',
+		q:'Berikut ini yang termasuk respon  bayi usia 13 bulan  yang menunjukan kemampuannya dalam memahami kata-kata yang disampaikan oleh orang tua <strong>kecuali</strong> ',
 		options:['Saat orang tua bertanya tentang cara memainkan bola maka ia akan menjawab dengan menggunakan 3-4 kata ',
 			 	 'Saat orang tua berkata “ayo kemari” anak akan berespon dan mendekati orang tua ',
 			 	 'Saat orang tua bertanya satu benda anak akan merespon dengan menunjuk benda yang dimaksud',
@@ -682,7 +682,7 @@ const quiz = [
 	},
 	{
 		id: 64,
-		q:'Berikut ini perkembangan emosi dan sosial  yang sudah bisa ditunjukan oleh anak usia 12-18 bulan, kecuali ',
+		q:'Berikut ini perkembangan emosi dan sosial  yang sudah bisa ditunjukan oleh anak usia 12-18 bulan, <strong>kecuali</strong> ',
 		options:['Tidak menangis pada saat ditinggal oleh orang tuanya',
 				 'Mencari-cari orang tuanya, atau melihat kearah orang tuanya pada saat ia bermain di lingkungan baru',
 				 'Menggoda orang tua atau keluarga dengan cara bermain sembunyi dan menunjukan senyuman yang lebar',
@@ -726,7 +726,7 @@ const quiz = [
 	},
 	{
 		id: 68,
-		q:"Berikut ini kemampuan motorik halus yang sudah bisa kembangkan oleh anak usia 13-18 bulan, kecuali",
+		q:"Berikut ini kemampuan motorik halus yang sudah bisa kembangkan oleh anak usia 13-18 bulan, <strong>kecuali</strong>",
 		options:['Bayi mulai gemar untuk menendang bola dengan kakinya',
 				 'Bayi mulai menggunakan tangan dan jemarinya untuk mengambil benda atau mainan, dan bisa menggunakan jarinya dalam hal menyusun, atau menumpuk atau memindahkan mainan',
 				 'Bayi mulai gemar mencoret-coret saat mnemukan alat tulis ',
@@ -748,7 +748,7 @@ const quiz = [
 	},
 	{
 		id: 70,
-		q:'Berikut ini upaya yang ditunjukan oleh anak yang berusia 12-18 bulan dalam membangun interaksi sosial dengan pengasuhnya, kecuali',
+		q:'Berikut ini upaya yang ditunjukan oleh anak yang berusia 12-18 bulan dalam membangun interaksi sosial dengan pengasuhnya, <strong>kecuali</strong>',
 		options:['Bayi akan berguling-guling tanpa penyebab kondisi yang jelas',
 				 'Bayi akan menggunakan gestur atau menyebutkan satu kata dari apa yang dia inginkan atua dia tanyakan dengan melihat ke orang tua',
 				 'Bayi akan melihat benda/ permainan secara bersamaan dengan orang tua sambil menanyakan nya ',
@@ -759,7 +759,7 @@ const quiz = [
 	},
 	{
 		id: 71,
-		q:"Berikut ini kemampuan-kemampuan yang sudah bisa ditunjukan oleh anak usia 18-24 dalam hal perkembangan fisiknya, kecuali",
+		q:"Berikut ini kemampuan-kemampuan yang sudah bisa ditunjukan oleh anak usia 18-24 dalam hal perkembangan fisiknya, <strong>kecuali</strong>",
 		options:['Berjalan dengan satu kaki tanpa adanya bantuan',
 				 'Mulai belajar dalam melakukan toilet training',
 				 'Mampu berjalan dan terkadang sesekali terjatuh di permukaan yang tidak rata dengan adanya bantuan',
@@ -792,7 +792,7 @@ const quiz = [
 	},
 	{
 		id: 74,
-		q:"Berikut perkembangan yang dimiliki oleh bayi dalam hal pengendalian keseimbangan dirinya pada usia 18-24 bulan kecuali",
+		q:"Berikut perkembangan yang dimiliki oleh bayi dalam hal pengendalian keseimbangan dirinya pada usia 18-24 bulan <strong>kecuali</strong>",
 		options:['Mampu menggunakan mainan beroda dan mengendarainya seperti mobil-mobilan',
 				 'Berdiri dengan satu kaki dengan menggunakan bantuan',
 				 'Mampu berlari sesekali',
@@ -825,7 +825,7 @@ const quiz = [
 	},
 	{
 		id: 77,
-		q:"Berikut ini bentuk perkembangan motoric kasar anak usia 18-24 bulan yang ditunjukannya pada saat menaiki tangga, kecuali",
+		q:"Berikut ini bentuk perkembangan motoric kasar anak usia 18-24 bulan yang ditunjukannya pada saat menaiki tangga, <strong>kecuali</strong>",
 		options:['Anak menaiki tangga dengan menggunakan kaki yang sudah fasih bergantian',
 				 'Anak menaiki tangga melangkahi satu per satu kakinnya',
 				 'Anak menaiki tangga dengan melangkahi kakinya sambil berpegangan atau dengan bantuan',
@@ -836,7 +836,7 @@ const quiz = [
 	},
 	{
 		id: 78,
-		q:'Berikut ini kemampuan belajar yang sudah dimiliki bayi berusianya 18-24 bulan, kecuali',
+		q:'Berikut ini kemampuan belajar yang sudah dimiliki bayi berusianya 18-24 bulan, <strong>kecuali</strong>',
 		options:['Bayi bisa menggunakan sepeda tanpa bantuan ',
 			 	 'Bayi mampu membalikan halaman buku dan menunjukan gambar yang tepat yang ditanyakan oleh orang tua',
 			 	 'Bayi sudah mulai untuk membuat coret-coretan di kertas ',
@@ -869,7 +869,7 @@ const quiz = [
 	},
 	{
 		id: 81,
-		q:'Salah satu pencapaian penting yang ditunjukkan oleh bayi yang berusia 18-24 bulan yaitu kemampuan Bahasa yang sudah mulai berkembang, kecuali',
+		q:'Salah satu pencapaian penting yang ditunjukkan oleh bayi yang berusia 18-24 bulan yaitu kemampuan Bahasa yang sudah mulai berkembang, <strong>kecuali</strong>',
 		options:['Bayi hanya mengetahui 1-2 objek familiar yang ditanya oleh ibunya ',
 			 	 'Bayi mengetahui binatang dengan menyebutkan dan menirukan suara binatang',
 			 	 'Bayi mampu menunjukkan 5 bagian tubuhnya saat diminta oleh orang tuanya',
@@ -880,7 +880,7 @@ const quiz = [
 	},
 	{
 		id: 82,
-		q:'Kemampuan sosial dalam bermain yang ditunjukan oleh anak usia 18-24 bulan, kecuali',
+		q:'Kemampuan sosial dalam bermain yang ditunjukan oleh anak usia 18-24 bulan, <strong>kecuali</strong>',
 		options:['Anak enggan untuk bermain dengan menunjukan perilaku yang berguling-guling dan emosi yang intens',
 				 'Anak mampu untuk bermain sendiri  dengan mainan yang tampak dan disediakan oleh orang tua',
 				 'Anak sering kali meniru perilaku yang ditunjukan oleh anak yang lebih besar (usia 2-3 tahun) pada saat bermain',
@@ -924,7 +924,7 @@ const quiz = [
 	},
 	{
 		id: 86,
-		q:"Di bawah ini yang bukan menunjukkan perkembangan kemampuan motorik halus bayi usia 18-24 tahun adalah",
+		q:"Di bawah ini yang <strong>bukan</strong> menunjukkan perkembangan kemampuan motorik halus bayi usia 18-24 tahun adalah",
 		options:['Melempar bola dengan satu tangannya',
 				 'Memainkan mainan yang beroda dengan cara mendorongnya ke depan dan kebelakang untuk menggerakan roda mainanya tersebut',
 				 'Menggenggam sendok untuk makan sendiri',
@@ -935,7 +935,7 @@ const quiz = [
 	},
 	{
 		id: 87,
-		q:'Berikut ini yang bukan termasuk capaian perkembangan sosial emosi anak usia 12-24 bulan yaitu',
+		q:'Berikut ini yang <strong>bukan</strong> termasuk capaian perkembangan sosial emosi anak usia 12-24 bulan yaitu',
 		options:['Anak selalu menggunakan gesture saat menunjukan sesuatu dan tidak pernah memverbalkan apa yang diinginkannya',
 				 'Anak sering kali meniru aktivitas yang sering dikerjakan oleh orang tua',
 				 'Anak mampu bermain sendiri, secara aktif mengekplorasi mainan dengan mengeluarkan suara dan menggerakan mainan',
