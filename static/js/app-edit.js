@@ -401,9 +401,14 @@ function quizResult(){
 			    ticks: {
 			        beginAtZero: true,
 			        max: 100,
-			        min: 0
+			        min: 0,
+			        stepSize: 10
 			    }
 			},
+			/*scale: {
+	            min: 0,
+	            max: 100,
+	        },*/
 		    responsive: true,
 		    plugins: {
 		      title: {
@@ -464,9 +469,13 @@ function showInstruction(){
 		if(!filled) return;
 		if(!i.value) filled = false;
 	})
+	let nohp = document.getElementById("nohp").value
 	if(!filled){
 		alert("Isi semua field")
-	}else{
+	}else if(nohp.length <= 8 || nohp.length >= 14){
+		document.querySelector(".checkhp").innerHTML = "Pastikan nomor hp valid"
+	}
+	else{
 		register.classList.add("hide");
 		homeBox.classList.remove("hide");
 	}
