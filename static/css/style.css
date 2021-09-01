@@ -20,31 +20,31 @@ body{
 }
 @keyframes chbg{
    0%{
-      background-image: url("../img/bg01.jpg");
+      background-image: url("../img/bg1.jpg");
    }
    7%{
-      background-image: url("../img/bg02.jpg");
+      background-image: url("../img/bg2.jpg");
    }
    14%{
-      background-image: url("../img/bg03.jpg");
+      background-image: url("../img/bg3.jpg");
    }
    21%{
-      background-image: url("../img/bg04.jpg");
+      background-image: url("../img/bg4.jpg");
    }
    28%{
-      background-image: url("../img/bg05.jpg");
+      background-image: url("../img/bg5.jpg");
    }
    36%{
-      background-image: url("../img/bg06.jpg");
+      background-image: url("../img/bg6.jpg");
    }
    44%{
-      background-image: url("../img/bg07.jpg");
+      background-image: url("../img/bg7.jpg");
    }
    51%{
-      background-image: url("../img/bg08.jpg");
+      background-image: url("../img/bg8.jpg");
    }
    60%{
-      background-image: url("../img/bg09.jpg");
+      background-image: url("../img/bg9.jpg");
    }
    68%{
       background-image: url("../img/bg10.jpg");
