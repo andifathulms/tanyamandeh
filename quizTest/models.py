@@ -324,7 +324,7 @@ class session(models.Model):
 	duration = models.IntegerField()
 	mark = models.ForeignKey(sessionMark, on_delete=models.CASCADE)
 	order = models.ForeignKey(sessionOrder, on_delete=models.CASCADE)
-	score = models.ForeignKey(sessionScore, on_delete=models.CASCADE)
+	#score = models.ForeignKey(sessionScore, on_delete=models.CASCADE)
 	
 class comment(models.Model):
 	id = models.BigAutoField(primary_key=True)
