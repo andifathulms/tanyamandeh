@@ -54,7 +54,7 @@ function setAvailableQuestions(){
 function setQuestAnswSieve(){
 	for (let i = 0; i < quiz.length; i++){
 		questAnsw[i+1] = -1;
-		questSieve[i+1] = 0;
+		questSieve[i+1] = -1; //0
 	}
 }
 
@@ -196,7 +196,7 @@ function getSelect(id){
 		if(currentQuestion.category == "Aspek Fisik"){correctFisik++;}
 
 	}else{
-		questSieve[questionOrder[currentPage-1]] = -1;
+		questSieve[questionOrder[currentPage-1]] = 0;//-1
 	}
 	updateAnswerIndicator("selected");
 }
@@ -214,7 +214,7 @@ function getResult(element){
 	}else{
 		element.classList.add("wrong");
 		updateAnswerIndicator("wrong");
-		questSieve[questionOrder[currentPage-1]] = -1;
+		questSieve[questionOrder[currentPage-1]] = 0;//-1
 
 		const optionLen = optionContainer.children.length;
 		for(let i=0; i<optionLen; i++){
@@ -589,9 +589,53 @@ function showDialog(){
 	else{
 		text = "Masih ada " + notAnsw + " soal yang anda belum jawab. Yakin ingin selesaikan quiz?"
 	}
-	dialogText.textContent = "Finish Quiz?";
+	dialogText.textContent = "Selesaikan Kuis?";
 	dialogDesc.textContent = text;
 	dialog.classList.remove("hide");
+}
+
+function postComment(event, eventElement){
+	let comment = document.getElementById("inputcomment").value;
+	let commentStatus = document.querySelector(".comment-status");
+	let userDataParse = JSON.parse(userData);
+	if (comment.length >= 10){
+		document.getElementById("inputcomment").value = "";
+		text = "Terimakasih, saran anda telah kami terima dan akan menjadi pertimbangan untuk menjadikan aplikasi ini lebih baik"
+		let commentObj = {
+			nama: userDataParse.nama,
+			comment: comment
+		}
+		let commentJSON = JSON.stringify(commentObj, null,' ');
+		$.ajax({
+			type: 'POST',
+			url: $(eventElement).data('url'),
+			dataType: 'json',
+			data: {
+				'id' : 5,
+				'nama' : userDataParse.nama,
+				'comment' : comment,	
+			},
+			success: function (data){
+				if (data.msg === "Success"){
+					alert('Form is submitted');
+				}else{
+					alert('AJAX failed');
+				}
+			},
+			complete: function(){
+				console.log("Complete Submit Comment")
+			},
+			error: function(jqXHR, textStatus, errorThrown) { 
+		       //console.log(errorThrown);
+		    }
+		});
+
+	}else{
+		document.getElementById("inputcomment").value = "";
+		text = "Pastikan saran anda melebihi 10 karakter"
+	}
+	commentStatus.innerHTML = text;
+	console.log(userDataParse.nama);
 }
 
 function closeDialog(){

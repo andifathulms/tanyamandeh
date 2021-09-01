@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from quizTest.views import home_view,exportsCSV
+from quizTest.views import home_view,exportsCSV,exportsComment
 from quizTest.views import about_view
 from quizTest.views import contact_view
 
@@ -30,5 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', about_view),
     path('contact/', contact_view),
-    path('exportscsv', exportsCSV)
+    path('exportscsv', exportsCSV),
+    path('exportscomment', exportsComment)
 ]

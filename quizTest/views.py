@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from quizTest.models import responden
-from quizTest.models import wilayah, session, sessionMark, sessionOrder
+from quizTest.models import wilayah, session, sessionMark, sessionOrder, comment, sessionScore
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 from django.core.serializers.json import DjangoJSONEncoder
@@ -96,7 +96,8 @@ def home_view(request, *args, **kwargs):
 					educ = jsonData["pendidikan"],
 					educg = jsonData["educbg"],
 					job = jsonData["job"],
-					jobg = jsonData["jobbg"])
+					jobg = jsonData["jobbg"],
+					nohp = jsonData["nohp"])
 
 				mark = sessionMark.objects.create(
 					quest1Ans = quizChoice["1"],quest2Ans = quizChoice["2"],quest3Ans = quizChoice["3"],quest4Ans = quizChoice["4"],
@@ -147,6 +148,30 @@ def home_view(request, *args, **kwargs):
 					quest81Pos = quizOrder["81"],quest82Pos = quizOrder["82"],quest83Pos = quizOrder["83"],quest84Pos = quizOrder["84"],
 					quest85Pos = quizOrder["85"],quest86Pos = quizOrder["86"],quest87Pos = quizOrder["87"]
 					)
+				score = sessionScore.objects.create(
+					quest1Scr = quizAnswer["1"],quest2Scr = quizAnswer["2"],quest3Scr = quizAnswer["3"],quest4Scr = quizAnswer["4"],
+					quest5Scr = quizAnswer["5"],quest6Scr = quizAnswer["6"],quest7Scr = quizAnswer["7"],quest8Scr = quizAnswer["8"],
+					quest9Scr = quizAnswer["9"],quest10Scr = quizAnswer["10"],quest11Scr = quizAnswer["11"],quest12Scr = quizAnswer["12"],
+					quest13Scr = quizAnswer["13"],quest14Scr = quizAnswer["14"],quest15Scr = quizAnswer["15"],quest16Scr = quizAnswer["16"],
+					quest17Scr = quizAnswer["17"],quest18Scr = quizAnswer["18"],quest19Scr = quizAnswer["19"],quest20Scr = quizAnswer["20"],
+					quest21Scr = quizAnswer["21"],quest22Scr = quizAnswer["22"],quest23Scr = quizAnswer["23"],quest24Scr = quizAnswer["24"],
+					quest25Scr = quizAnswer["25"],quest26Scr = quizAnswer["26"],quest27Scr = quizAnswer["27"],quest28Scr = quizAnswer["28"],
+					quest29Scr = quizAnswer["29"],quest30Scr = quizAnswer["30"],quest31Scr = quizAnswer["31"],quest32Scr = quizAnswer["32"],
+					quest33Scr = quizAnswer["33"],quest34Scr = quizAnswer["34"],quest35Scr = quizAnswer["35"],quest36Scr = quizAnswer["36"],
+					quest37Scr = quizAnswer["37"],quest38Scr = quizAnswer["38"],quest39Scr = quizAnswer["39"],quest40Scr = quizAnswer["40"],
+					quest41Scr = quizAnswer["41"],quest42Scr = quizAnswer["42"],quest43Scr = quizAnswer["43"],quest44Scr = quizAnswer["44"],
+					quest45Scr = quizAnswer["45"],quest46Scr = quizAnswer["46"],quest47Scr = quizAnswer["47"],quest48Scr = quizAnswer["48"],
+					quest49Scr = quizAnswer["49"],quest50Scr = quizAnswer["50"],quest51Scr = quizAnswer["51"],quest52Scr = quizAnswer["52"],
+					quest53Scr = quizAnswer["53"],quest54Scr = quizAnswer["54"],quest55Scr = quizAnswer["55"],quest56Scr = quizAnswer["56"],
+					quest57Scr = quizAnswer["57"],quest58Scr = quizAnswer["58"],quest59Scr = quizAnswer["59"],quest60Scr = quizAnswer["60"],
+					quest61Scr = quizAnswer["61"],quest62Scr = quizAnswer["62"],quest63Scr = quizAnswer["63"],quest64Scr = quizAnswer["64"],
+					quest65Scr = quizAnswer["65"],quest66Scr = quizAnswer["66"],quest67Scr = quizAnswer["67"],quest68Scr = quizAnswer["68"],
+					quest69Scr = quizAnswer["69"],quest70Scr = quizAnswer["70"],quest71Scr = quizAnswer["71"],quest72Scr = quizAnswer["72"],
+					quest73Scr = quizAnswer["73"],quest74Scr = quizAnswer["74"],quest75Scr = quizAnswer["75"],quest76Scr = quizAnswer["76"],
+					quest77Scr = quizAnswer["77"],quest78Scr = quizAnswer["78"],quest79Scr = quizAnswer["79"],quest80Scr = quizAnswer["80"],
+					quest81Scr = quizAnswer["81"],quest82Scr = quizAnswer["82"],quest83Scr = quizAnswer["83"],quest84Scr = quizAnswer["84"],
+					quest85Scr = quizAnswer["85"],quest86Scr = quizAnswer["86"],quest87Scr = quizAnswer["87"]
+					)
 				
 				s = session(
 						responden = r,
@@ -158,9 +183,19 @@ def home_view(request, *args, **kwargs):
 						fisikScore = data["correctFisik"],
 						totalScore = total,
 						mark = mark,
-						order = order
+						order = order,
+						score = score
 					)
 				s.save()
+
+				return render(request, "quiz.html", context)
+			elif data["id"] == "5":
+				print("5")
+				print(data["nama"])
+				print(data["comment"])
+
+				c = comment(nama = data["nama"], comment = data["comment"])
+				c.save()
 
 				return render(request, "quiz.html", context)
 	else:
@@ -186,16 +221,17 @@ def exportsCSV(request):
 	respondens = responden.objects.all()
 	marks = sessionMark.objects.all()
 	orders = sessionOrder.objects.all()
+	scores = sessionScore.objects.all()
 	response = HttpResponse('')
 	response['Content-Disposition'] = 'attachment; filename=sessions.csv'
 	writer = csv.writer(response,delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 	header = ["ID"]
 	respHeader = ["Name","L/P","Age","Provinsi","Kabupaten","Agama","Status Nikah","Jumlah Anak",
 				  "Umur Anak1","Umur Anak2","Pendidikan","Latar Pendidikan",
-				  "Pekerjaan","Latar Pekerjaan","Tanggal"]
+				  "Pekerjaan","Latar Pekerjaan","NoHP","Tanggal"]
 	sessHeader = ["Score Kognitif","Score Sosio","Score Fisik"," Score Total",
 				  "Time Start", "Time End", "Duration(Sec)"]
-	markHeader = ["Q1 Score","Q2 Score","Q3 Score","Q4 Score","Q5 Score","Q6 Score","Q7 Score","Q8 Score","Q9 Score","Q10 Score",
+	scoreHeader = ["Q1 Score","Q2 Score","Q3 Score","Q4 Score","Q5 Score","Q6 Score","Q7 Score","Q8 Score","Q9 Score","Q10 Score",
 				  "Q11 Score","Q12 Score","Q13 Score","Q14 Score","Q15 Score","Q16 Score","Q17 Score","Q18 Score","Q19 Score","Q20 Score",
 				  "Q21 Score","Q22 Score","Q23 Score","Q24 Score","Q25 Score","Q26 Score","Q27 Score","Q28 Score","Q29 Score","Q20 Score",
 				  "Q31 Score","Q32 Score","Q33 Score","Q34 Score","Q35 Score","Q36 Score","Q37 Score","Q38 Score","Q39 Score","Q30 Score",
@@ -204,6 +240,15 @@ def exportsCSV(request):
 				  "Q61 Score","Q62 Score","Q63 Score","Q64 Score","Q65 Score","Q66 Score","Q67 Score","Q68 Score","Q69 Score","Q60 Score",
 				  "Q71 Score","Q72 Score","Q73 Score","Q74 Score","Q75 Score","Q76 Score","Q77 Score","Q78 Score","Q79 Score","Q70 Score",
 				  "Q81 Score","Q82 Score","Q83 Score","Q84 Score","Q85 Score","Q86 Score","Q87 Score"]
+	markHeader = ["Q1 Mark","Q2 Mark","Q3 Mark","Q4 Mark","Q5 Mark","Q6 Mark","Q7 Mark","Q8 Mark","Q9 Mark","Q10 Mark",
+				  "Q11 Mark","Q12 Mark","Q13 Mark","Q14 Mark","Q15 Mark","Q16 Mark","Q17 Mark","Q18 Mark","Q19 Mark","Q20 Mark",
+				  "Q21 Mark","Q22 Mark","Q23 Mark","Q24 Mark","Q25 Mark","Q26 Mark","Q27 Mark","Q28 Mark","Q29 Mark","Q20 Mark",
+				  "Q31 Mark","Q32 Mark","Q33 Mark","Q34 Mark","Q35 Mark","Q36 Mark","Q37 Mark","Q38 Mark","Q39 Mark","Q30 Mark",
+				  "Q41 Mark","Q42 Mark","Q43 Mark","Q44 Mark","Q45 Mark","Q46 Mark","Q47 Mark","Q48 Mark","Q49 Mark","Q40 Mark",
+				  "Q51 Mark","Q52 Mark","Q53 Mark","Q54 Mark","Q55 Mark","Q56 Mark","Q57 Mark","Q58 Mark","Q59 Mark","Q50 Mark",
+				  "Q61 Mark","Q62 Mark","Q63 Mark","Q64 Mark","Q65 Mark","Q66 Mark","Q67 Mark","Q68 Mark","Q69 Mark","Q60 Mark",
+				  "Q71 Mark","Q72 Mark","Q73 Mark","Q74 Mark","Q75 Mark","Q76 Mark","Q77 Mark","Q78 Mark","Q79 Mark","Q70 Mark",
+				  "Q81 Mark","Q82 Mark","Q83 Mark","Q84 Mark","Q85 Mark","Q86 Mark","Q87 Mark"]
 	orderHeader = ["Q1 Order","Q2 Order","Q3 Order","Q4 Order","Q5 Order","Q6 Order","Q7 Order","Q8 Order","Q9 Order","Q10 Order",
 				  "Q11 Order","Q12 Order","Q13 Order","Q14 Order","Q15 Order","Q16 Order","Q17 Order","Q18 Order","Q19 Order","Q20 Order",
 				  "Q21 Order","Q22 Order","Q23 Order","Q24 Order","Q25 Order","Q26 Order","Q27 Order","Q28 Order","Q29 Order","Q20 Order",
@@ -215,6 +260,7 @@ def exportsCSV(request):
 				  "Q81 Order","Q82 Order","Q83 Order","Q84 Order","Q85 Order","Q86 Order","Q87 Order"]
 	header.extend(respHeader)
 	header.extend(sessHeader)
+	header.extend(scoreHeader)
 	header.extend(markHeader)
 	header.extend(orderHeader)
 	writer.writerow(header)
@@ -223,13 +269,19 @@ def exportsCSV(request):
 	resp = respondens.values_list()
 	mark = marks.values_list()
 	order = orders.values_list()
+	score = scores.values_list()
 	ready = []
+	i = 0
 	for s in sess:
 		for r in resp:
 			if (r[0] == s[1]):
 				ready.append(s[0])
 				ready.extend(list(r[1:]))
 				ready.extend(list(s[2:9]))
+				break
+		for sc in score:
+			if (sc[0] == s[11]):
+				ready.extend(list(sc[1:]))
 				break
 		for m in mark:
 			if (m[0] == s[9]):
@@ -241,4 +293,17 @@ def exportsCSV(request):
 				break
 		writer.writerow(ready)
 		ready = []
+		i += 1
+	return response
+
+def exportsComment(request):
+	comments = comment.objects.all()
+	response = HttpResponse('')
+	response['Content-Disposition'] = 'attachment; filename=comments.csv'
+	writer = csv.writer(response,delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+	header = ["ID","Date","Name","Comment"]
+	writer.writerow(header)
+	com = comments.values_list()
+	for c in com:
+		writer.writerow(c)
 	return response

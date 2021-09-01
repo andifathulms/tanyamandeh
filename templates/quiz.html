@@ -35,23 +35,26 @@
 		<div class="clearfix">
 			<img class="img-home" src="static/img/anonym-modified.png" alt="">
 			<div class="research">
-				<div></div><div><p><strong>Siska Oktari, M.Psi.,Psikolog</strong></p></div><div></div>
-				<div></div><div><p>No. HP/WA : 08xxxxxxxxx</p></div><div></div>
+				<div></div><div><br></div><div></div>
+				<div></div><div><p>Siska Oktari, M.Psi.,Psikolog</p></div><div></div>
+				<div></div><div></div><div></div>
 			</div>
 		</div>
 		<div class="clearfix">
 			<img class="img-home" src="static/img/anonym-modified.png" alt="">
 			<div class="research">
-				<div></div><div><p><strong>Nelia Afriyeni, S.Psi.,M.A</strong></p></div><div></div>
-				<div></div><div><p>No. HP/WA : 08xxxxxxxxx</p></div><div></div>
+				<div></div><div><br></div><div></div>
+				<div></div><div><p>Nelia Afriyeni, S.Psi.,M.A</p></div><div></div>
+				<div></div><div></div><div></div>
 			</div>
 			
 		</div>
 		<div class="clearfix">
 			<img class="img-home" src="static/img/anonym-modified.png" alt="">
 			<div class="research">
-				<div></div><div><p><strong>Dr. Rozi Sastra Purna, M.Psi.,Psikolog </strong></p></div><div></div>
-				<div></div><div><p>No. HP/WA : 08xxxxxxxxx</p></div><div></div>
+				<div></div><div></div><div></div>
+				<div></div><div><p>Dr. Rozi Sastra Purna, M.Psi.,Psikolog </p></div><div></div>
+				<div></div><div></div><div></div>
 			</div>
 			
 		</div>
@@ -174,6 +177,9 @@
 	      	<option value="Pekerjaan medis/kesehatan">Pekerjaan medis/kesehatan</option>
 	      	<option value="Pekerjaan non medis/kesehatan">Pekerjaan non medis/kesehatan</option>
 	      </select>
+	      <label for="nohp"><b>Nomor Hp</b></label>
+	      <input type="tel" id="nohp" name="nohp" placeholder="081234567890" pattern="[0-9]{10,}" required>
+	      <p></p>
 	      <br><br>
 	      <button data-url='{% url "home" %}' type="submit" class="btn" onclick="showInstruction()" id="submit">Instruksi Kuis</button>
 	    </form>
@@ -309,21 +315,23 @@
 	<!-- Comment Box -->
 	<div class="comment-box hide">
 		<section id="app">
-        <div class="container">
-          <div class="row">
-            <div class="col-6">
-              <div class="comment">
-            <p v-for="items in item" v-text="items"></p>
-              </div><!--End Comment-->
-              </div><!--End col -->
-              </div><!-- End row -->
-          <div class="row">
-            <div class="col-6">
-          <textarea type="text" class="input" placeholder="Write a comment"></textarea>
-              <button class='primaryContained float-right' type="submit">Kirim Saran</button>
-            </div><!-- End col -->
-          </div><!--End Row -->
-        </div><!--End Container -->
+	        <div class="container">
+	          <p>Silahkan berikan saran untuk perbaikan aplikasi ini</p>
+	          <div class="row">
+	            <div class="col-6">
+	              <div class="comment">
+	            <p v-for="items in item" v-text="items"></p>
+	              </div><!--End Comment-->
+	              </div><!--End col -->
+	              </div><!-- End row -->
+	          <div class="row">
+	            <div class="col-6">
+	          <textarea type="text" id="inputcomment" placeholder="Saran minimal 10 karakter"></textarea>
+	              <button class='primaryContained float-right' type="submit" onclick="postComment()">Kirim Saran</button>
+	            </div><!-- End col -->
+	          </div><!--End Row -->
+	          <p class="comment-status"></p>
+	        </div><!--End Container -->
       </section><!-- end App -->
 	</div>
 	
