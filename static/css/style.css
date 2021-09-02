@@ -183,7 +183,7 @@ label {
     height: 45px;
     padding: 0 8px;
     border-radius: 5px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     width: 40%;

@@ -43,6 +43,7 @@ let correctMath = 0;
 let correctKognitif = 0;
 let correctSosio = 0;
 let correctFisik = 0;
+let timercounter = 0;
 
 function setAvailableQuestions(){
 	const totalQuestion = quiz.length;
@@ -198,6 +199,8 @@ function getSelect(id){
 	}else{
 		questSieve[questionOrder[currentPage-1]] = 0;//-1
 	}
+	timercounter++;
+	timerLine(timercounter);
 	updateAnswerIndicator("selected");
 }
 
@@ -563,11 +566,11 @@ function startTimer(time){
         if (time < 0){
         	clearInterval(counter); //clear counter
         	timeText.textContent = "Off";
-        	quizOver();
+        	//quizOver(); using time sets here
         }
     }
 }
-
+/*
 function startTimerLine(time){
     counterLine = setInterval(timer, 1000);
     function timer(){
@@ -577,6 +580,11 @@ function startTimerLine(time){
             clearInterval(counterLine); //clear counterLine
         }
     }
+}
+*/
+
+function timerLine(attempt){
+	time_line.style.width = Math.floor(attempt*100/87) + "%";
 }
 
 function countAttempt(){
