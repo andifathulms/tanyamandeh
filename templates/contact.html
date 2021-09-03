@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TanyaMandeh - Pengukuran tingkat pengetahuan orang tua tentang perkembangan anak</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/css/style.css?{% now 'U' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<!-- Nav -->
+	<div class="nav-box hide">
+		<nav>
+	      <ul id="floatleft">
+	          <li><a href="/" onclick="goToHome()">TanyaMandeh</a></li>
+	      </ul>
+	      <ul id="floatright">
+	      	  <li><a href="../about/">About</a></li>
+	          <li><a href="#" class="active">Contact</a></li>
+	      </ul>
+	   </nav> 
+	</div>
+
+	<div class="custom-box">
+		<h2 style="text-align: center;">Hubungi kami melalui</h2><br><br>
+		<table class="researcher">
+			<tr>
+				<td><img class="img-home" src='{% static "img/whatsapp.png" %}' width="70" height="70" alt="Whatsapp"></td>
+				<td colspan="2">
+					<h3 style="text-align: center;">Whatsapp</h3>
+					<p align="justify" style="text-align: center;">081266238581</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img class="img-home" src='{% static "img/email.png" %}' width="70" height="70" alt="Email"></td>
+				<td colspan="2">
+					<h3 style="text-align: center;">Email</h3>
+					<p align="justify" style="text-align: center;">siskaoktari@gmail.com</p>
+					<p align="justify" style="text-align: center;">siskaoktari@med.unand.ac.id</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img class="img-home" src='{% static "img/instagram.png" %}' width="70" height="70" alt="Instagram"></td>
+				<td colspan="2">
+					<h3 style="text-align: center;">Instagram</h3>
+					<p align="justify" style="text-align: center;">@siskaoktari24</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+       <p>Copyright &copy; 2021, siskaoktaripsikologiunand</p>
+    </footer>
+<script src="{% static 'js/question.js' %}"></script>
+<script src="{% static 'js/app-edit.js' %}"></script>
+</body>
+</html>
+
+
