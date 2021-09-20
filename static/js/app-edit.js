@@ -193,8 +193,8 @@ function getSelect(id, eventElement){
 		}
 	}
 	
-	console.log(currentPage-1);
-	console.log("This : " + questionOrder[currentPage-1]);
+	//console.log(currentPage-1);
+	//console.log("This : " + questionOrder[currentPage-1]);
 	if(id == currentQuestion.answer){
 		flag = true;
 		questSieve[questionOrder[currentPage-1]] = 1;
@@ -208,11 +208,11 @@ function getSelect(id, eventElement){
 		if(currentQuestion.category == "Aspek Fisik"){correctFisik++;}
 
 	}else{
-		console.log("else");
+		//console.log("else");
 		questSieve[questionOrder[currentPage-1]] = 0;//-1
 		
 		if (flag){
-			console.log("flag");
+			//console.log("flag");
 			if(currentQuestion.category == "Aspek Kognititf"){correctKognitif--;}
 			if(currentQuestion.category == "Aspek Sosio Emosional"){correctSosio--;}
 			if(currentQuestion.category == "Aspek Fisik"){correctFisik--;}
@@ -225,7 +225,7 @@ function getSelect(id, eventElement){
 	quizAnswer = JSON.stringify(questSieve, null, ' ');
 	quizChoice = JSON.stringify(questAnsw, null, ' ');
 	quizOption = JSON.stringify(optionReady, null, ' ');
-	console.log(quizAnswer);
+	//console.log(quizAnswer);
 	$.ajax({
 		type: 'POST',
 		url: $(eventElement).data('url'),
@@ -245,7 +245,7 @@ function getSelect(id, eventElement){
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) { 
-	       console.log(errorThrown);
+	       //console.log(errorThrown);
 	    }
 	});
 
@@ -544,12 +544,12 @@ function showRegister(){
 
 function startQuiz(eventElement){
 	setQuestAnswSieve();
-	console.log(questAnsw);
+	//console.log(questAnsw);
 	currentPage++;
 	getQuestionOrder()
-	console.log(arrayReady);
+	//console.log(arrayReady);
 	getOptionOrder()
-	console.log(optionReady);
+	//console.log(optionReady);
 	homeBox.classList.add("hide");
 	quizBox.classList.remove("hide");
 	menu.classList.remove("hide");
@@ -691,7 +691,7 @@ function postComment(event, eventElement){
 				}
 			},
 			complete: function(){
-				console.log("Complete Submit Comment")
+				//console.log("Complete Submit Comment")
 			},
 			error: function(jqXHR, textStatus, errorThrown) { 
 		       //console.log(errorThrown);
@@ -703,7 +703,7 @@ function postComment(event, eventElement){
 		text = "Pastikan saran anda melebihi 10 karakter"
 	}
 	commentStatus.innerHTML = text;
-	console.log(userDataParse.nama);
+	//console.log(userDataParse.nama);
 }
 
 function closeDialog(){
@@ -790,7 +790,7 @@ function handleFormSubmit(event, eventElement){
 	       //console.log(errorThrown);
 	    }
 	});
-	console.log(userData);
+	//console.log(userData);
 }
 function removeOptions(selectElement) {
    var i, L = selectElement.options.length - 1;
@@ -816,7 +816,7 @@ function getKab(eventElement){
 		url: $(eventElement).data('url'),
 		success: function(response){
 			removeOptions(document.getElementById('kabupaten'));
-	        console.log(response.data) //works here
+	        //console.log(response.data) //works here
 	        const carsData = response.data
 	        carsData.map(item=>{
 	        	const option = document.createElement('option')
@@ -827,7 +827,7 @@ function getKab(eventElement){
 	        })
 	    },
 		complete: function (){
-			console.log("ok");
+			//console.log("ok");
 			//removeOptions($("#kabupaten"));
 		},
 		error: function(jqXHR, textStatus, errorThrown) { 
@@ -864,7 +864,7 @@ $(document).ready(function() {
 		//send through ajax
 		document.getElementById("childrenage1").removeAttribute("disabled");
 		document.getElementById("childrenage2").removeAttribute("disabled");
-		console.log(this.value);
+		//console.log(this.value);
 		if(this.value == "0"){
 			document.getElementById("childrenage1").value = "-";
 			document.getElementById("childrenage2").value = "-";
