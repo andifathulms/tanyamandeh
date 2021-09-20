@@ -165,17 +165,27 @@ function getQuestionNo(page){
 function pushAllQuestion(){
 	let questionIndex = "";
 	for(let i=0; i<quiz.length; i++){
-		console.log(i);
+		//console.log(i);
 		questionIndex = availableQuestion[arrayReady[i]];
-		console.log(questionIndex);
+		//console.log(questionIndex);
 		questionOrder.push(questionIndex.id);
 	}
 }
 
-function getSelect(id){
+function pushAllQuestionRe(){
+	let questionIndex = "";
+	for(let i=0; i<quiz.length; i++){
+		console.log(i);
+		questionIndex = availableQuestion[arrayReady[i]-1];
+		console.log(questionIndex);
+		questionOrder.push(questionIndex.id);
+	}
+}
+let flag = false;
+function getSelect(id, eventElement){
 	options = optionContainer.getElementsByClassName("option");
 	questAnsw[questionOrder[currentPage-1]] = id;
-	
+
 	for (let i=0; i<options.length; i++){
 		options[i].classList.remove("selected");
 		if (options[i].id === id){
@@ -186,6 +196,7 @@ function getSelect(id){
 	console.log(currentPage-1);
 	console.log("This : " + questionOrder[currentPage-1]);
 	if(id == currentQuestion.answer){
+		flag = true;
 		questSieve[questionOrder[currentPage-1]] = 1;
 		/*
 		if(currentQuestion.category == "Chess"){correctChess++;}
@@ -197,8 +208,47 @@ function getSelect(id){
 		if(currentQuestion.category == "Aspek Fisik"){correctFisik++;}
 
 	}else{
+		console.log("else");
 		questSieve[questionOrder[currentPage-1]] = 0;//-1
+		
+		if (flag){
+			console.log("flag");
+			if(currentQuestion.category == "Aspek Kognititf"){correctKognitif--;}
+			if(currentQuestion.category == "Aspek Sosio Emosional"){correctSosio--;}
+			if(currentQuestion.category == "Aspek Fisik"){correctFisik--;}
+		}
+		flag = false;
 	}
+
+	event.preventDefault();
+	quizOrder = JSON.stringify(arrayReady, null, ' ');
+	quizAnswer = JSON.stringify(questSieve, null, ' ');
+	quizChoice = JSON.stringify(questAnsw, null, ' ');
+	quizOption = JSON.stringify(optionReady, null, ' ');
+	console.log(quizAnswer);
+	$.ajax({
+		type: 'POST',
+		url: $(eventElement).data('url'),
+		dataType: 'json',
+		data: {
+			'id' : 6,
+			'quizOrder' : quizOrder,	
+			'quizAnswer' : quizAnswer,
+			'quizChoice' : quizChoice,
+			'quizOption' : quizOption,
+		},
+		success: function (data){
+			if (data.msg === "Success"){
+				alert('Form is submitted');
+			}else{
+				alert('AJAX failed');
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) { 
+	       console.log(errorThrown);
+	    }
+	});
+
 	timercounter++;
 	timerLine(timercounter);
 	updateAnswerIndicator("selected");
@@ -252,6 +302,11 @@ function toPage(num){
 function updateAnswerIndicator(mark){
 	answerIndicatorContainer.children[currentPage-1].classList.add(mark);
 }
+
+function updateAnswerIndicatorInAdvance(mark,page){
+	answerIndicatorContainer.children[page-1].classList.add(mark);
+}
+
 
 function next(){
 	currentPage++;
@@ -309,11 +364,7 @@ function quizResult(){
 	const percentage = (correctAnswer/quiz.length)*100;
 	resultBox.querySelector(".percentage").innerHTML = percentage.toFixed(2) + "%";
 	resultBox.querySelector(".total-score").innerHTML = correctAnswer + " / " + quiz.length;
-	/*
-	resultBox.querySelector(".chess").innerHTML = correctChess + " / 4 (" + (correctChess/4)*100 + "%)";
-	resultBox.querySelector(".football").innerHTML = correctFootball + " / 4 (" + (correctFootball/4)*100 + "%)";
-	resultBox.querySelector(".geography").innerHTML = correctGeography + " / 4 (" + (correctGeography/4)*100 + "%)";
-	resultBox.querySelector(".math").innerHTML = correctMath + " / 4 (" + (correctMath/4)*100 + "%)";*/
+	
 	const kogScore = correctKognitif*100/29
 	const sosScore = correctSosio*100/30
 	const fisScore = correctFisik*100/28
@@ -491,7 +542,7 @@ function showRegister(){
 }
 
 
-function startQuiz(){
+function startQuiz(eventElement){
 	setQuestAnswSieve();
 	console.log(questAnsw);
 	currentPage++;
@@ -509,9 +560,9 @@ function startQuiz(){
 	clearInterval(counter);
     clearInterval(counterLine);
 	startTimer(quizTime);
-	startTimerLine(0);
 	loadAudio();
 	resumeAudio();
+	startTimerLine(0);
 }
 
 function loadAudio(){
@@ -849,6 +900,8 @@ function submitQuiz(event, eventElement){
 	quizAnswer = JSON.stringify(questSieve, null, ' ');
 	quizChoice = JSON.stringify(questAnsw, null, ' ');
 	
+	var respondenID = getCookie("idResponden");
+
 	//send through ajax
 	$.ajax({
 		type: 'POST',
@@ -856,6 +909,7 @@ function submitQuiz(event, eventElement){
 		dataType: 'json',
 		data: {
 			'id' : 4,
+			'idResponden' : respondenID,
 			'userData' : userData,
 			'quizOrder' : quizOrder,	
 			'quizAnswer' : quizAnswer,
@@ -880,26 +934,86 @@ function submitQuiz(event, eventElement){
 	       //console.log(errorThrown);
 	    }
 	});
+
+
+
 }
 btnSubmit = document.getElementById("submitQuiz");
 btnSubmit.addEventListener("click", submitQuiz);
-/*
-$(document).ready(function() {
-  var urls = ["../img/bg1.jpg", "../img/bg2.jpg", "../img/bg3.jpg", "../img/bg4.jpg"];
-  //var urls = ['https://pp.userapi.com/c629327/v629327473/db66/r051joYFRX0.jpg', 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', 'https://img.wikinut.com/img/gycf69_-6rv_5fol/jpeg/0/Best-Friends-Img-Src:Image:-FreeDigitalPhotos.net.jpeg', 'http://www.travelettes.net/wp-content/uploads/2014/03/IMG_3829-Medium-600x400.jpg'];
 
-  var cout = 1;
-  //$('body').css('background-image', 'url("' + urls[0] + '")');
-  $('body').css('background-image', 'url("../img/bg1.jpg")');
-  setInterval(function() {
-    $('body').css('background-image', 'url("' + urls[cout] + '")');
-    console.log("change")
-    cout == urls.length-1 ? cout = 0 : cout++;
-  }, 5000);
+function getCookie(name) {
+	const value = `; ${document.cookie}`;
+	const parts = value.split(`; ${name}=`);
+	if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
-});
-*/
+function getCookieW3(cname) {
+	let name = cname + "=";
+	let ca = document.cookie.split(';');
+	for(let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+  return "";
+}
+
 window.onload = function (){
-	homeBox.querySelector(".total-question").innerHTML = quiz.length;
-	homeBox.querySelector(".quiz-time").innerHTML = quizTime/60 + " minute";
+	
+	//homeBox.querySelector(".total-question").innerHTML = quiz.length;
+	//homeBox.querySelector(".quiz-time").innerHTML = quizTime/60 + " minute";
+
+	if (getCookie("isStart") == "1"){
+
+		console.log("LFC");
+		intro.classList.add("hide");
+		//setQuestAnswSieve();
+		questSieve2 = JSON.parse(getCookie("quizAnswer").replace(/\\054/g, ','));
+		questAnsw2 = JSON.parse(getCookie("quizChoice").replace(/\\054/g, ','));
+		questSieve = JSON.parse(questSieve2.replace(/'/g,'"'));
+		questAnsw = JSON.parse(questAnsw2.replace(/'/g,'"'));
+		//console.log(JSON.parse(questSieve));
+
+		currentPage++;
+		//getQuestionOrder()
+		arrayReady = JSON.parse(JSON.parse(getCookie("quizOrder").replace(/\\054/g, ',')));
+		//console.log(arrayReady);
+		//console.log(availableQuestion)
+		//getOptionOrder()
+		optionReady = JSON.parse(JSON.parse(getCookie("quizOption").replace(/\\054/g, ',')));
+		
+		homeBox.classList.add("hide");
+		quizBox.classList.remove("hide");
+
+		menu.classList.remove("hide");
+		setAvailableQuestions();
+		pushAllQuestion();
+		getQuestionNo(1);
+		answerIndicator();
+		clearInterval(counter);
+	    clearInterval(counterLine);
+		startTimer(quizTime);
+		loadAudio();
+		resumeAudio();
+		questionOrderToDict();
+		console.log(questOrderDict);
+		console.log(questSieve);
+		for (const [key, value] of Object.entries(questSieve)) {
+			if (value != -1){
+				let page = questOrderDict[key];
+				console.log(page);
+				updateAnswerIndicatorInAdvance("selected",page);
+			}
+		}
+
+		//register.classList.add("hide");
+		//homeBox.classList.add("hide");
+	}
+	else{
+		console.log(getCookie("isStart"));
+	}
 }

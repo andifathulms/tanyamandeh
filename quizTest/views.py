@@ -22,66 +22,36 @@ context = {
 	}
 @csrf_protect
 def home_view(request, *args, **kwargs):
+	request.session.set_test_cookie()
+	if request.session.test_cookie_worked():
+		print("Cookies Worked")
+		print(request.COOKIES.get('visits', '1'))
+	if 'idResponden' in request.COOKIES:
+		print("IT IS !")
 	if request.is_ajax():
+		print(request.session)
 		if request.method == "GET":
-			print(context)
-			print("GET")
+			#print(context)
+			#print("GET")
 			return JsonResponse({'data':list(context['regionFilter'])})
 		else:
 			dataTemp = json.dumps(request.POST)
 			data = json.loads(dataTemp)
-			print(data["id"])
+			#print(data["id"])
 			#print(data)
 			if data["id"] == "1":
 				jsonTemp = data["data"]
 				jsonData = json.loads(jsonTemp)
 				ipTemp = data["jsonIP"]
 				ipData = json.loads(ipTemp)
-				print(jsonTemp)
-				#print(ipData["ip"])
-				#print(data["jsonIP"])
-				#r = responden(
-				#	name = jsonData["nama"],
-				#	age = jsonData["age"],
-				#	prov = jsonData["prov"],
-				#	kab = jsonData["kabupaten"],)
-				#r.save()
-				print(data["id"])
-				return render(request, "quiz.html", context)
-			elif data["id"] == "2":
-				print(data["data"])
-				kab = wilayah.objects.filter(provinsi=data["data"]).values('kabupaten')
-				context['regionFilter'] = kab
-				print(context)
-				print("2")
-				return render(request, "quiz.html", context)
-			elif data["id"] == "3":
-				print(context)
-				print("3")
-				return render(request, "quiz.html", context)
-			elif data["id"] == "4":
-				print("4")
-				print(data["userData"])
-				print(data["quizOrder"])
-				print(data["quizAnswer"])
-				print(data["quizChoice"])
-				print(data["duration"] + " seconds")
-				print(datetime.now())
-				print(datetime.now() - timedelta(seconds= int(data["duration"])))
-				#print(int(data["correctChess"]) + " - " + int(data["correctMath"]) + " - " + int(data["correctGeography"]) + " - " + int(data["correctFootball"]))
-				jsonTemp = data["userData"]
+				#print(jsonTemp)
+				#print(data["id"])
+				#print(data["data"])
+
+				#Create the user
+				jsonTemp = data["data"]
 				jsonData = json.loads(jsonTemp)
-				quizOrderTemp = data["quizOrder"]
-				quizOrder = json.loads(quizOrderTemp)
-				quizAnswerTemp = data["quizAnswer"]
-				quizAnswer = json.loads(quizAnswerTemp)
-				quizChoiceTemp = data["quizChoice"]
-				quizChoice = json.loads(quizChoiceTemp)
-				ipTemp = data["jsonIP"]
-				ipData = json.loads(ipTemp)
-				#print(ipData)
-				total = int(data["correctKognitif"]) + int(data["correctSosio"]) + int(data["correctFisik"])
-				
+
 				r = responden.objects.create(
 					name = jsonData["nama"],
 					age = jsonData["age"],
@@ -98,6 +68,95 @@ def home_view(request, *args, **kwargs):
 					job = jsonData["job"],
 					jobg = jsonData["jobbg"],
 					nohp = jsonData["nohp"])
+
+				r.save()
+
+				res = responden.objects.get(name=jsonData["nama"],age=jsonData["age"],kab=jsonData["kabupaten"],nohp=jsonData["nohp"])
+				#COOKIE Settings
+				visits = int(request.COOKIES.get('visits', '1'))
+				reset_last_visit_time = False
+				response = render(request, "quiz.html", context)
+				if 'last_visit' in request.COOKIES:
+					# Yes it does! Get the cookie's value.
+					last_visit = request.COOKIES['last_visit']
+					# Cast the value to a Python date/time object.
+					last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+
+					# If it's been more than a day since the last visit...
+					if (datetime.now() - last_visit_time).days > 0:
+						visits = visits + 1
+						# ...and flag that the cookie last visit needs to be updated
+						reset_last_visit_time = True
+				else:
+					# Cookie last_visit doesn't exist, so flag that it should be set.
+					reset_last_visit_time = True
+
+					context['visits'] = visits
+
+					#Obtain our Response object early so we can add cookie information.
+					response = render(request, "quiz.html", context)
+
+				if 'responden' in request.COOKIES:
+					pass
+				else:
+					context['responden'] = res.id
+					idResponden = res.id
+					print(idResponden)
+					response = render(request, "quiz.html", context)
+					response.set_cookie('idResponden', idResponden)
+
+				if reset_last_visit_time:
+					response.set_cookie('last_visit', datetime.now())
+					response.set_cookie('visits', visits)
+
+
+				return response
+			elif data["id"] == "2":
+				#print(data["data"])
+				kab = wilayah.objects.filter(provinsi=data["data"]).values('kabupaten')
+				context['regionFilter'] = kab
+				#print(context)
+				print("Data = 2")
+				return render(request, "quiz.html", context)
+			elif data["id"] == "3":
+				#print(context)
+				print("Data = 3")
+				return render(request, "quiz.html", context)
+			elif data["id"] == "4":
+				print("Data = 4")
+				
+				quizOrderTemp = data["quizOrder"]
+				quizOrder = json.loads(quizOrderTemp)
+				quizAnswerTemp = data["quizAnswer"]
+				quizAnswer = json.loads(quizAnswerTemp)
+				quizChoiceTemp = data["quizChoice"]
+				quizChoice = json.loads(quizChoiceTemp)
+				
+				total = int(data["correctKognitif"]) + int(data["correctSosio"]) + int(data["correctFisik"])
+				
+				resID = data["idResponden"]
+
+				try:
+					r = responden.objects.get(id=resID)
+				except:
+					jsonTemp = data["userData"]
+					jsonData = json.loads(jsonTemp)
+					r = responden.objects.create(
+						name = jsonData["nama"],
+						age = jsonData["age"],
+						prov = jsonData["prov"],
+						kab = jsonData["kabupaten"],
+						gender = jsonData["gender"],
+						agama = jsonData["agama"],
+						statusnikah = jsonData["marriage"],
+						jumlahanak = jsonData["children"],
+						usiaanak1 = jsonData["childrenage1"],
+						usiaanak2 = jsonData["childrenage2"],
+						educ = jsonData["pendidikan"],
+						educg = jsonData["educbg"],
+						job = jsonData["job"],
+						jobg = jsonData["jobbg"],
+						nohp = jsonData["nohp"])
 
 				mark = sessionMark.objects.create(
 					quest1Ans = quizChoice["1"],quest2Ans = quizChoice["2"],quest3Ans = quizChoice["3"],quest4Ans = quizChoice["4"],
@@ -187,8 +246,14 @@ def home_view(request, *args, **kwargs):
 						score = score
 					)
 				s.save()
-
-				return render(request, "quiz.html", context)
+				response = render(request, "quiz.html", context)
+				response.set_cookie('idResponden', "0")
+				response.set_cookie('quizOrder', "0")
+				response.set_cookie('quizAnswer', "0")
+				response.set_cookie('quizChoice', "0")
+				response.set_cookie('quizOption', "0")
+				response.set_cookie('isStart',"0")
+				return response
 			elif data["id"] == "5":
 				print("5")
 				print(data["nama"])
@@ -198,6 +263,29 @@ def home_view(request, *args, **kwargs):
 				c.save()
 
 				return render(request, "quiz.html", context)
+			elif data["id"] == "6":
+				print(6)
+
+				quizOrderTemp = data["quizOrder"]
+				quizOrder = json.loads(quizOrderTemp)
+				quizAnswerTemp = data["quizAnswer"]
+				quizAnswer = json.loads(quizAnswerTemp)
+				quizChoiceTemp = data["quizChoice"]
+				quizChoice = json.loads(quizChoiceTemp)
+				quizOptionTemp = data["quizOption"]
+				quizOption = json.loads(quizOptionTemp)
+
+				response = render(request, "quiz.html", context)
+
+				response.set_cookie('isStart', '1')
+
+				response.set_cookie('quizOrder', quizOrder)
+				response.set_cookie('quizAnswer', quizAnswer)
+				response.set_cookie('quizChoice', quizChoice)
+				response.set_cookie('quizOption', quizOption)
+
+				return response
+
 	else:
 		#print("request = " + str(request))
 		#print(regions[0])
