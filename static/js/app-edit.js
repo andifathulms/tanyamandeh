@@ -181,6 +181,29 @@ function pushAllQuestionRe(){
 		questionOrder.push(questionIndex.id);
 	}
 }
+
+function getFuckingCorrectNumber(){
+	var ckog = 0;
+	var csos = 0;
+	var cfis = 0;
+	for (const [key, value] of Object.entries(questSieve)) {
+		let question = availableQuestion[arrayReady[key-1]];
+		if (value == 1){
+			attempt++;
+			if(question.category == "Aspek Kognititf"){ckog++;}
+			if(question.category == "Aspek Sosio Emosional"){csos++;}
+			if(question.category == "Aspek Fisik"){cfis++;}
+		}
+		if (value == 0){
+			attempt++;
+		}
+	}
+	correctKognitif = ckog;
+	correctFisik = cfis;
+	correctSosio = csos;
+	correctAnswer = ckog+cfis+csos;
+}
+
 let flag = false;
 function getSelect(id, eventElement){
 	options = optionContainer.getElementsByClassName("option");
@@ -356,7 +379,7 @@ function quizOver(){
 }
 
 function quizResult(){
-	countResult();
+	getFuckingCorrectNumber();
 	resultBox.querySelector(".total-question").innerHTML = quiz.length;
 	resultBox.querySelector(".total-attempt").innerHTML = attempt;
 	resultBox.querySelector(".total-correct").innerHTML = correctAnswer;
