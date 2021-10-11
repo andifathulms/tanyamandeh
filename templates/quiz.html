@@ -82,26 +82,23 @@
 	      <input type="number" name="age" id="age"onkeypress="return onlyNumberKey(event)" 
 	      maxlength="2"  placeholder="Usia" required/>
 	      <label for="prov"><b>Provinsi</b></label>
-	      <select name="prov" id="prov" required>
-	      	<!--
-	      	<option value="SB">Sumatera Barat</option>
-	      	<option value="SS">Sulawesi Selatan</option>-->
-	      	<option value="" disabled selected>Provinsi</option>
+	      <input type="text" name="prov" id="prov">
+	      <!--<select name="prov" id="prov" required>
 	      	{% for region in regions %}
-	      		<!--<script type="text/javascript">console.log("{{region}}")</script>-->
+	      		<script type="text/javascript">console.log("{{region}}")</script>
 			    <option value="{{ region.provinsi }}">{{ region.provinsi }}</option>
 			{% endfor %}
-	      </select>
+	      </select>-->
 	      <label for="kabupaten"><b>Kabupaten</b></label>
-	      <select name="kabupaten" id="kabupaten" required>
+	      <input type="text" name="kabupaten" id="kabupaten">
+	      <!--<select name="kabupaten" id="kabupaten" required>
 	      	<option value="" disabled selected>Kota/Kabupaten</option>
-	      	<!--<option value="MKS">Makassar</option>
-	      	<option value="PDG">Padang</option>-->
+	      	
 	      	{% for region in regionFilter %}
 	      		<script type="text/javascript">console.log("{{region}}")</script>
 			    <option value="{{ region.kabupaten }}">{{ region.kabupaten }}</option>
 			{% endfor %}
-	      </select>
+	      </select>-->
 	      <label for="agama"><b>Agama</b></label>
 	      <select name="agama" id="agama" required>
 	      	<option value="" disabled selected>Agama</option>
