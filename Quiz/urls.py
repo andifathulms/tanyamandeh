@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from quizTest.views import home_view,exportsCSV,exportsComment
+from quizTest.views import home_view,exportsCSV,exportsComment,load_kab
 from quizTest.views import about_view
 from quizTest.views import contact_view
 
@@ -28,8 +28,9 @@ from django.conf import settings
 urlpatterns = [
     path('', home_view, name='home'),
     path('admin/', admin.site.urls),
-    path('about/', about_view),
-    path('contact/', contact_view),
+    path('about/', about_view, name='about'),
+    path('contact/', contact_view, name='contact'),
     path('exportscsv', exportsCSV),
-    path('exportscomment', exportsComment)
+    path('exportscomment', exportsComment),
+    path('load-cat/', load_kab),
 ]

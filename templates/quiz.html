@@ -6,364 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" charset="UTF-8">
 	<link rel="stylesheet" href="/static/css/style.css?{% now 'U' %}">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+	<!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% include 'snippets/style.html' %}
+    {% block head %}{% endblock head %}
 </head>
 <body>
 	<!-- Nav -->
-	<div class="nav-box hide">
-		<nav>
-	      <ul id="floatleft">
-	          <li><a href="/" class="active" onclick="goToHome()">TanyaMandeh</a></li>
-	      </ul>
-	      <ul id="floatright">
-	      	  <li><a href="about/">About</a></li>
-	          <li><a href="contact/">Contact</a></li>
-	      </ul>
-	   </nav> 
-	</div>
-	<!-- Intro Box -->
-	<div class="custom-box intro-box">
-		<h4>Assalamu’alaikum Warahmatullahi Wabarakatuh</h4>
-		<h4>Salam hormat,</h4><br>
-		<p align="justify">Kami tim dari Dosen Prodi Psikologi Fakultas Kedokteran Universitas Andalas sedang melakukan penelitian dengan judul <i><b>“Penyusunan Aplikasi untuk mengetahui tingkat pengetahuan orang tua terkait perkembangan anak usia 0-2 tahun”.</b></i></p><br>
-		<p align="justify">Penelitian ini bertujuan untuk membantu para orang tua untuk melakukan asesmen diri mengenai pengetahuan yang dimiliki terkait perkembangan anak khususnya usia 0-2 tahun. Semakin baik pengetahuan yang dimiliki oleh orang tua maka juga akan berdampak baik kepada anak melalui stimulasi yang diberikan.</p><br>
-		<p align="justify">Tugas Ayah/Bunda adalah memilih salah satu jawaban yang tersedia sesuai dengan yang Ayah/Bunda ketahui. Informasi mengenai orang tua yang kami peroleh selama proses penelitian ini akan dijaga kerahasiaannya dan hanya digunakan untuk kepentingan penelitian.</p><br>
-		<p>Atas partisipasi dan waktu yang telah diberikan, kami ucapkan terimakasih.</p><br>
-		<p>Jika ada pertanyaan bisa menghubungi email : <b>siskaoktari@med.unand.ac.id</b>. Untuk lebih lengkapnya dapat melihat <a href="contact/">halaman kontak kami</a></p><br>
-		<h4 style="text-align: center;"><a href="about/">Tim Peneliti : </a></h4><br><br>
-		<div class="clearfix">
-			<img class="img-home" src="static/img/siska-modified.png" width="180" height="180" alt="Siska Oktari, M.Psi.,Psikolog">
-			<div class="research">
-				<div></div><div><br></div><div></div>
-				<div></div><div><p><strong>Siska Oktari, M.Psi.,Psikolog</strong></p></div><div></div>
-				<div></div><div></div><div></div>
-			</div>
-		</div>
-		<div class="clearfix">
-			<img class="img-home" src="static/img/nelia-modified.png" width="180" height="180" alt="Nelia Afriyeni, S.Psi.,M.A">
-			<div class="research">
-				<div></div><div><br></div><div></div>
-				<div></div><div><p><strong>Nelia Afriyeni, S.Psi.,M.A</strong></p></div><div></div>
-				<div></div><div></div><div></div>
-			</div>
-			
-		</div>
-		<div class="clearfix">
-			<img class="img-home" src="static/img/rozi.jpg" width="180" height="180" alt="Dr. Rozi Sastra Purna, M.Psi.,Psikolog">
-			<div class="research">
-				<div></div><div></div><div></div>
-				<div></div><div><p><strong>Dr. Rozi Sastra Purna, M.Psi.,Psikolog </strong></p></div><div></div>
-				<div></div><div></div><div></div>
-			</div>
-			
-		</div>
-		<br>
-		<button type="submit" class="btn" onclick="showRegister()" id="submit">Mulai Kuis</button>
-		<!--<canvas id="myChart" width="600" height="480"></canvas>-->
-	</div>
-
-	<!-- Register Box -->
-	<div class="custom-box register-box hide">
-	  <h4>Mohon isi info diri anda sebelum memulai survey</h4>
-	  <br>
-	  <div class="form">
-	    <form class="login-form" id="login-form">
-	      {% csrf_token %}
-	      <label for="nama"><b>Nama</b></label>
-	      <input type="text" name="nama" id="nama" placeholder="Nama" required />
-	      <label for="jekel"><b>Jenis Kelamin</b></label>
-	      <select name="gender" id="gender" required>
-	      	<option value="" disabled selected>Jenis Kelamin</option>
-	      	<option value="L">Laki-Laki</option>
-	      	<option value="P">Perempuan</option>
-	      </select>
-	      <label for="age"><b>Usia</b></label>
-	      <input type="number" name="age" id="age"onkeypress="return onlyNumberKey(event)" 
-	      maxlength="2"  placeholder="Usia" required/>
-	      <label for="prov"><b>Provinsi</b></label>
-	      <input type="text" name="prov" id="prov">
-	      <!--<select name="prov" id="prov" required>
-	      	{% for region in regions %}
-	      		<script type="text/javascript">console.log("{{region}}")</script>
-			    <option value="{{ region.provinsi }}">{{ region.provinsi }}</option>
-			{% endfor %}
-	      </select>-->
-	      <label for="kabupaten"><b>Kabupaten</b></label>
-	      <input type="text" name="kabupaten" id="kabupaten">
-	      <!--<select name="kabupaten" id="kabupaten" required>
-	      	<option value="" disabled selected>Kota/Kabupaten</option>
-	      	
-	      	{% for region in regionFilter %}
-	      		<script type="text/javascript">console.log("{{region}}")</script>
-			    <option value="{{ region.kabupaten }}">{{ region.kabupaten }}</option>
-			{% endfor %}
-	      </select>-->
-	      <label for="agama"><b>Agama</b></label>
-	      <select name="agama" id="agama" required>
-	      	<option value="" disabled selected>Agama</option>
-	      	<option value="Islam">Islam</option>
-	      	<option value="Kristen">Kristen</option>
-	      	<option value="Katolik">Katolik</option>
-	      	<option value="Hindu">Hindu</option>
-	      	<option value="Buddha">Buddha</option>
-	      	<option value="Konghucu">Konghucu</option>
-	      	<option value="Other">Lainnya</option>
-	      </select>
-	      <label for="marriage"><b>Status Pernikahan</b></label>
-	      <select name="marriage" id="marriage" required>
-	      	<option value="" disabled selected>Status Pernikahan</option>
-	      	<option value="Belum Menikah">Belum Menikah</option>
-	      	<option value="Menikah">Menikah</option>
-	      	<option value="Cerai Mati">Cerai Mati</option>
-	      	<option value="Cerai Hidup">Cerai Hidup</option>
-	      </select>
-	      <label for="children"><b>Jumlah Anak</b></label>
-	      <select name="children" id="children" required>
-	      	<option value="" disabled selected>Jumlah Anak</option>
-	      	<option value="0">0</option><option value="1">1</option><option value="2">2</option>
-	      	<option value="3">3</option><option value="4">4</option><option value="5">5</option>
-	      	<option value="5+">>5</option>
-	      </select>
-	      <label for="childage1"><b>Usia anak pertama</b></label>
-	      <select name="childrenage1" id="childrenage1" disabled="disabled" required>
-	      	<option value="" disabled selected>Usia anak pertama</option>
-	      	<option value="-">-</option><option value="< 1"> < 1 tahun </option>
-	      	<option value="1">1 tahun</option><option value="2">2 tahun</option><option value="2-5">2-5 tahun</option>
-	      	<option value=">5"> >5 tahun</option>
-	      </select>
-	      <label for="childage2"><b>Usia anak kedua</b></label>
-	      <select name="childrenage2" id="childrenage2" disabled="disabled" required>
-	      	<option value="" disabled selected>Usia anak kedua</option>
-	      	<option value="-">-</option><option value="< 1"> < 1 tahun</option>
-	      	<option value="1">1 tahun</option><option value="2">2 tahun</option><option value="2-5">2-5 tahun</option>
-	      	<option value=">5"> >5 tahun</option>
-	      </select>
-	      <label for="pendidikan"><b>Pendidikan Terakhir</b></label>
-	      <select name="pendidikan" id="pendidikan" required>
-	      	<option value="" disabled selected> Pendidikan Terakhir</option>
-	      	<option value="Tidak tamat SD">Tidak tamat SD</option>
-	      	<option value="SD sederajat">SD sederajat</option>
-	      	<option value="SMP sederajat">SMP sederajat</option>
-	      	<option value="SMA sederajat">SMA sederajat</option>
-	      	<option value="Diploma I/II/III">Diploma I/II/III</option>
-	      	<option value="DIV / S1">DIV / S1</option>
-	      	<option value="S2">S2</option>
-	      	<option value="S3">S3</option>
-	      </select>
-	      <label for="educbg"><b>Latar Belakang Pendidikan</b></label>
-	      <select name="educbg" id="educbg" required>
-	      	<option value="" disabled selected> Latar Belakang Pendidikan </option>
-	      	<option value="Pendidikan medis/kesehatan">Pendidikan medis/kesehatan</option>
-	      	<option value="Pendidikan non medis/kesehatan">Pendidikan non medis/kesehatan</option>
-	      </select>
-	      <label for="job"><b>Pekerjaan</b></label>
-	      <select name="job" id="job" required>
-	      	<option value="" disabled selected> Pekerjaan </option>
-	      	<option value="Pegawai Negeri BUMN/BUMD/Polri/TNI">Pegawai Negeri BUMN/BUMD/Polri/TNI</option>
-	      	<option value="Pegawai Swasta">Pegawai Swasta</option>
-	      	<option value="Wirausahawan">Wirausahawan</option>
-	      	<option value="Mahasiswa">Mahasiswa</option>
-	      	<option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
-	      	<option value="Tidak Sedang Bekerja">Tidak Sedang Bekerja</option>
-	      	<option value="Lainnya">Lainnya</option>
-	      </select>
-	      <label for="jobbg"><b>Latar Belakang Pekerjaan</b></label>
-	      <select name="jobbg" id="jobbg" required>
-	      	<option value="" disabled selected> Latar Belakang Pekerjaan </option>
-	      	<option value="Pekerjaan medis/kesehatan">Pekerjaan medis/kesehatan</option>
-	      	<option value="Pekerjaan non medis/kesehatan">Pekerjaan non medis/kesehatan</option>
-	      </select>
-	      <label for="nohp"><b>Nomor Hp</b></label>
-	      <input type="tel" id="nohp" name="nohp" placeholder="081234567890" pattern="[0-9]{10,}" required>
-	      <p class="checkhp"></p>
-	      <br><br>
-	      <button data-url='{% url "home" %}' type="submit" class="btn" onclick="showInstruction()" id="submit">Instruksi Kuis</button>
-	    </form>
-	  </div>
-	</div>
-
-	<!-- Home Box -->
-	<div class="home-box custom-box hide">
-		<p align="justify">Pengetahuan orang tua terkait dengan perkembangan anak usia  0-2 tahun ini akan  kami nilai melalui 3 Ranah yaitu</p>
-		<br>
-		<div class="clearfix">
-			<img class="img-home" src="static/img/kognitif-modified.png" alt=""><p align="justify">(1)  <strong>Kognitif</strong> yaitu ranah perkembangan anak terkait dengan proses berfikir anak, pengetahuan dan kegiatan belajar anak</p>
-		</div>
-		<div class="clearfix">
-			<img class="img-home-1" src="static/img/sosio-modified.png" alt=""><p align="justify">(2) <strong>Sosial-emosi</strong> yaitu ranah yang menilai bagaimana kemampuan anak dalam melakukan proses interaksi social dan perilaku yang menunjukan kondisi emosi</p>
-		</div>
-		<div class="clearfix">
-			<img class="img-home" src="static/img/fisik-modified.png" alt=""><p align="justify">(3) <strong>Fisik dan motorik</strong> yaitu ranah perkembangan anak terkait kemampuan gerak tubuh anak dalam menjalani berbagai kegiatan untuk proses adaptasinya di dalam lingkungan. </p>
-		</div>
-		
-		<!--<p>Total number of questions : <span class="total-question"></span></p>
-		<p>Time : <span class="quiz-time"></span></p>-->
-		<button type="button" class="btn" onclick="startQuiz()">Mulai Kuis</button>
-	</div>
-	<!-- Quiz Box -->
-	<div class="quiz-box custom-box hide">
-		<header>
-			<div class="question-number"> </div>
-			<div class="timer">
-                <div class="time_left_txt">Sisa Waktu</div>
-                <div class="timer_sec"></div>
-            </div>
-            <div class="time_line"></div>
-        </header>
-		<div class="question-text"></div>
-		<div class="option-container">
-		</div>
-		<div class="next-question-btn">
-			<button type="button" class="btn" onclick="prev()">Prev</button>
-			<button type="button" class="btn" onclick="next()">Next</button>
-			<button type="button" class="btn" id="finishAttempt" onclick="showDialog()">Selesaikan Kuis</button>
-		</div>
-		<div class="answer-indicator">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-	</div>
-
-	<!-- Result Box -->
-	<div class="result-box custom-box hide">
-		<h1>Hasil Kuis</h1>
-		<canvas id="myChart" width="600" height="480"></canvas>
-		<table>
-			<tr>
-				<td>Jumlah Pertanyaan</td>
-				<td><span class="total-question"></span></td>
-			</tr>
-			<tr>
-				<td>Jumlah Percobaan</td>
-				<td><span class="total-attempt"></span></td>
-			</tr>
-			<tr>
-				<td>Total Benar</td>
-				<td><span class="total-correct"></span></td>
-			</tr>
-			<tr>
-				<td>Total Salah</td>
-				<td><span class="total-wrong"></span></td>
-			</tr>
-			<tr>
-				<td>Persentase</td>
-				<td><span class="percentage"></span></td>
-			</tr>
-			<tr>
-				<td>Skor Total</td>
-				<td><span class="total-score"></span></td>
-			</tr>
-		</table>
-		<canvas id="spec-canvas" width="600" height="480"></canvas>
-		<h3>Pengetahuan Ranah Kognitif</h3>
-		<table>
-			<tr>
-				<td>Kognitif</td>
-				<td><span class="kognitif"></span></td>
-			</tr>
-		</table>
-		<div class="parallelogram">
-		  <div class="text">
-		    <div class="shape"></div>
-		    <div class="kognitif-text">
-		    </div>
-		  </div>
-		</div>
-		<h3>Pengetahuan Ranah Sosio Emosional</h3>
-		<table>
-			<tr>
-				<td>Sosio Emosional</td>
-				<td><span class="sosio"></span></td>
-			</tr>
-		</table>
-		<div class="parallelogram">
-		  <div class="text">
-		    <div class="shape"></div>
-		    <div class="sosio-text">
-		    </div>
-		  </div>
-		</div>
-		<h3>Pengetahuan Ranah Fisik</h3>
-		<table>
-			<tr>
-				<td>Fisik</td>
-				<td><span class="fisik"></span></td>
-			</tr>
-		</table>
-		<div class="parallelogram">
-		  <div class="text">
-		    <div class="shape"></div>
-		    <div class="fisik-text">
-		    </div>
-		  </div>
-		</div>
-		<!--<button type="button" class="btn" onclick="tryAgainQuiz()">Coba Lagi</button>-->
-		<button type="button" class="btn" onclick="goToHome()">Home</button>
-	</div>
-	<!-- Comment Box -->
-	<div class="comment-box hide">
-		<section id="app">
-	        <div class="container">
-	          <p>Silahkan berikan saran untuk perbaikan aplikasi ini</p>
-	          <div class="row">
-	            <div class="col-6">
-	              <div class="comment">
-	            <p v-for="items in item" v-text="items"></p>
-	              </div><!--End Comment-->
-	              </div><!--End col -->
-	              </div><!-- End row -->
-	          <div class="row">
-	            <div class="col-6">
-	          <textarea type="text" id="inputcomment" placeholder="Saran minimal 10 karakter"></textarea>
-	              <button class='primaryContained float-right' type="submit" onclick="postComment()">Kirim Saran</button>
-	            </div><!-- End col -->
-	          </div><!--End Row -->
-	          <p class="comment-status"></p>
-	        </div><!--End Container -->
-      </section><!-- end App -->
+	{% include 'snippets/header.html' %}
+	<div id="main-content">
+		{% block content %}{% endblock content %}
 	</div>
 	
-    <!-- Pop Up -->
-    <div class="confirm hide">
-	  <h1 class="confirm-title">Confirm your action</h1>
-	  <p class="confirm-desc">Are you really <em>really</em> <strong>really</strong> sure that you want to exit this awesome application?</p>
-	  <button type="button" onclick="closeDialog()">Cancel</button>
-	  <button type="button" id="submitQuiz" onclick="quizOver()" autofocus>Confirm</button>
-	</div>
-
-	<!-- Media -->
-	<div class="menu hide">
-	   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-	   <label class="menu-open-button" for="menu-open">
-	    <span class="lines line-1"></span>
-	    <span class="lines line-2"></span>
-	    <span class="lines line-3"></span>
-	  </label>
-
-	   <a href="#" class="menu-item blue" onclick="resumeAudio()"> <i class="fa fa-play"></i> </a>
-	   <a href="#" class="menu-item green" onclick="pauseAudio()"> <i class="fa fa-pause"></i> </a>
-	   <a href="#" class="menu-item red" onclick="increaseVolume()"> <i class="fa fa-volume-up"></i> </a>
-	   <a href="#" class="menu-item lightblue" onclick="mutedAudio()"> <i class="fa fa-volume-off" aria-hidden=true></i>
-	   <a href="#" class="menu-item orange" onclick="decreaseVolume()"> <i class="fa fa-volume-down"></i> </a>
-	   <a href="#" class="menu-item purple"> <i class="fa fa-step-forward" aria-hidden="true"></i></a>
- </a>
-	</div>
-
 	<!-- Footer -->
 	<footer>
        <p>Copyright &copy; 2021, siskaoktaripsikologiunand</p>
     </footer>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+<!-- HTMX CDN -->
+<script src="https://unpkg.com/htmx.org@1.1.0"></script>
+<!-- handling CSRF request -->
+<script>
+  document.body.addEventListener('htmx:configRequest', (event) => {
+    event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  })
+</script>
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% block script %}{% endblock script %}
 <script src="{% static 'js/question-real.js' %}"></script>
 <script src="{% static 'js/app-edit.js' %}"></script>
 <script type="text/javascript">

@@ -75,7 +75,7 @@ def home_view(request, *args, **kwargs):
 				#COOKIE Settings
 				visits = int(request.COOKIES.get('visits', '1'))
 				reset_last_visit_time = False
-				response = render(request, "quiz.html", context)
+				response = render(request, "main.html", context)
 				if 'last_visit' in request.COOKIES:
 					# Yes it does! Get the cookie's value.
 					last_visit = request.COOKIES['last_visit']
@@ -94,7 +94,7 @@ def home_view(request, *args, **kwargs):
 					context['visits'] = visits
 
 					#Obtain our Response object early so we can add cookie information.
-					response = render(request, "quiz.html", context)
+					response = render(request, "main.html", context)
 
 				if 'responden' in request.COOKIES:
 					pass
@@ -102,7 +102,7 @@ def home_view(request, *args, **kwargs):
 					context['responden'] = res.id
 					idResponden = res.id
 					print(idResponden)
-					response = render(request, "quiz.html", context)
+					response = render(request, "main.html", context)
 					response.set_cookie('idResponden', idResponden)
 
 				if reset_last_visit_time:
@@ -117,11 +117,11 @@ def home_view(request, *args, **kwargs):
 				context['regionFilter'] = kab
 				#print(context)
 				print("Data = 2")
-				return render(request, "quiz.html", context)
+				return render(request, "main.html", context)
 			elif data["id"] == "3":
 				#print(context)
 				print("Data = 3")
-				return render(request, "quiz.html", context)
+				return render(request, "main.html", context)
 			elif data["id"] == "4":
 				print("Data = 4")
 				
@@ -246,7 +246,7 @@ def home_view(request, *args, **kwargs):
 						score = score
 					)
 				s.save()
-				response = render(request, "quiz.html", context)
+				response = render(request, "main.html", context)
 				response.set_cookie('idResponden', "0")
 				response.set_cookie('quizOrder', "0")
 				response.set_cookie('quizAnswer', "0")
@@ -262,7 +262,7 @@ def home_view(request, *args, **kwargs):
 				c = comment(nama = data["nama"], comment = data["comment"])
 				c.save()
 
-				return render(request, "quiz.html", context)
+				return render(request, "main.html", context)
 			elif data["id"] == "6":
 				print(6)
 
@@ -275,7 +275,7 @@ def home_view(request, *args, **kwargs):
 				quizOptionTemp = data["quizOption"]
 				quizOption = json.loads(quizOptionTemp)
 
-				response = render(request, "quiz.html", context)
+				response = render(request, "main.html", context)
 
 				response.set_cookie('isStart', '1')
 
@@ -289,7 +289,7 @@ def home_view(request, *args, **kwargs):
 	else:
 		#print("request = " + str(request))
 		#print(regions[0])
-		return render(request, "quiz.html", context)
+		return render(request, "main.html", context)
 
 def about_view(request, *args, **kwargs):
 	return render(request, "about.html", {})
@@ -395,3 +395,10 @@ def exportsComment(request):
 	for c in com:
 		writer.writerow(c)
 	return response
+
+@csrf_exempt
+def load_kab(request):
+    category = request.GET.get('category')
+    subcategory = wilayah.objects.filter(provinsi=data["data"]).values('kabupaten')
+    
+    return render(request, 'snippets/subcategory.html', {'subcategories': subcategory})

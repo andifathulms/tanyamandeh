@@ -1,69 +1,38 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TanyaMandeh - Pengukuran tingkat pengetahuan orang tua tentang perkembangan anak</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" charset="UTF-8">
-	<link rel="stylesheet" href="/static/css/style.css?{% now 'U' %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-	<!-- Nav -->
-	<div class="nav-box hide">
-		<nav>
-	      <ul id="floatleft">
-	          <li><a href="/" onclick="goToHome()">TanyaMandeh</a></li>
-	      </ul>
-	      <ul id="floatright">
-	      	  <li><a href="#" class="active">About</a></li>
-	          <li><a href="../contact/">Contact</a></li>
-	      </ul>
-	   </nav> 
-	</div>
-	<div class="custom-box">
-		<h2 style="text-align: center;">Tim Penelitian</h2>
-		<table class="researcher">
-			<tr>
-				<td><img class="img-home" src='{% static "img/siska-modified.png" %}' width="180" height="180" alt="Siska Oktari, M.Psi.,Psikolog"></td>
-				<td colspan="2"><h4>Ketua Penelitian</h4>
-				<p align="justify"><strong>Siska Oktari, M.Psi.,Psikolog</strong> merupakan staff dosen Program Studi Psikologi Fakultas Kedokteran Universitas Andalas. Selain itu, beliau juga merupakan psikolog di bidang klinis anak dan remaja. Saat ini, beliau fokus penelitian dan pemberian intervensi pada bidang perkembangan dan kesehatan mental khususnya pada anak dan remaja.</p></td>
-			</tr>
-			<tr>
-				<td><img class="img-home" src='{% static "img/nelia-modified.png" %}' width="180" height="180" alt="Nelia Afriyeni, S.Psi.,M.A"></td>
-				<td colspan="2"><h4>Anggota Penelitian</h4>
-				<p align="justify"><strong>Nelia Afriyeni, S.Psi.,M.A</strong> merupakan staff dosen Program Studi Psikologi Fakultas Kedokteran Universitas Andalas. Beliau merupakan seorang ilmuwan psikologi di bidang klinis. Selain itu, beliau juga mengampu mata kuliah yang berkaitan dengan statistik dan psikometri.</p></td>
-			</tr>
-			<tr>
-				<td><img class="img-home" src='{% static "img/rozi.jpg" %}' height="180" alt="Dr. Rozi Sastra Purna, M.Psi.,Psikolog"></td>
-				<td colspan="2"><h4>Anggota Penelitian</h4>
-				<p align="justify"><strong>Dr. Rozi Sastra Purna, M.Psi.,Psikolog</strong> merupakan dosen di Program Studi Psikologi Fakultas Kedokteran Universitas Andalas. Selain itu, beliau juga merupakan seorang psikolog di bidang pendidikan. Beliau fokus pada penelitian terkait dengan pendidikan anak usia dini, regulasi emosi.</p></td>
-			</tr>
-			<tr>
-				<td><img class="img-home" src='{% static "img/eva-modified.png" %}' height="180" alt="Evantrida Mailyza Musly, M.Psi.,Psikolog "></td>
-				<td colspan="2"><h4>Koordinator Penelitian</h4>
-				<p align="justify"><strong>Evantrida Mailyza Musly, M.Psi.,Psikolog </strong> merupakan seorang psikolog klinis anak dan remaja. Selain itu, beliau juga merupakan seorang Konselor untuk Mahasiswa dan Dosen di Politeknik Negeri Padang. Beliau fokus pada isu-isu terkait dengan pengasuhan, perkembangan dan pendidikan anak serta  self development.</p></td>
-			</tr>
-			<tr>
-				<td><img class="img-home" src='{% static "img/della-modified.png" %}' height="180" alt="Della Ria Stefani Rajagukguk "></td>
-				<td colspan="2"><h4>Anggota Penelitian</h4>
-				<p align="justify"><strong>Della Ria Stefani Rajagukguk </strong> merupakan mahasiswa di Program Studi Psikologi Fakultas Kedokteran Universitas Andalas Angkatan 2018.</p></td>
-			</tr>
-			<tr>
-				<td><img class="img-home" src='{% static "img/bunga-modified.png" %}' height="180" alt="Bunga Derima Putri"></td>
-				<td colspan="2"><h4>Anggota Penelitian</h4>
-				<p align="justify"><strong>Bunga Derima Putri</strong> merupakan mahasiswa di Program Studi Psikologi Fakultas Kedokteran Universitas Andalas Angkatan 2018.</p></td>
-			</tr>
-		</table>
-		
-	</div>
-	<!-- Footer -->
-	<footer>
-       <p>Copyright &copy; 2021, siskaoktaripsikologiunand</p>
-    </footer>
-<script src="{% static 'js/question.js' %}"></script>
-<script src="{% static 'js/app-edit.js' %}"></script>
-</body>
-</html>
-
+<div class="custom-box">
+	<h2 style="text-align: center;">Tim Penelitian</h2>
+	<table class="researcher">
+		<tr>
+			<td><img class="img-home" src='{% static "img/siska-modified.png" %}' width="180" height="180" alt="Siska Oktari, M.Psi.,Psikolog"></td>
+			<td colspan="2"><h4>Ketua Penelitian</h4>
+			<p align="justify"><strong>Siska Oktari, M.Psi.,Psikolog</strong> merupakan staff dosen Program Studi Psikologi Fakultas Kedokteran Universitas Andalas. Selain itu, beliau juga merupakan psikolog di bidang klinis anak dan remaja. Saat ini, beliau fokus penelitian dan pemberian intervensi pada bidang perkembangan dan kesehatan mental khususnya pada anak dan remaja.</p></td>
+		</tr>
+		<tr>
+			<td><img class="img-home" src='{% static "img/nelia-modified.png" %}' width="180" height="180" alt="Nelia Afriyeni, S.Psi.,M.A"></td>
+			<td colspan="2"><h4>Anggota Penelitian</h4>
+			<p align="justify"><strong>Nelia Afriyeni, S.Psi.,M.A</strong> merupakan staff dosen Program Studi Psikologi Fakultas Kedokteran Universitas Andalas. Beliau merupakan seorang ilmuwan psikologi di bidang klinis. Selain itu, beliau juga mengampu mata kuliah yang berkaitan dengan statistik dan psikometri.</p></td>
+		</tr>
+		<tr>
+			<td><img class="img-home" src='{% static "img/rozi.jpg" %}' height="180" alt="Dr. Rozi Sastra Purna, M.Psi.,Psikolog"></td>
+			<td colspan="2"><h4>Anggota Penelitian</h4>
+			<p align="justify"><strong>Dr. Rozi Sastra Purna, M.Psi.,Psikolog</strong> merupakan dosen di Program Studi Psikologi Fakultas Kedokteran Universitas Andalas. Selain itu, beliau juga merupakan seorang psikolog di bidang pendidikan. Beliau fokus pada penelitian terkait dengan pendidikan anak usia dini, regulasi emosi.</p></td>
+		</tr>
+		<tr>
+			<td><img class="img-home" src='{% static "img/eva-modified.png" %}' height="180" alt="Evantrida Mailyza Musly, M.Psi.,Psikolog "></td>
+			<td colspan="2"><h4>Koordinator Penelitian</h4>
+			<p align="justify"><strong>Evantrida Mailyza Musly, M.Psi.,Psikolog </strong> merupakan seorang psikolog klinis anak dan remaja. Selain itu, beliau juga merupakan seorang Konselor untuk Mahasiswa dan Dosen di Politeknik Negeri Padang. Beliau fokus pada isu-isu terkait dengan pengasuhan, perkembangan dan pendidikan anak serta  self development.</p></td>
+		</tr>
+		<tr>
+			<td><img class="img-home" src='{% static "img/della-modified.png" %}' height="180" alt="Della Ria Stefani Rajagukguk "></td>
+			<td colspan="2"><h4>Anggota Penelitian</h4>
+			<p align="justify"><strong>Della Ria Stefani Rajagukguk </strong> merupakan mahasiswa di Program Studi Psikologi Fakultas Kedokteran Universitas Andalas Angkatan 2018.</p></td>
+		</tr>
+		<tr>
+			<td><img class="img-home" src='{% static "img/bunga-modified.png" %}' height="180" alt="Bunga Derima Putri"></td>
+			<td colspan="2"><h4>Anggota Penelitian</h4>
+			<p align="justify"><strong>Bunga Derima Putri</strong> merupakan mahasiswa di Program Studi Psikologi Fakultas Kedokteran Universitas Andalas Angkatan 2018.</p></td>
+		</tr>
+	</table>
+	
+</div>
 

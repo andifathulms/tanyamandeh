@@ -1,0 +1,234 @@
+{% block head %}
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+	 .form {
+		 display: block;
+		 max-width: 630px;
+		 height: auto;
+		 padding: 32px;
+		 background-color: #ebecf0;
+		 border-radius: 13px;
+		 box-shadow: 3px 3px 5px #babecc, -5px -5px 10px #fff;
+	}
+	 .form__field {
+		 display: grid;
+		 gap: 24px;
+		 margin-bottom: 32px;
+	}
+	 .input-group {
+		 width: 100%;
+		 height: auto;
+	}
+	 .input-group__label {
+		 display: block;
+		 padding-left: 10px;
+		 font-size: 20px;
+		 letter-spacing: 0.05em;
+		 color: #61677c;
+		 text-shadow: 1px 1px 0 #fff;
+		 margin-bottom: 8px;
+	}
+	 .input-group__input {
+		 display: block;
+		 -moz-appearance: none;
+		 -webkit-appearance: none;
+		 appearance: none;
+		 width: 100%;
+		 background-color: transparent;
+		 font-size: 18px;
+		 letter-spacing: 0.1em;
+		 color: #61677c;
+		 text-shadow: 1px 1px 0 #fff;
+		 padding: 12px;
+		 outline: none;
+		 border: none;
+		 border-radius: 30px;
+		 box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+		 transition: all 0.2s ease-in-out;
+	}
+	 .input-group__input:focus {
+		 box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+	}
+	 .button {
+		 background-color: transparent;
+		 color: #61677c;
+		 font-size: 20px;
+		 font-weight: bold;
+		 letter-spacing: 0.07em;
+		 text-shadow: 1px 1px 0 #fff;
+		 padding: 8px 20px;
+		 border: 0;
+		 border-radius: 30px;
+		 box-shadow: 3px 3px 5px #babecc, -4px -4px 10px #fff;
+		 outline: 0;
+		 cursor: pointer;
+		 transition: all 0.3s ease-in-out;
+	}
+	 .button:hover {
+		 box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+	}
+	 .button:active {
+		 box-shadow: inset 2px 2px 3px #babecc, inset -2px -2px 3px #fff;
+	}
+
+</style>
+{% endblock head %}
+<div class="register-box hide">
+	<form class="form login-form mt-5" id="login-form"> {% csrf_token %}
+	  <div class="form__field">
+	    <div class="input-group">
+		  <label class="input-group__label" for="nama">Nama</label>
+	      <input class="input-group__input" type="text" name="nama" id="nama" placeholder="Nama" required />
+	    </div>
+	  	<div class="input-group">
+		  <label class="input-group__label" for="jekel">Jenis Kelamin</label>
+	      <select class="input-group__input" name="gender" id="gender" required>
+	      	<option value="" disabled selected>Jenis Kelamin</option>
+	       	<option value="L">Laki-Laki</option>
+	       	<option value="P">Perempuan</option>
+	      </select>
+		</div>
+		<div class="input-group">
+		  <label class="input-group__label" for="age">Usia</label>
+	      <input class="input-group__input" type="number" name="age" id="age"onkeypress="return onlyNumberKey(event)" 
+	      maxlength="2"  placeholder="Usia" required/>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="prov">Provinsi</label>
+	      <select class="input-group__input" name="prov" id="prov" required>
+	      	{% for region in regions %}
+			    <option value="{{ region.provinsi }}">{{ region.provinsi }}</option>
+			{% endfor %}
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="kabupaten">Kabupaten</label>
+	      <select class="input-group__input" name="kabupaten" id="kabupaten" required>
+	      	
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="agama">Agama</label>
+	      <select class="input-group__input" name="agama" id="agama" required>
+	      	<option value="" disabled selected>Agama</option>
+	      	<option value="Islam">Islam</option>
+	      	<option value="Kristen">Kristen</option>
+	      	<option value="Katolik">Katolik</option>
+	      	<option value="Hindu">Hindu</option>
+	      	<option value="Buddha">Buddha</option>
+	      	<option value="Konghucu">Konghucu</option>
+	      	<option value="Other">Lainnya</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="marriage">Status Pernikahan</label>
+	      <select class="input-group__input" name="marriage" id="marriage" required>
+	      	<option value="" disabled selected>Status Pernikahan</option>
+	      	<option value="Belum Menikah">Belum Menikah</option>
+	      	<option value="Menikah">Menikah</option>
+	      	<option value="Cerai Mati">Cerai Mati</option>
+	      	<option value="Cerai Hidup">Cerai Hidup</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="children">Jumlah Anak</label>
+	      <select class="input-group__input" name="children" id="children" required>
+	      	<option value="" disabled selected>Jumlah Anak</option>
+	      	<option value="0">0</option><option value="1">1</option><option value="2">2</option>
+	      	<option value="3">3</option><option value="4">4</option><option value="5">5</option>
+	      	<option value="5+">>5</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="childage1">Usia anak pertama</label>
+	      <select class="input-group__input" name="childrenage1" id="childrenage1" disabled="disabled" required>
+	      	<option value="" disabled selected>Usia anak pertama</option>
+	      	<option value="-">-</option><option value="< 1"> < 1 tahun </option>
+	      	<option value="1">1 tahun</option><option value="2">2 tahun</option><option value="2-5">2-5 tahun</option>
+	      	<option value=">5"> >5 tahun</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="childage2">Usia anak kedua</label>
+	      <select class="input-group__input" name="childrenage2" id="childrenage2" disabled="disabled" required>
+	      	<option value="" disabled selected>Usia anak kedua</option>
+	      	<option value="-">-</option><option value="< 1"> < 1 tahun</option>
+	      	<option value="1">1 tahun</option><option value="2">2 tahun</option><option value="2-5">2-5 tahun</option>
+	      	<option value=">5"> >5 tahun</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="pendidikan">Pendidikan Terakhir</label>
+	      <select class="input-group__input" name="pendidikan" id="pendidikan" required>
+	      	<option value="" disabled selected> Pendidikan Terakhir</option>
+	      	<option value="Tidak tamat SD">Tidak tamat SD</option>
+	      	<option value="SD sederajat">SD sederajat</option>
+	      	<option value="SMP sederajat">SMP sederajat</option>
+	      	<option value="SMA sederajat">SMA sederajat</option>
+	      	<option value="Diploma I/II/III">Diploma I/II/III</option>
+	      	<option value="DIV / S1">DIV / S1</option>
+	      	<option value="S2">S2</option>
+	      	<option value="S3">S3</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="educbg">Latar Belakang Pendidikan</label>
+	      <select class="input-group__input" name="educbg" id="educbg" required>
+	      	<option value="" disabled selected> Latar Belakang Pendidikan </option>
+	      	<option value="Pendidikan medis/kesehatan">Pendidikan medis/kesehatan</option>
+	      	<option value="Pendidikan non medis/kesehatan">Pendidikan non medis/kesehatan</option>
+	      </select>
+	    </div>
+	    <div class="input-group">
+		  <label class="input-group__label" for="job">Pekerjaan</label>
+	      <select class="input-group__input" name="job" id="job" required>
+	      	<option value="" disabled selected> Pekerjaan </option>
+	      	<option value="Pegawai Negeri BUMN/BUMD/Polri/TNI">Pegawai Negeri BUMN/BUMD/Polri/TNI</option>
+	      	<option value="Pegawai Swasta">Pegawai Swasta</option>
+	      	<option value="Wirausahawan">Wirausahawan</option>
+	      	<option value="Mahasiswa">Mahasiswa</option>
+	      	<option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+	      	<option value="Tidak Sedang Bekerja">Tidak Sedang Bekerja</option>
+	      	<option value="Lainnya">Lainnya</option>
+	      </select>
+	    </div>
+
+	    <div class="input-group">
+		  <label class="input-group__label" for="jobbg">Latar Belakang Pekerjaan</label>
+	      <select class="input-group__input" name="jobbg" id="jobbg" required>
+	      	<option value="" disabled selected> Latar Belakang Pekerjaan </option>
+	      	<option value="Pekerjaan medis/kesehatan">Pekerjaan medis/kesehatan</option>
+	      	<option value="Pekerjaan non medis/kesehatan">Pekerjaan non medis/kesehatan</option>
+	      </select>
+	    </div>
+
+	    <div class="input-group">
+		  <label class="input-group__label" for="nohp">Nomor Hp</label>
+	      <input class="input-group__input" type="tel" id="nohp" name="nohp" placeholder="081234567890" pattern="[0-9]{10,}" required>
+	    </div>
+	    <p class="checkhp"></p>
+	    <button type="submit" class="button" onclick="showInstruction()" id="submit">Instruksi Kuis</button>
+	  </div>
+	  
+
+	</form>
+</div>
+
+<script>
+    $("#prov").change(function () {
+      //var url = $("#formdata").attr("data-marketplace-url");  // get the url of the `load_cities` view
+      var category = $(this).val(); 
+
+      $.ajax({                       // initialize an AJAX request
+        url: 'http://www.tanyamandeh.com/load-cat/', // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'category': category 
+        },
+        success: function (data) {
+          $("#kabupaten").html(data);
+          //console.log(data)
+        }
+      });
+
+    });
+</script>
