@@ -1,28 +1,32 @@
 {% load static %}
 <div class="custom-box">
 	<h2 style="text-align: center;">Hubungi kami melalui</h2><br><br>
-	<table class="researcher">
-		<tr>
-			<td><img class="img-home" src='{% static "img/whatsapp.png" %}' width="70" height="70" alt="Whatsapp"></td>
-			<td colspan="2">
-				<h3 style="text-align: center;">Whatsapp</h3>
-				<p align="justify" style="text-align: center;">081266238581</p>
-			</td>
-		</tr>
-		<tr>
-			<td><img class="img-home" src='{% static "img/email.png" %}' width="70" height="70" alt="Email"></td>
-			<td colspan="2">
-				<h3 style="text-align: center;">Email</h3>
-				<p align="justify" style="text-align: center;">siskaoktari@gmail.com</p>
-				<p align="justify" style="text-align: center;">siskaoktari@med.unand.ac.id</p>
-			</td>
-		</tr>
-		<tr>
-			<td><img class="img-home" src='{% static "img/instagram.png" %}' width="70" height="70" alt="Instagram"></td>
-			<td colspan="2">
-				<h3 style="text-align: center;">Instagram</h3>
-				<p align="justify" style="text-align: center;">@siskaoktari24</p>
-			</td>
-		</tr>
-	</table>
+	<div class="row">
+		<div class="col-md-1">
+			<img class="img-home" style="display: block; margin: auto;" src='{% static "img/whatsapp.png" %}' width="70" height="70" alt="Whatsapp">
+		</div>
+		<div class="col-md-11">
+			<h3 style="text-align: center;">Whatsapp</h3>
+			<p align="justify" style="text-align: center;">081266238581</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+			<img class="img-home" style="display: block; margin: auto;" src='{% static "img/email.png" %}' width="70" height="70" alt="Email">
+		</div>
+		<div class="col-md-11">
+			<h3 style="text-align: center;">Email</h3>
+			<p align="justify" style="text-align: center;">siskaoktari@gmail.com</p>
+			<p align="justify" style="text-align: center;">siskaoktari@med.unand.ac.id</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+			<img class="img-home" style="display: block; margin: auto;" src='{% static "img/instagram.png" %}' width="70" height="70" alt="Instagram">
+		</div>
+		<div class="col-md-11">
+			<h3 style="text-align: center;">Instagram</h3>
+			<p align="justify" style="text-align: center;">@siskaoktari24</p>
+		</div>
+	</div>
 </div>
