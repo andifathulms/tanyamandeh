@@ -49,12 +49,49 @@ class Dugout(LoginRequiredMixin, View):
 		newest_session = sessions.order_by('-timeEnd')[0]
 		n_s_time = newest_session.duration
 		n_s_time_minute = n_s_time//60
-		n_s_time_seconds = n_s_time - b_s_time_minute*60
+		n_s_time_seconds = n_s_time - n_s_time_minute*60
 
 		count_status_b_m = session.objects.filter(responden__statusnikah = "Belum Menikah").count()
 		count_status_m = session.objects.filter(responden__statusnikah = "Menikah").count()
 		count_status_c_m = session.objects.filter(responden__statusnikah = "Cerai Mati").count()
 		count_status_c_h = session.objects.filter(responden__statusnikah = "Cerai Hidup").count()
+
+		count_agama_islam = session.objects.filter(responden__agama = "Islam").count()
+		count_agama_kristen = session.objects.filter(responden__agama = "Kristen").count()
+		count_agama_katolik = session.objects.filter(responden__agama = "Katolik").count()
+		count_agama_hindu = session.objects.filter(responden__agama = "Hindu").count()
+		count_agama_buddha = session.objects.filter(responden__agama = "Buddha").count()
+
+		count_jmlhanak_0 = session.objects.filter(responden__jumlahanak = "0").count()
+		count_jmlhanak_1 = session.objects.filter(responden__jumlahanak = "1").count()
+		count_jmlhanak_2 = session.objects.filter(responden__jumlahanak = "2").count()
+		count_jmlhanak_3 = session.objects.filter(responden__jumlahanak = "3").count()
+		count_jmlhanak_4 = session.objects.filter(responden__jumlahanak = "4").count()
+		count_jmlhanak_5 = session.objects.filter(responden__jumlahanak = "5").count()
+		count_jmlhanak_5p = session.objects.filter(responden__jumlahanak = "5+").count()
+
+		count_educ_0 = session.objects.filter(responden__educ = "Tidak tamat SD").count()
+		count_educ_1 = session.objects.filter(responden__educ = "SD Sederajat").count()
+		count_educ_2 = session.objects.filter(responden__educ = "SMP Sederajat").count()
+		count_educ_3 = session.objects.filter(responden__educ = "SMA Sederajat").count()
+		count_educ_4 = session.objects.filter(responden__educ = "Diploma I/II/III").count()
+		count_educ_5 = session.objects.filter(responden__educ = "DIV / S1").count()
+		count_educ_6 = session.objects.filter(responden__educ = "S2").count()
+		count_educ_7 = session.objects.filter(responden__educ = "S3").count()
+
+		count_educg_0 = session.objects.filter(responden__educg = "Pendidikan medis/kesehatan").count()
+		count_educg_1 = session.objects.filter(responden__educg = "Pendidikan non medis/kesehatan").count()
+
+		count_job_0 = session.objects.filter(responden__job = "Pegawai Negeri BUMN/BUMD/Polri/TNI").count()
+		count_job_1 = session.objects.filter(responden__job = "Pegawai Swasta").count()
+		count_job_2 = session.objects.filter(responden__job = "Wirausahawan").count()
+		count_job_3 = session.objects.filter(responden__job = "Mahasiswa").count()
+		count_job_4 = session.objects.filter(responden__job = "Ibu Rumah Tangga").count()
+		count_job_5 = session.objects.filter(responden__job = "Tidak Sedang Bekerja").count()
+		count_job_6 = session.objects.filter(responden__job = "Lainnya").count()
+
+		count_jobg_0 = session.objects.filter(responden__jobg = "Pekerjaan medis/kesehatan").count()
+		count_jobg_1 = session.objects.filter(responden__jobg = "Pekerjaan non medis/kesehatan").count()
 
 		context["count_session"] = count_session
 		context["count_session_today"] = count_session_today
@@ -64,6 +101,37 @@ class Dugout(LoginRequiredMixin, View):
 		context["count_status_m"] = count_status_m
 		context["count_status_c_m"] = count_status_c_m
 		context["count_status_c_h"] = count_status_c_h
+		context["count_agama_islam"] = count_agama_islam
+		context["count_agama_kristen"] = count_agama_kristen
+		context["count_agama_katolik"] = count_agama_katolik
+		context["count_agama_hindu"] = count_agama_hindu
+		context["count_agama_buddha"] = count_agama_buddha
+		context["count_jmlhanak_0"] = count_jmlhanak_0
+		context["count_jmlhanak_1"] = count_jmlhanak_1
+		context["count_jmlhanak_2"] = count_jmlhanak_2
+		context["count_jmlhanak_3"] = count_jmlhanak_3
+		context["count_jmlhanak_4"] = count_jmlhanak_4
+		context["count_jmlhanak_5"] = count_jmlhanak_5
+		context["count_jmlhanak_5p"] = count_jmlhanak_5p
+		context["count_educ_0"] = count_educ_0
+		context["count_educ_1"] = count_educ_1
+		context["count_educ_2"] = count_educ_2
+		context["count_educ_3"] = count_educ_3
+		context["count_educ_4"] = count_educ_4
+		context["count_educ_5"] = count_educ_5
+		context["count_educ_6"] = count_educ_6
+		context["count_educ_7"] = count_educ_7
+		context["count_educg_0"] = count_educg_0
+		context["count_educg_1"] = count_educg_1
+		context["count_job_0"] = count_job_0
+		context["count_job_1"] = count_job_1
+		context["count_job_2"] = count_job_2
+		context["count_job_3"] = count_job_3
+		context["count_job_4"] = count_job_4
+		context["count_job_5"] = count_job_5
+		context["count_job_6"] = count_job_6
+		context["count_jobg_0"] = count_jobg_0
+		context["count_jobg_1"] = count_jobg_1
 
 		context["avg_age"] = avg_age['age__avg']
 		context["avg_session_score"] = avg_session_score['totalScore__avg']

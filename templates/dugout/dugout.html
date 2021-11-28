@@ -210,7 +210,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/Standar Deviation Total Score
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Total Score
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
                                 {{variance_session_score|floatformat:"1"}}/{{stdev_session_score|floatformat:"1"}}
@@ -228,7 +228,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/Standar Deviation Kognitif Score
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Kognitif Score
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
                                 {{variance_session_k_score|floatformat:"1"}}/{{stdev_session_k_score|floatformat:"1"}}
@@ -246,7 +246,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/Standar Deviation Sosio-Emosional Score
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Sosio-Emosional Score
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
                                 {{variance_session_s_score|floatformat:"1"}}/{{stdev_session_s_score|floatformat:"1"}}
@@ -264,7 +264,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/Standar Deviation Fisik Score
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Fisik Score
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
                                 {{variance_session_f_score|floatformat:"1"}}/{{stdev_session_f_score|floatformat:"1"}}
@@ -340,7 +340,222 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <!-- Chart -->
+        <div class="col-xl-6 col-md-12">
+            <div class="px-2 mb-4 shadow card">
+                <!-- Card Header - Dropdown -->
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Agama Responden</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="pt-4 pb-2 chart-pie"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chart_3" width="486" height="245" style="display: block; width: 486px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Islam
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> Kristen
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> Katolik
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-info" aria-hidden="true"></i> Hindu
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-danger" aria-hidden="true"></i> Buddha
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="col-xl-6 col-md-12">
+            <div class="px-2 mb-4 shadow card">
+                <!-- Card Header - Dropdown -->
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Jumlah Anak</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="pt-4 pb-2 chart-pie"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chart_4" width="486" height="245" style="display: block; width: 486px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> 0
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> 1
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> 2
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> 3
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> 4
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> 5
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> 5+
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Chart -->
+        <div class="col-xl-6 col-md-12">
+            <div class="px-2 mb-4 shadow card">
+                <!-- Card Header - Dropdown -->
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Pendidikan Responden</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="pt-4 pb-2 chart-pie"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chart_5" width="486" height="245" style="display: block; width: 486px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Tidak tamat SD
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> SD sederajat
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> SMP sederajat
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> SMA sederajat
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> Diploma I/II/III
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> DIV / S1
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> S2
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> S3
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="col-xl-6 col-md-12">
+            <div class="px-2 mb-4 shadow card">
+                <!-- Card Header - Dropdown -->
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Latar Belakang Pendidikan Responden</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="pt-4 pb-2 chart-pie"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chart_6" width="486" height="245" style="display: block; width: 486px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Pendidikan medis/kesehatan
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> Pendidikan non medis/kesehatan
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Chart -->
+        <div class="col-xl-6 col-md-12">
+            <div class="px-2 mb-4 shadow card">
+                <!-- Card Header - Dropdown -->
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Pekerjaan Responden</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="pt-4 pb-2 chart-pie"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chart_7" width="486" height="245" style="display: block; width: 486px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Pegawai Negeri BUMN/BUMD/Polri/TNI
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> Pegawai Swasta
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> Wirausahawan
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Mahasiswa
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> Ibu Rumah Tangga
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-warning" aria-hidden="true"></i> Tidak Sedang Bekerja
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Lainnya
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="col-xl-6 col-md-12">
+            <div class="px-2 mb-4 shadow card">
+                <!-- Card Header - Dropdown -->
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Latar Belakang Pendidikan Responden</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="pt-4 pb-2 chart-pie"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chart_8" width="486" height="245" style="display: block; width: 486px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-primary" aria-hidden="true"></i> Pekerjaan medis/kesehatan
+                        </span>
+                        <span class="mr-2">
+                            <i class="fa fa-circle text-success" aria-hidden="true"></i> Pekerjaan non medis/kesehatan
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock content %}
 
@@ -396,9 +611,237 @@
       data: {
         labels: ["Belum Menikah", "Menikah", "Cerai Mati", "Cerai Hidup"],
         datasets: [{
-          data: [{{count_status_b_m}}, {{count_status_b_m}}, {{count_status_c_m}}, {{count_status_c_h}}],
-          backgroundColor: ['#4e73df', '#1cc88a', "#edd96f", '#b53caf'],
-          hoverBackgroundColor: ['#2e59d9', '#17a673', '#aba272', '#db76d6' ],
+          data: [{{count_status_b_m}}, {{count_status_m}}, {{count_status_c_m}}, {{count_status_c_h}}],
+          backgroundColor: ['#4e73df', '#1cc88a', "#edd96f", '#17a2b8'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#aba272', '#d4ecff' ],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+</script>
+
+<script> //Chart 3
+        // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("chart_3");
+    var chart_3 = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ["Islam", "Kristen", "Katolik", "Hindu", "Buddha"],
+        datasets: [{
+          data: [{{count_agama_islam}}, {{count_agama_kristen}}, {{count_agama_katolik}}, {{count_agama_hindu}}, {{count_agama_buddha}}],
+          backgroundColor: ['#4e73df', '#1cc88a', "#edd96f", '#17a2b8', '#dc3545'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#aba272', '#d4ecff', '#703138' ],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+</script>
+
+<script> //Chart 4
+        // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("chart_4");
+    var chart_4 = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["0", "1", "2", "3", "4", "5", "5+"],
+        datasets: [{
+          data: [{{count_jmlhanak_0}}, {{count_jmlhanak_1}}, {{count_jmlhanak_2}}, {{count_jmlhanak_3}}, {{count_jmlhanak_4}}, {{count_jmlhanak_5}}, {{count_jmlhanak_5p}}],
+          backgroundColor: ['#4e73df', '#1cc88a', "#edd96f", '#4e73df', '#1cc88a', "#edd96f", '#4e73df'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#aba272', '#2e59d9', '#17a673', '#aba272', '#2e59d9' ],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+</script>
+
+<script> //Chart 5
+        // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("chart_5");
+    var chart_5 = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Tidak tamat SD", "SD sederajat", "SMP sederajat", "SMA sederajat", "Diploma I/II/III", "DIV / S1", "S2", "S3"],
+        datasets: [{
+          data: [{{count_educ_0}}, {{count_educ_1}}, {{count_educ_2}}, {{count_educ_3}}, {{count_educ_4}}, {{count_educ_5}}, {{count_educ_6}}, {{count_educ_7}}],
+          backgroundColor: ['#4e73df', '#1cc88a', "#edd96f", '#4e73df', '#1cc88a', "#edd96f", '#4e73df', '#1cc88a'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#aba272', '#2e59d9', '#17a673', '#aba272', '#2e59d9','#17a673' ],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+</script>
+
+<script> //Chart 6
+        // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("chart_6");
+    var chart_6 = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ["Pendidikan medis/kesehatan", "Pendidikan non medis/kesehatan"],
+        datasets: [{
+          data: [{{count_educg_0}}, {{count_educg_1}}],
+          backgroundColor: ['#4e73df', '#1cc88a'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673'],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+</script>
+
+<script> //Chart 7
+        // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("chart_7");
+    var chart_7 = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["PNS", "Pegawai Swasta", "Wirausahawan", "Mahasiswa", "Ibu Rumah Tangga", "Tidak Sedang Bekerja", "Lainnya"],
+        datasets: [{
+          data: [{{count_job_0}}, {{count_job_1}}, {{count_job_2}}, {{count_job_3}}, {{count_job_4}}, {{count_job_5}}, {{count_job_6}}],
+          backgroundColor: ['#4e73df', '#1cc88a', "#edd96f", '#4e73df', '#1cc88a', "#edd96f", '#4e73df'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#aba272', '#2e59d9', '#17a673', '#aba272', '#2e59d9'],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+</script>
+
+<script> //Chart 8
+        // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("chart_8");
+    var chart_8 = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ["Pekerjaan medis/kesehatan", "Pekerjaan non medis/kesehatan"],
+        datasets: [{
+          data: [{{count_jobg_0}}, {{count_jobg_1}}],
+          backgroundColor: ['#4e73df', '#1cc88a'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673'],
           hoverBorderColor: "rgba(234, 236, 244, 1)",
         }],
       },
