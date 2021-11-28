@@ -4,6 +4,7 @@ from django.db.models import Avg, StdDev, Variance
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views import View
+from django.views.generic import DeleteView
 
 from quizTest.models import session, responden
 
@@ -162,3 +163,21 @@ class Dugout(LoginRequiredMixin, View):
 
 
 		return render(request, 'dugout/dugout.html', context)
+
+
+class SessionsView(LoginRequiredMixin, View):
+
+	def get(self, request, *args, **kwargs):
+		context = {}
+		sessions = session.objects.all()
+		context["sessions"] = sessions
+		return render(request, 'dugout/sessions.html', context)
+
+class SessionsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = session
+    success_url = '/dugout/sessions'
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False

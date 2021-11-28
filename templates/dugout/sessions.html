@@ -1,0 +1,128 @@
+{% extends 'dugout/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+{% include 'dugout/snippets/dt_bs.html' %}
+{% endblock head %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="mb-2 text-gray-800 h3">Sessions</h1>
+    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+            href="https://datatables.net">official DataTables documentation</a>.</p>-->
+
+    <!-- DataTales Example -->
+    <div class="mb-4 shadow card">
+        <div class="py-3 card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Sessions Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Kognitif</th>
+                            <th>Sosio</th>
+                            <th>Fisik</th>
+                            <th>Total</th>
+                            <th>Durasi</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Provinsi</th>
+                            <th>Kabupaten</th>
+                            <th>Agama</th>
+                            <th>Status Nikah</th>
+                            <th>Jumlah Anak</th>
+                            <th>Usia Anak 1</th>
+                            <th>Usia Anak 2</th>
+                            <th>Pendidikan</th>
+                            <th>Pendidikan Background</th>
+                            <th>Pekerjaan</th>
+                            <th>Pekerjaan Background</th>
+                            <th>NoHP</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Kognitif</th>
+                            <th>Sosio</th>
+                            <th>Fisik</th>
+                            <th>Total</th>
+                            <th>Durasi</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Provinsi</th>
+                            <th>Kabupaten</th>
+                            <th>Agama</th>
+                            <th>Status Nikah</th>
+                            <th>Jumlah Anak</th>
+                            <th>Usia Anak 1</th>
+                            <th>Usia Anak 2</th>
+                            <th>Pendidikan</th>
+                            <th>Pendidikan Background</th>
+                            <th>Pekerjaan</th>
+                            <th>Pekerjaan Background</th>
+                            <th>NoHP</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                    	{% for session in sessions %}
+                        <tr>
+                            <td>{{session.pk}}</td>
+                            <td>{{session.responden.name}}</td>
+                            <td style="text-align: center;">{{session.kognitifScore}}</td>
+                            <td style="text-align: center;">{{session.sosioScore}}</td>
+                            <td style="text-align: center;">{{session.fisikScore}}</td>
+                            <td style="text-align: center;">{{session.totalScore}}</td>
+                            <td style="text-align: center;">{{session.duration}}</td>
+                            <td style="text-align: center;">{{session.responden.gender}}</td>
+                            <td style="text-align: center;">{{session.responden.age}}</td>
+                            <td>{{session.responden.prov}}</td>
+                            <td>{{session.responden.kab}}</td>
+                            <td>{{session.responden.agama}}</td>
+                            <td>{{session.responden.statusnikah}}</td>
+                            <td>{{session.responden.jumlahanak}}</td>
+                            <td>{{session.responden.usiaanak1}}</td>
+                            <td>{{session.responden.usiaanak2}}</td>
+                            <td>{{session.responden.educ}}</td>
+                            <td>{{session.responden.educg}}</td>
+                            <td>{{session.responden.job}}</td>
+                            <td>{{session.responden.jobg}}</td>
+                            <td>{{session.responden.nohp}}</td>
+                            <td>
+                        		<form action="{% url 'dugout:sessions-delete' session.pk %}">
+                                    <button class="btn btn-lg btn-danger btn-block" 
+                                    type="submit" id="delete-{{session.pk}}">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script>
+    // Call the dataTables jQuery plugin
+	$(document).ready(function() {
+	    $('#dataTable').DataTable();
+	});
+</script>
+{% endblock script %}
