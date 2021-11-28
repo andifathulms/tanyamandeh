@@ -71,9 +71,9 @@ class Dugout(LoginRequiredMixin, View):
 		count_jmlhanak_5p = session.objects.filter(responden__jumlahanak = "5+").count()
 
 		count_educ_0 = session.objects.filter(responden__educ = "Tidak tamat SD").count()
-		count_educ_1 = session.objects.filter(responden__educ = "SD Sederajat").count()
-		count_educ_2 = session.objects.filter(responden__educ = "SMP Sederajat").count()
-		count_educ_3 = session.objects.filter(responden__educ = "SMA Sederajat").count()
+		count_educ_1 = session.objects.filter(responden__educ = "SD sederajat").count()
+		count_educ_2 = session.objects.filter(responden__educ = "SMP sederajat").count()
+		count_educ_3 = session.objects.filter(responden__educ = "SMA sederajat").count()
 		count_educ_4 = session.objects.filter(responden__educ = "Diploma I/II/III").count()
 		count_educ_5 = session.objects.filter(responden__educ = "DIV / S1").count()
 		count_educ_6 = session.objects.filter(responden__educ = "S2").count()
