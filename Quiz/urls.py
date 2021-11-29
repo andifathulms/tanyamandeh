@@ -33,7 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', about_view, name='about'),
     path('contact/', contact_view, name='contact'),
-    path('exportscsv', exportsCSV),
+    path('exportscsv', exportsCSV, name='export-csv'),
     path('exportscomment', exportsComment),
     path('load-cat/', load_kab),
 

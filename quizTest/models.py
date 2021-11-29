@@ -37,10 +37,7 @@ class question(models.Model):
 	option2 = models.TextField()
 	option3 = models.TextField()
 	option4 = models.TextField()
-	chooseOption1 = models.IntegerField()
-	chooseOption2 = models.IntegerField()
-	chooseOption3 = models.IntegerField()
-	chooseOption4 = models.IntegerField()
+	paralel = models.CharField(max_length=200)
 
 class sessionScore(models.Model):
 	id = models.BigAutoField(primary_key=True)
