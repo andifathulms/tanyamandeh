@@ -185,14 +185,14 @@ class AnalyticsView(LoginRequiredMixin, View):
 		y2 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): 0}).count() for scr in attr_score]
 		y3 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): 1}).count() for scr in attr_score]
 		
-		z1 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): -1}).count() for ans in attr_answer]
+		z1 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 0}).count() for ans in attr_answer]
 		z2 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 1}).count() for ans in attr_answer]
 		z3 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 2}).count() for ans in attr_answer]
 		z4 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 3}).count() for ans in attr_answer]
 		question_score_zipped = zip(y1,y2,y3,z1,z2,z3,z4)
 		#question_score_zipped = zip(y1,y2,y3)
 		#question_mark_zipped = zip(z1,z2,z3,z4)
-
+		print(y3)
 		context["score"] = list(question_score_zipped)
 		#context["answer"] = list(question_mark_zipped)
 
