@@ -206,9 +206,9 @@ class AnalyticsView(LoginRequiredMixin, View):
 		y_gender = np.array(gender_list)
 		y_age = np.array(age_list)
 		y_child = np.array(toNumList(child_list,"child"))
-		y_educ = np.array(toNumList(child_list,"educ"))
-		y_educg = np.array(toNumList(child_list,"educg"))
-		y_jobg = np.array(toNumList(child_list,"jobg"))
+		y_educ = np.array(toNumList(educ_list,"educ"))
+		y_educg = np.array(toNumList(educg_list,"educg"))
+		y_jobg = np.array(toNumList(jobg_list,"jobg"))
 
 		corr_gender = list(zip(scipy.stats.pearsonr(x, y_gender), scipy.stats.spearmanr(x, y_gender), scipy.stats.kendalltau(x, y_gender)))
 		corr_age = list(zip(scipy.stats.pearsonr(x, y_age), scipy.stats.spearmanr(x, y_age), scipy.stats.kendalltau(x, y_age)))
