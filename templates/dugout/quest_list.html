@@ -1,0 +1,85 @@
+{% extends 'dugout/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+{% include 'dugout/snippets/dt_bs.html' %}
+{% endblock head %}
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="mb-4 d-sm-flex align-items-center justify-content-between">
+        <h1 class="mb-0 text-gray-800 h3">Question List</h1>
+    </div>
+
+    
+</div>
+
+<div class="container-fluid">
+    <div class="mb-4 shadow card">
+        <div class="py-3 card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Question List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Question</th>
+                            <th>Category</th>
+                            <th>Option A </th>
+                            <th>Option B </th>
+                            <th>Option C </th>
+                            <th>Option D </th>
+                            <th>Paralel dgn Word</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Question</th>
+                            <th>Category</th>
+                            <th>Option A </th>
+                            <th>Option B </th>
+                            <th>Option C </th>
+                            <th>Option D </th>
+                            <th>Paralel dgn Word</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for question in questions %}
+                        <tr>
+                            <td>Q-{{ question.questionID|add:1 }}</td>
+                            <td>{{question.question}}</td>
+                            <td>{{question.category}}</td>
+                            <td>{{question.option1}}</td>
+                            <td>{{question.option2}}</td>
+                            <td>{{question.option3}}</td>
+                            <td>{{question.option4}}</td>
+                            <td>{{question.paralel}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script>
+    // Call the dataTables jQuery plugin
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
+
+{% endblock script %}

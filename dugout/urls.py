@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import Dugout, SessionsView, SessionsDeleteView, AnalyticsView
+from .views import Dugout, SessionsView, SessionsDeleteView, AnalyticsView, QuestionListView
 
 app_name = 'dugout'
 
@@ -9,4 +9,5 @@ urlpatterns = [
 	path('sessions', SessionsView.as_view(), name='dugout-sessions'),
 	path('sessions/<int:pk>/delete/', SessionsDeleteView.as_view(), name='sessions-delete'),
 	path('analytics', AnalyticsView.as_view(), name='dugout-analytics'),
+	path('qlist', QuestionListView.as_view(), name='dugout-qlist'),
 ]
