@@ -1,17 +1,17 @@
 from django.shortcuts import render
-from django.db.models import Avg, StdDev, Variance
+from django.db.models import Avg, StdDev, Variance, Sum
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views import View
 from django.views.generic import DeleteView
 
-from quizTest.models import session, responden
+from quizTest.models import session, responden, sessionScore
 
 from datetime import datetime, date
 
 class Dugout(LoginRequiredMixin, View):
-
+	# DO CLEANUP DB HERE
 	def get(self, request, *args, **kwargs):
 		context = {}
 		sessions = session.objects.all()
@@ -27,20 +27,6 @@ class Dugout(LoginRequiredMixin, View):
 		a_s_time_minute = avg_session_time['duration__avg']//60
 		a_s_time_seconds = avg_session_time['duration__avg'] - a_s_time_minute*60
 
-		avg_session_score = sessions.aggregate(Avg('totalScore'))
-		avg_session_k_score = sessions.aggregate(Avg('kognitifScore'))
-		avg_session_s_score = sessions.aggregate(Avg('sosioScore'))
-		avg_session_f_score = sessions.aggregate(Avg('fisikScore'))
-
-		stdev_session_score = sessions.aggregate(StdDev('totalScore'))
-		stdev_session_k_score = sessions.aggregate(StdDev('kognitifScore'))
-		stdev_session_s_score = sessions.aggregate(StdDev('sosioScore'))
-		stdev_session_f_score = sessions.aggregate(StdDev('fisikScore'))
-		
-		variance_session_score = sessions.aggregate(Variance('totalScore'))
-		variance_session_k_score = sessions.aggregate(Variance('kognitifScore'))
-		variance_session_s_score = sessions.aggregate(Variance('sosioScore'))
-		variance_session_f_score = sessions.aggregate(Variance('fisikScore'))
 
 		best_session = sessions.order_by('-totalScore')[0]
 		b_s_time = best_session.duration
@@ -135,20 +121,6 @@ class Dugout(LoginRequiredMixin, View):
 		context["count_jobg_1"] = count_jobg_1
 
 		context["avg_age"] = avg_age['age__avg']
-		context["avg_session_score"] = avg_session_score['totalScore__avg']
-		context["avg_session_k_score"] = avg_session_k_score['kognitifScore__avg']
-		context["avg_session_s_score"] = avg_session_s_score['sosioScore__avg']
-		context["avg_session_f_score"] = avg_session_f_score['fisikScore__avg']
-
-		context["stdev_session_score"] = stdev_session_score['totalScore__stddev']
-		context["stdev_session_k_score"] = stdev_session_k_score['kognitifScore__stddev']
-		context["stdev_session_s_score"] = stdev_session_s_score['sosioScore__stddev']
-		context["stdev_session_f_score"] = stdev_session_f_score['fisikScore__stddev']
-
-		context["variance_session_score"] = variance_session_score['totalScore__variance']
-		context["variance_session_k_score"] = variance_session_k_score['kognitifScore__variance']
-		context["variance_session_s_score"] = variance_session_s_score['sosioScore__variance']
-		context["variance_session_f_score"] = variance_session_f_score['fisikScore__variance']
 
 		context["best_session"] = best_session
 		context["b_s_time_minute"] = b_s_time_minute
@@ -181,3 +153,56 @@ class SessionsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user.is_superuser:
             return True
         return False
+
+class AnalyticsView(LoginRequiredMixin, View):
+
+	def get(self, request, *args, **kwargs):
+		context={}
+
+		sessions = session.objects.all()
+
+		avg_session_score = sessions.aggregate(Avg('totalScore'))
+		avg_session_k_score = sessions.aggregate(Avg('kognitifScore'))
+		avg_session_s_score = sessions.aggregate(Avg('sosioScore'))
+		avg_session_f_score = sessions.aggregate(Avg('fisikScore'))
+
+		stdev_session_score = sessions.aggregate(StdDev('totalScore'))
+		stdev_session_k_score = sessions.aggregate(StdDev('kognitifScore'))
+		stdev_session_s_score = sessions.aggregate(StdDev('sosioScore'))
+		stdev_session_f_score = sessions.aggregate(StdDev('fisikScore'))
+		
+		variance_session_score = sessions.aggregate(Variance('totalScore'))
+		variance_session_k_score = sessions.aggregate(Variance('kognitifScore'))
+		variance_session_s_score = sessions.aggregate(Variance('sosioScore'))
+		variance_session_f_score = sessions.aggregate(Variance('fisikScore'))
+
+		attr_score = ['quest%dScr' % i for i in range(1,88) ]
+		
+		x = [sessionScore.objects.filter(session__isnull=False).aggregate(Sum(scr)) for scr in attr_score]
+		y1 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): -1}).count() for scr in attr_score]
+		y2 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): 0}).count() for scr in attr_score]
+		y3 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): 1}).count() for scr in attr_score]
+		
+
+		question_score_zipped = zip(y1,y2,y3)
+		#print(list(question_score_zipped))
+
+		context["score"] = list(question_score_zipped)
+
+		context["avg_session_score"] = avg_session_score['totalScore__avg']
+		context["avg_session_k_score"] = avg_session_k_score['kognitifScore__avg']
+		context["avg_session_s_score"] = avg_session_s_score['sosioScore__avg']
+		context["avg_session_f_score"] = avg_session_f_score['fisikScore__avg']
+
+		context["stdev_session_score"] = stdev_session_score['totalScore__stddev']
+		context["stdev_session_k_score"] = stdev_session_k_score['kognitifScore__stddev']
+		context["stdev_session_s_score"] = stdev_session_s_score['sosioScore__stddev']
+		context["stdev_session_f_score"] = stdev_session_f_score['fisikScore__stddev']
+
+		context["variance_session_score"] = variance_session_score['totalScore__variance']
+		context["variance_session_k_score"] = variance_session_k_score['kognitifScore__variance']
+		context["variance_session_s_score"] = variance_session_s_score['sosioScore__variance']
+		context["variance_session_f_score"] = variance_session_f_score['fisikScore__variance']
+
+
+		return render(request, 'dugout/analytics.html', context)

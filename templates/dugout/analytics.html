@@ -1,0 +1,231 @@
+{% extends 'dugout/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+{% include 'dugout/snippets/dt_bs.html' %}
+{% endblock head %}
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="mb-4 d-sm-flex align-items-center justify-content-between">
+        <h1 class="mb-0 text-gray-800 h3">Analytics</h1>
+    </div>
+
+    
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Average Total Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{avg_session_score|floatformat:"1"}}/87
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Average Kognitif Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{avg_session_k_score|floatformat:"1"}}/29
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Average Sosio-Emosional Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{avg_session_s_score|floatformat:"1"}}/30
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Average Fisik Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{avg_session_f_score|floatformat:"1"}}/28
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Total Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{variance_session_score|floatformat:"1"}}/{{stdev_session_score|floatformat:"1"}}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Kognitif Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{variance_session_k_score|floatformat:"1"}}/{{stdev_session_k_score|floatformat:"1"}}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Sosio-Emosional Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{variance_session_s_score|floatformat:"1"}}/{{stdev_session_s_score|floatformat:"1"}}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Variance/StdDev Fisik Score
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {{variance_session_f_score|floatformat:"1"}}/{{stdev_session_f_score|floatformat:"1"}}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="mb-4 shadow card">
+        <div class="py-3 card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Question Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Answer Correct</th>
+                            <th>Answer Wrong</th>
+                            <th>Not Answered</th>
+                            <th>Correct %</th>
+                            <th>Not Answer %</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Question</th>
+                            <th>Answer Correct</th>
+                            <th>Answer Wrong</th>
+                            <th>Not Answered</th>
+                            <th>Correct %</th>
+                            <th>Not Answer %</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for scr in score %}
+                        <tr>
+                            <td>Question - {{ forloop.counter }}</td>
+                            <td>{{scr.2}}</td>
+                            <td>{{scr.1}}</td>
+                            <td>{{scr.0}}</td>
+                            <td>{% widthratio scr.2 scr.2|add:scr.1 100 %}</td>
+                            <td>{% widthratio scr.0 scr.2|add:scr.1|add:scr.0 100 %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script>
+    // Call the dataTables jQuery plugin
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
+
+{% endblock script %}
