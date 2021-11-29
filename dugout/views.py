@@ -10,6 +10,9 @@ from quizTest.models import session, responden, sessionScore, sessionMark
 
 from datetime import datetime, date
 
+import numpy as np
+import scipy.stats
+
 class Dugout(LoginRequiredMixin, View):
 	# DO CLEANUP DB HERE
 	def get(self, request, *args, **kwargs):
@@ -190,9 +193,16 @@ class AnalyticsView(LoginRequiredMixin, View):
 		z3 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 2}).count() for ans in attr_answer]
 		z4 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 3}).count() for ans in attr_answer]
 		question_score_zipped = zip(y1,y2,y3,z1,z2,z3,z4)
-		#question_score_zipped = zip(y1,y2,y3)
-		#question_mark_zipped = zip(z1,z2,z3,z4)
-		print(y3)
+
+		score_list = [session.totalScore for session in sessions]
+		gender_list = [1 if session.responden.gender=="L" else 0 for session in sessions]
+		x = np.array(score_list)
+		y_gender = np.array(gender_list)
+
+		corr_gender = list(zip(scipy.stats.pearsonr(x, y_gender), scipy.stats.spearmanr(x, y_gender), scipy.stats.kendalltau(x, y_gender)))
+		context["corr_gender"] = corr_gender
+		print(corr_gender)
+
 		context["score"] = list(question_score_zipped)
 		#context["answer"] = list(question_mark_zipped)
 

@@ -166,6 +166,65 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="mb-4 col-xl-4 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Pearson Correlation
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>r = {{corr_gender.0.0}}</p>
+                                <p>p-value ={{corr_gender.1.0}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-4 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Spearman Correlation
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Rho; = {{corr_gender.0.1}}</p>
+                                <p>p-value = {{corr_gender.1.1}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-4 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Kendall's Tau Correlation
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Tau; = {{corr_gender.0.2}}</p>
+                                <p>p-value = {{corr_gender.1.2}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid">
@@ -184,10 +243,10 @@
                             <th>Not Answered</th>
                             <th>Correct %</th>
                             <th>Not Answer %</th>
-                            <th>Option A (Correct)</th>
-                            <th>Option B</th>
-                            <th>Option C</th>
-                            <th>Option D</th>
+                            <th>Option A (Correct Ans)</th>
+                            <th>Option B (Wrong Ans)</th>
+                            <th>Option C (Wrong Ans)</th>
+                            <th>Option D (Wrong Ans)</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -198,25 +257,25 @@
                             <th>Not Answered</th>
                             <th>Correct %</th>
                             <th>Not Answer %</th>
-                            <th>Option A (Correct)</th>
-                            <th>Option B</th>
-                            <th>Option C</th>
-                            <th>Option D</th>
+                            <th>Option A (Correct Ans)</th>
+                            <th>Option B (Wrong Ans)</th>
+                            <th>Option C (Wrong Ans)</th>
+                            <th>Option D (Wrong Ans)</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for scr in score %}
                         <tr>
                             <td>Question - {{ forloop.counter }}</td>
-                            <td>{{scr.2}}</td>
-                            <td>{{scr.1}}</td>
-                            <td>{{scr.0}}</td>
-                            <td>{% widthratio scr.2 scr.2|add:scr.1 100 %}</td>
-                            <td>{% widthratio scr.0 scr.2|add:scr.1|add:scr.0 100 %}</td>
-                            <td>{{scr.3}}</td>
-                            <td>{{scr.4}}</td>
-                            <td>{{scr.5}}</td>
-                            <td>{{scr.6}}</td>
+                            <td style="text-align: center;">{{scr.2}}</td>
+                            <td style="text-align: center;">{{scr.1}}</td>
+                            <td style="text-align: center;">{{scr.0}}</td>
+                            <td style="text-align: center;">{% widthratio scr.2 scr.2|add:scr.1 100 %}</td>
+                            <td style="text-align: center;">{% widthratio scr.0 scr.2|add:scr.1|add:scr.0 100 %}</td>
+                            <td style="text-align: center;">{{scr.3}}</td>
+                            <td style="text-align: center;">{{scr.4}}</td>
+                            <td style="text-align: center;">{{scr.5}}</td>
+                            <td style="text-align: center;">{{scr.6}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
