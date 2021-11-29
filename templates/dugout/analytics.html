@@ -167,16 +167,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="mb-4 col-xl-4 col-md-6">
+        <div class="mb-4 col-xl-3 col-md-6">
             <div class="py-2 shadow card border-left-primary h-100">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Pearson Correlation
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Gender-Score (Pearson Correlation)
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
-                                <p>r = {{corr_gender.0.0}}</p>
-                                <p>p-value ={{corr_gender.1.0}}</p>
+                                <p>r = {{corr_gender.0.0|floatformat:"4"}}</p>
+                                <p>p-value ={{corr_gender.1.0|floatformat:"4"}}</p>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -186,16 +186,16 @@
                 </div>
             </div>
         </div>
-        <div class="mb-4 col-xl-4 col-md-6">
+        <div class="mb-4 col-xl-3 col-md-6">
             <div class="py-2 shadow card border-left-primary h-100">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Spearman Correlation
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Gender-Score (Spearman Correlation)
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
-                                <p>&Rho; = {{corr_gender.0.1}}</p>
-                                <p>p-value = {{corr_gender.1.1}}</p>
+                                <p>&Rho; = {{corr_gender.0.1|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_gender.1.1|floatformat:"4"}}</p>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -205,16 +205,230 @@
                 </div>
             </div>
         </div>
-        <div class="mb-4 col-xl-4 col-md-6">
+        <div class="mb-4 col-xl-3 col-md-6">
             <div class="py-2 shadow card border-left-primary h-100">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="mr-2 col">
-                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Kendall's Tau Correlation
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Gender-Score (Kendall's Tau Correlation)
                             </div>
                             <div class="mb-0 text-gray-800 h5 font-weight-bold">
-                                <p>&Tau; = {{corr_gender.0.2}}</p>
-                                <p>p-value = {{corr_gender.1.2}}</p>
+                                <p>&Tau; = {{corr_gender.0.2|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_gender.1.2|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Gender-Score Correlation Verdict
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {% if corr_gender.0.0 > 0.7 %}
+                                <p style="color: #45f542;">Strong Positive Correlation</p>
+                                {% elif corr_gender.0.0 > 0.3 %}
+                                <p style="color: #67bd66;">Moderate Positive Correlation</p>
+                                {% elif corr_gender.0.0 > 0.1 %}
+                                <p style="color: #b3c4b3;">Weak Positive Correlation</p>
+                                {% elif corr_gender.0.0 > -0.1 %}
+                                <p>No Correlation</p>
+                                {% elif corr_gender.0.0 > -0.3 %}
+                                <p style="color: #e8c1c7;">Weak Negative Correlation</p>
+                                {% elif corr_gender.0.0 > -0.7 %}
+                                <p style="color: #e36b7d;">Moderate Negative Correlation</p>
+                                {% else %}
+                                <p style="color: #db2742;">Strong Negative Correlation</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score (Pearson Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>r = {{corr_age.0.0|floatformat:"4"}}</p>
+                                <p>p-value ={{corr_age.1.0|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score (Spearman Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Rho; = {{corr_age.0.1|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_age.1.1|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score (Kendall's Tau Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Tau; = {{corr_age.0.2|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_age.1.2|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Age-Score Correlation Verdict
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {% if corr_age.0.0 > 0.7 %}
+                                <p style="color: #45f542;">Strong Positive Correlation</p>
+                                {% elif corr_age.0.0 > 0.3 %}
+                                <p style="color: #67bd66;">Moderate Positive Correlation</p>
+                                {% elif corr_age.0.0 > 0.1 %}
+                                <p style="color: #b3c4b3;">Weak Positive Correlation</p>
+                                {% elif corr_age.0.0 > -0.1 %}
+                                <p>No Correlation</p>
+                                {% elif corr_age.0.0 > -0.3 %}
+                                <p style="color: #e8c1c7;">Weak Negative Correlation</p>
+                                {% elif corr_age.0.0 > -0.7 %}
+                                <p style="color: #e36b7d;">Moderate Negative Correlation</p>
+                                {% else %}
+                                <p style="color: #db2742;">Strong Negative Correlation</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Jumlah Anak-Score (Pearson Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>r = {{corr_child.0.0|floatformat:"4"}}</p>
+                                <p>p-value ={{corr_child.1.0|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Jumlah Anak-Score (Spearman Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Rho; = {{corr_child.0.1|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_child.1.1|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Jumlah Anak-Score (Kendall's Tau Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Tau; = {{corr_child.0.2|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_child.1.2|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Jumlah Anak-Score Correlation Verdict
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {% if corr_child.0.0 > 0.7 %}
+                                <p style="color: #45f542;">Strong Positive Correlation</p>
+                                {% elif corr_child.0.0 > 0.3 %}
+                                <p style="color: #67bd66;">Moderate Positive Correlation</p>
+                                {% elif corr_child.0.0 > 0.1 %}
+                                <p style="color: #b3c4b3;">Weak Positive Correlation</p>
+                                {% elif corr_child.0.0 > -0.1 %}
+                                <p>No Correlation</p>
+                                {% elif corr_child.0.0 > -0.3 %}
+                                <p style="color: #e8c1c7;">Weak Negative Correlation</p>
+                                {% elif corr_child.0.0 > -0.7 %}
+                                <p style="color: #e36b7d;">Moderate Negative Correlation</p>
+                                {% else %}
+                                <p style="color: #db2742;">Strong Negative Correlation</p>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-auto">

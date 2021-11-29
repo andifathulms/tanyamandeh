@@ -196,12 +196,21 @@ class AnalyticsView(LoginRequiredMixin, View):
 
 		score_list = [session.totalScore for session in sessions]
 		gender_list = [1 if session.responden.gender=="L" else 0 for session in sessions]
+		age_list = [session.responden.age for session in sessions]
+		child_list = [session.responden.jumlahanak for session in sessions]
+		
 		x = np.array(score_list)
 		y_gender = np.array(gender_list)
+		y_age = np.array(age_list)
+		y_child = np.array(toNumList(child_list))
 
 		corr_gender = list(zip(scipy.stats.pearsonr(x, y_gender), scipy.stats.spearmanr(x, y_gender), scipy.stats.kendalltau(x, y_gender)))
+		corr_age = list(zip(scipy.stats.pearsonr(x, y_age), scipy.stats.spearmanr(x, y_age), scipy.stats.kendalltau(x, y_age)))
+		corr_child = list(zip(scipy.stats.pearsonr(x, y_child), scipy.stats.spearmanr(x, y_child), scipy.stats.kendalltau(x, y_child)))
+
 		context["corr_gender"] = corr_gender
-		print(corr_gender)
+		context["corr_age"] = corr_age
+		context["corr_child"] = corr_child
 
 		context["score"] = list(question_score_zipped)
 		#context["answer"] = list(question_mark_zipped)
@@ -223,3 +232,16 @@ class AnalyticsView(LoginRequiredMixin, View):
 
 
 		return render(request, 'dugout/analytics.html', context)
+
+def toNumList(arr):
+
+	for n,i in enumerate(arr):
+		if i == "0": arr[n] = 0
+		if i == "1": arr[n] = 1
+		if i == "2": arr[n] = 2
+		if i == "3": arr[n] = 3
+		if i == "4": arr[n] = 4
+		if i == "5": arr[n] = 5
+		if i == "5+": arr[n] = 6
+
+	return arr
