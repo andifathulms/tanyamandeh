@@ -195,22 +195,34 @@ class AnalyticsView(LoginRequiredMixin, View):
 		question_score_zipped = zip(y1,y2,y3,z1,z2,z3,z4)
 
 		score_list = [session.totalScore for session in sessions]
-		gender_list = [1 if session.responden.gender=="L" else 0 for session in sessions]
+		gender_list = [0 if session.responden.gender=="L" else 1 for session in sessions]
 		age_list = [session.responden.age for session in sessions]
 		child_list = [session.responden.jumlahanak for session in sessions]
+		educ_list = [session.responden.educ for session in sessions]
+		educg_list = [session.responden.educg for session in sessions]
+		jobg_list = [session.responden.jobg for session in sessions]
 		
 		x = np.array(score_list)
 		y_gender = np.array(gender_list)
 		y_age = np.array(age_list)
-		y_child = np.array(toNumList(child_list))
+		y_child = np.array(toNumList(child_list,"child"))
+		y_educ = np.array(toNumList(child_list,"educ"))
+		y_educg = np.array(toNumList(child_list,"educg"))
+		y_jobg = np.array(toNumList(child_list,"jobg"))
 
 		corr_gender = list(zip(scipy.stats.pearsonr(x, y_gender), scipy.stats.spearmanr(x, y_gender), scipy.stats.kendalltau(x, y_gender)))
 		corr_age = list(zip(scipy.stats.pearsonr(x, y_age), scipy.stats.spearmanr(x, y_age), scipy.stats.kendalltau(x, y_age)))
 		corr_child = list(zip(scipy.stats.pearsonr(x, y_child), scipy.stats.spearmanr(x, y_child), scipy.stats.kendalltau(x, y_child)))
+		corr_educ = list(zip(scipy.stats.pearsonr(x, y_educ), scipy.stats.spearmanr(x, y_educ), scipy.stats.kendalltau(x, y_educ)))
+		corr_educg = list(zip(scipy.stats.pearsonr(x, y_educg), scipy.stats.spearmanr(x, y_educg), scipy.stats.kendalltau(x, y_educg)))
+		corr_jobg = list(zip(scipy.stats.pearsonr(x, y_jobg), scipy.stats.spearmanr(x, y_jobg), scipy.stats.kendalltau(x, y_jobg)))
 
 		context["corr_gender"] = corr_gender
 		context["corr_age"] = corr_age
 		context["corr_child"] = corr_child
+		context["corr_educ"] = corr_educ
+		context["corr_educg"] = corr_educg
+		context["corr_jobg"] = corr_jobg
 
 		context["score"] = list(question_score_zipped)
 		#context["answer"] = list(question_mark_zipped)
@@ -233,15 +245,36 @@ class AnalyticsView(LoginRequiredMixin, View):
 
 		return render(request, 'dugout/analytics.html', context)
 
-def toNumList(arr):
+def toNumList(arr,code):
+	if(code == "child"):
+		for n,i in enumerate(arr):
+			if i == "0": arr[n] = 0
+			if i == "1": arr[n] = 1
+			if i == "2": arr[n] = 2
+			if i == "3": arr[n] = 3
+			if i == "4": arr[n] = 4
+			if i == "5": arr[n] = 5
+			if i == "5+": arr[n] = 6
+			
+	if(code == "educ"):
+		for n,i in enumerate(arr):
+			if i == "Tidak tamat SD": arr[n] = 0
+			if i == "SD sederajat": arr[n] = 1
+			if i == "SMP sederajat": arr[n] = 2
+			if i == "SMA sederajat": arr[n] = 3
+			if i == "Diploma I/II/III": arr[n] = 4
+			if i == "DIV / S1": arr[n] = 5
+			if i == "S2": arr[n] = 6
+			if i == "S3": arr[n] = 7
 
-	for n,i in enumerate(arr):
-		if i == "0": arr[n] = 0
-		if i == "1": arr[n] = 1
-		if i == "2": arr[n] = 2
-		if i == "3": arr[n] = 3
-		if i == "4": arr[n] = 4
-		if i == "5": arr[n] = 5
-		if i == "5+": arr[n] = 6
+	if(code == "educg"):
+		for n,i in enumerate(arr):
+			if i == "Pendidikan non medis/kesehatan": arr[n] = 0
+			if i == "Pendidikan medis/kesehatan": arr[n] = 1
+
+	if(code == "jobg"):
+		for n,i in enumerate(arr):
+			if i == "Pekerjaan medis/kesehatan": arr[n] = 0
+			if i == "Pekerjaan non medis/kesehatan": arr[n] = 1
 
 	return arr

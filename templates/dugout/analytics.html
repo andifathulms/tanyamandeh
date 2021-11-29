@@ -439,6 +439,279 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan-Score (Pearson Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>r = {{corr_educ.0.0|floatformat:"4"}}</p>
+                                <p>p-value ={{corr_educ.1.0|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan-Score (Spearman Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Rho; = {{corr_educ.0.1|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_educ.1.1|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan-Score (Kendall's Tau Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Tau; = {{corr_educ.0.2|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_educ.1.2|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan-Score Correlation Verdict
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {% if corr_educ.0.0 > 0.7 %}
+                                <p style="color: #45f542;">Strong Positive Correlation</p>
+                                {% elif corr_educ.0.0 > 0.3 %}
+                                <p style="color: #67bd66;">Moderate Positive Correlation</p>
+                                {% elif corr_educ.0.0 > 0.1 %}
+                                <p style="color: #b3c4b3;">Weak Positive Correlation</p>
+                                {% elif corr_educ.0.0 > -0.1 %}
+                                <p>No Correlation</p>
+                                {% elif corr_educ.0.0 > -0.3 %}
+                                <p style="color: #e8c1c7;">Weak Negative Correlation</p>
+                                {% elif corr_educ.0.0 > -0.7 %}
+                                <p style="color: #e36b7d;">Moderate Negative Correlation</p>
+                                {% else %}
+                                <p style="color: #db2742;">Strong Negative Correlation</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan Background-Score (Pearson Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>r = {{corr_educg.0.0|floatformat:"4"}}</p>
+                                <p>p-value ={{corr_educg.1.0|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan Background-Score (Spearman Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Rho; = {{corr_educg.0.1|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_educg.1.1|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan Background-Score (Kendall's Tau Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Tau; = {{corr_educg.0.2|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_educg.1.2|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pendidikan Background-Score Correlation Verdict
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {% if corr_educg.0.0 > 0.7 %}
+                                <p style="color: #45f542;">Strong Positive Correlation</p>
+                                {% elif corr_educg.0.0 > 0.3 %}
+                                <p style="color: #67bd66;">Moderate Positive Correlation</p>
+                                {% elif corr_educg.0.0 > 0.1 %}
+                                <p style="color: #b3c4b3;">Weak Positive Correlation</p>
+                                {% elif corr_educg.0.0 > -0.1 %}
+                                <p>No Correlation</p>
+                                {% elif corr_educg.0.0 > -0.3 %}
+                                <p style="color: #e8c1c7;">Weak Negative Correlation</p>
+                                {% elif corr_educg.0.0 > -0.7 %}
+                                <p style="color: #e36b7d;">Moderate Negative Correlation</p>
+                                {% else %}
+                                <p style="color: #db2742;">Strong Negative Correlation</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pekerjaan Background-Score (Pearson Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>r = {{corr_jobg.0.0|floatformat:"4"}}</p>
+                                <p>p-value ={{corr_jobg.1.0|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pekerjaan Background-Score (Spearman Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Rho; = {{corr_jobg.0.1|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_jobg.1.1|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pekerjaan Background-Score (Kendall's Tau Correlation)
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                <p>&Tau; = {{corr_jobg.0.2|floatformat:"4"}}</p>
+                                <p>p-value = {{corr_jobg.1.2|floatformat:"4"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 col-xl-3 col-md-6">
+            <div class="py-2 shadow card border-left-primary h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="mr-2 col">
+                            <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Pekerjaan Background-Score Correlation Verdict
+                            </div>
+                            <div class="mb-0 text-gray-800 h5 font-weight-bold">
+                                {% if corr_jobg.0.0 > 0.7 %}
+                                <p style="color: #45f542;">Strong Positive Correlation</p>
+                                {% elif corr_jobg.0.0 > 0.3 %}
+                                <p style="color: #67bd66;">Moderate Positive Correlation</p>
+                                {% elif corr_jobg.0.0 > 0.1 %}
+                                <p style="color: #b3c4b3;">Weak Positive Correlation</p>
+                                {% elif corr_jobg.0.0 > -0.1 %}
+                                <p>No Correlation</p>
+                                {% elif corr_jobg.0.0 > -0.3 %}
+                                <p style="color: #e8c1c7;">Weak Negative Correlation</p>
+                                {% elif corr_jobg.0.0 > -0.7 %}
+                                <p style="color: #e36b7d;">Moderate Negative Correlation</p>
+                                {% else %}
+                                <p style="color: #db2742;">Strong Negative Correlation</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid">
