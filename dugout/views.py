@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views import View
 from django.views.generic import DeleteView
 
-from quizTest.models import session, responden, sessionScore
+from quizTest.models import session, responden, sessionScore, sessionMark
 
 from datetime import datetime, date
 
@@ -177,17 +177,24 @@ class AnalyticsView(LoginRequiredMixin, View):
 		variance_session_f_score = sessions.aggregate(Variance('fisikScore'))
 
 		attr_score = ['quest%dScr' % i for i in range(1,88) ]
+		attr_answer = ['quest%dAns' % i for i in range(1,88) ]
 		
-		x = [sessionScore.objects.filter(session__isnull=False).aggregate(Sum(scr)) for scr in attr_score]
+		#session__isnull to check if used as fk, kwargs for using var name i filter
+		#x = [sessionScore.objects.filter(session__isnull=False).aggregate(Sum(scr)) for scr in attr_score]
 		y1 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): -1}).count() for scr in attr_score]
 		y2 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): 0}).count() for scr in attr_score]
 		y3 = [sessionScore.objects.filter(session__isnull=False, **{"{}".format(scr): 1}).count() for scr in attr_score]
 		
-
-		question_score_zipped = zip(y1,y2,y3)
-		#print(list(question_score_zipped))
+		z1 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): -1}).count() for ans in attr_answer]
+		z2 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 1}).count() for ans in attr_answer]
+		z3 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 2}).count() for ans in attr_answer]
+		z4 = [sessionMark.objects.filter(session__isnull=False, **{"{}".format(ans): 3}).count() for ans in attr_answer]
+		question_score_zipped = zip(y1,y2,y3,z1,z2,z3,z4)
+		#question_score_zipped = zip(y1,y2,y3)
+		#question_mark_zipped = zip(z1,z2,z3,z4)
 
 		context["score"] = list(question_score_zipped)
+		#context["answer"] = list(question_mark_zipped)
 
 		context["avg_session_score"] = avg_session_score['totalScore__avg']
 		context["avg_session_k_score"] = avg_session_k_score['kognitifScore__avg']

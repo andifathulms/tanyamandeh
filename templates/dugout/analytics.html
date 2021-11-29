@@ -184,6 +184,10 @@
                             <th>Not Answered</th>
                             <th>Correct %</th>
                             <th>Not Answer %</th>
+                            <th>Option A (Correct)</th>
+                            <th>Option B</th>
+                            <th>Option C</th>
+                            <th>Option D</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -194,6 +198,10 @@
                             <th>Not Answered</th>
                             <th>Correct %</th>
                             <th>Not Answer %</th>
+                            <th>Option A (Correct)</th>
+                            <th>Option B</th>
+                            <th>Option C</th>
+                            <th>Option D</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -205,6 +213,10 @@
                             <td>{{scr.0}}</td>
                             <td>{% widthratio scr.2 scr.2|add:scr.1 100 %}</td>
                             <td>{% widthratio scr.0 scr.2|add:scr.1|add:scr.0 100 %}</td>
+                            <td>{{scr.3}}</td>
+                            <td>{{scr.4}}</td>
+                            <td>{{scr.5}}</td>
+                            <td>{{scr.6}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
