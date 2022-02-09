@@ -79,7 +79,7 @@ function getOptionOrder(){
 	for (let j = 0; j < quiz.length; j++){
 		for (let i = 0; i < 4; i++){
 			const num = numArray[Math.floor(Math.random() * numArray.length)];
-			//console.log(num);
+			
 			tempArray.push(num);
 			const index = numArray.indexOf(num);
 			numArray.splice(index,1);
@@ -115,7 +115,7 @@ function getNewQuestion(){
 		const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
 		const index2 = availableOptions.indexOf(optionIndex);
 		availableOptions.splice(index2,1);
-		//console.log(optionIndex)
+		
 		const option = document.createElement("div");
 		option.innerHTML = currentQuestion.options[optionIndex];
 		option.id = optionIndex;
@@ -159,15 +159,15 @@ function getQuestionNo(page){
 			}
 		}
 	}
-	console.log(questionOrder);
+	
 }
 
 function pushAllQuestion(){
 	let questionIndex = "";
 	for(let i=0; i<quiz.length; i++){
-		console.log(i);
+		
 		questionIndex = availableQuestion[arrayReady[i]];
-		console.log(questionIndex);
+		
 		questionOrder.push(questionIndex.id);
 	}
 }
@@ -183,15 +183,10 @@ function getSelect(id){
 		}
 	}
 	
-	console.log(currentPage-1);
-	console.log("This : " + questionOrder[currentPage-1]);
+	
+	
 	if(id == currentQuestion.answer){
 		questSieve[questionOrder[currentPage-1]] = 1;
-		/*
-		if(currentQuestion.category == "Chess"){correctChess++;}
-		if(currentQuestion.category == "Football"){correctFootball++;}
-		if(currentQuestion.category == "Geography"){correctGeography++;}
-		if(currentQuestion.category == "Math"){correctMath++;}*/
 		if(currentQuestion.category == "Aspek Kognititf"){correctKognitif++;}
 		if(currentQuestion.category == "Aspek Sosio Emosional"){correctSosio++;}
 		if(currentQuestion.category == "Aspek Fisik"){correctFisik++;}
@@ -205,10 +200,10 @@ function getSelect(id){
 }
 
 function getResult(element){
-	//console.log(element);
+	
 	const id = parseInt(element.id);
 	questAnsw[questionOrder[currentPage-1]] = id;
-	//console.log(questAnsw);
+	
 	if(id === currentQuestion.answer){
 		element.classList.add("correct");
 		updateAnswerIndicator("correct");
@@ -226,8 +221,7 @@ function getResult(element){
 			}
 		}
 	}
-	//console.log(questSieve);
-	// remove later
+	
 	attempt++;
 	unclickableOptions();
 }
@@ -652,7 +646,7 @@ function postComment(event, eventElement){
 		text = "Pastikan saran anda melebihi 10 karakter"
 	}
 	commentStatus.innerHTML = text;
-	console.log(userDataParse.nama);
+	
 }
 
 function closeDialog(){
@@ -709,16 +703,7 @@ function handleFormSubmit(event, eventElement){
 	event.preventDefault();
 	const data = formToJSON(form.elements);
 	userData = JSON.stringify(data, null, ' ');
-	/*
-	$.getJSON('https://ipapi.co/json/', function(data) {
-	  //console.log(JSON.stringify(data, null, 2));
-	    $.each( data, function( key, val ) {
-		    //items.push( "<li id='" + key + "'>" + val + "</li>" );
-		    jsonIP[key] = val;
-		  });
-	});*/
-	//console.log(jsonIP);
-	//send through ajax
+	
 	$.ajax({
 		type: 'POST',
 		url: $(eventElement).data('url'),
@@ -739,7 +724,7 @@ function handleFormSubmit(event, eventElement){
 	       //console.log(errorThrown);
 	    }
 	});
-	console.log(userData);
+	
 }
 function removeOptions(selectElement) {
    var i, L = selectElement.options.length - 1;
@@ -765,7 +750,7 @@ function getKab(eventElement){
 		url: $(eventElement).data('url'),
 		success: function(response){
 			removeOptions(document.getElementById('kabupaten'));
-	        console.log(response.data) //works here
+	        
 	        const carsData = response.data
 	        carsData.map(item=>{
 	        	const option = document.createElement('option')
@@ -777,10 +762,10 @@ function getKab(eventElement){
 	    },
 		complete: function (){
 			console.log("ok");
-			//removeOptions($("#kabupaten"));
+			
 		},
 		error: function(jqXHR, textStatus, errorThrown) { 
-	       //console.log(errorThrown);
+	       
 	    }
 	});
 }
@@ -801,7 +786,7 @@ $(document).ready(function() {
 				getKab();
 			},
 			error: function(jqXHR, textStatus, errorThrown) { 
-		       //console.log(errorThrown);
+		       
 		    }
 		});
 	});
@@ -809,11 +794,10 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#children").on('change', function(eventElement) {
-		//alert( this.value );
-		//send through ajax
+		
 		document.getElementById("childrenage1").removeAttribute("disabled");
 		document.getElementById("childrenage2").removeAttribute("disabled");
-		console.log(this.value);
+		
 		if(this.value == "0"){
 			document.getElementById("childrenage1").value = "-";
 			document.getElementById("childrenage2").value = "-";
@@ -842,7 +826,7 @@ function questionOrderToDict(){
 }
 
 function submitQuiz(event, eventElement){
-	console.log("In Submit")
+	
 	event.preventDefault();
 	questionOrderToDict();
 	quizOrder = JSON.stringify(questOrderDict, null, ' ');
@@ -874,7 +858,7 @@ function submitQuiz(event, eventElement){
 			}
 		},
 		complete: function(){
-			console.log("Complete Submit Quiz")
+			
 		},
 		error: function(jqXHR, textStatus, errorThrown) { 
 	       //console.log(errorThrown);

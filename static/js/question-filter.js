@@ -5,7 +5,7 @@
 
 const quiz = [
 	{
-		id: 2,
+		id: 1,
 		q:'Anak berusia 1 bulan mengkomunikasikan kebutuhannya seperti lapar, basah, tidak nyaman melalui',
 		options:['Menangis', 'Menggeliat', 'Mengendus', 'Menggerakkan tangannya'],
 		answer: 0,
@@ -13,7 +13,7 @@ const quiz = [
 		paralel: '1-Sosio'
 	},
 	{
-		id: 4,
+		id: 2,
 		q:'Respon yang akan ditunjukan oleh anak usia 1-4 bulan pada saat berinteraksi dengan orang yang familiar dengannya adalah, <strong>kecuali</strong>',
 		options:['Anak hanya diam saja sambil sesekali menatap ke sumber suara ', 
 			     'Anak akan meresponnya dengan mengeluarkan suara ',
@@ -24,7 +24,7 @@ const quiz = [
 		paralel: '2-Kognitif'
 	},
 	{
-		id: 7,
+		id: 3,
 		q:'Respon yang ditunjukan oleh anak yang berusia 1-4 bulan sebagai bentuk kegiatan dalam  mengenal lingkungannya, <strong>kecuali</strong>',
 		options:['Anak yang masih menangis pada saat kebutuhannya sudah dipenuhi oleh orang tua ', 
 			     'Anak memanjangkan kontak mata saat menatap orang tua ',
@@ -35,7 +35,7 @@ const quiz = [
 		paralel: '3-Kognitif'
 	},
 	{
-		id: 9,
+		id: 4,
 		q:'Respon belajar yang ditunjukan oleh anak usia 4-6 bulan  pada saat dihadapkan mainan gemerincing di dekatnya yaitu ',
 		options:['Menatap mainan tersebut dan menggoncangkan mainan tersebut berulang kali',
 				 'Menatap mainan tersebut dan membiarkannya saja',
@@ -46,7 +46,7 @@ const quiz = [
 		paralel: '4-Kognitif'
 	},
 	{
-		id: 12,
+		id: 5,
 		q:'Berikut ini yang <strong>tidak termasuk</strong> dalam respon kemampuan belajar anak usia 4-8 bulan  ketika ditunjukan sebuah mainan yang bersuara atau bergerak yaitu ',
 		options:['Menatap kemudian diam saja', 'Menggoyangkan mainan ', 'Melemparkan mainan', 'Memegang mainan dan menatap'],
 		answer: 0,
@@ -54,7 +54,7 @@ const quiz = [
 		paralel: '5-Kognitif'
 	},
 	{
-		id: 13,
+		id: 6,
 		q:"Respon yang ditunjukan oleh anak berusia 0 bulan pada saat pipinya disentuh yaitu",
 		options:['Anak menoleh ke arah kepalanya ke sumber sentuhan itu datang',
 				 'Anak hanya diam dan tidak merasa terganggu',
@@ -65,7 +65,7 @@ const quiz = [
 		paralel: '5-Fisik'
 	},
 	{
-		id: 14,
+		id: 7,
 		q:'Salah satu bentuk respon yang ditunjukan oleh anak usia 4-6 bulan pada saat ia belajar untuk mengeluarkan suara tertentu dalam menanggapi orang tuanya adalah ',
 		options:['Anak merespon dengan mengoceh meskipun belum jelas',
 			 	 'Anak selalu merespon menangis',
@@ -76,7 +76,7 @@ const quiz = [
 		paralel: '6-Kognitif'
 	},
 	{
-		id: 15,
+		id: 8,
 		q:'Berikut ini yang <strong>bukan</strong> termasuk perkembangan emosi yang sudah ditunjukan anak usia 1-3 bulan yaitu :',
 		options:['Tidak  tersenyum atau menatap ketika orang tua tersenyum padanya ',
 				 'Tersenyum ketika melihat orang tuanya tersenyum',
@@ -87,7 +87,7 @@ const quiz = [
 		paralel: '6-Sosio'
 	},
 	{
-		id: 16,
+		id: 9,
 		q:"Respon yang ditunjukan oleh anak berusia 0 bulan pada saat mendengar suara yang sangat keras yaitu",
 		options:['Menunjukan respon anak terkejut dengan ada hentakan badan saat tertidur ',
 				 'Tidak menunjukan respon pada saat anak tertidur',
@@ -98,7 +98,7 @@ const quiz = [
 		paralel: '6-Fisik'
 	},
 	{
-		id: 18,
+		id: 10,
 		q:'Respon yang ditunjukan anak usia 3 bulan pada saat orang tuanya melakukan cilukba adalah',
 		options:['Menunjukan ekpresi tertarik, berespon senyum saat orang tua melakukan permainan dengan kontak mata yang terjalin',
 				 'Diam, hanya menjalin kontak mata dengan orang tua',
@@ -109,7 +109,7 @@ const quiz = [
 		paralel: '7-Sosio'
 	},
 	{
-		id: 19,
+		id: 11,
 		q:"Berikut ini kemampuan signifikan yang terlihat pada anak usia 1-4 bulan, <strong>kecuali</strong>",
 		options:['Anak sudah mulai bisa duduk dengan dibantu',
 				 'Anak sudah menunjukan pola tidur yang lebih terjadwal',
@@ -120,7 +120,7 @@ const quiz = [
 		paralel: '7-Fisik'
 	},
 	{
-		id: 21,
+		id: 12,
 		q:'Berikut ini kemampuan yang ditunjukan anak usia 3 bulan pada saat melihat benda bergerak di depan matanya yaitu :',
 		options:['Menunjukan ekpresi tertarik dengan fokus melihat kearah mana benda itu akan bergerak ',
 				 'Diam, tidak menunjukan ekpresi ketertarikan',
@@ -131,7 +131,7 @@ const quiz = [
 		paralel: '8-Sosio'
 	},
 	{
-		id: 23,
+		id: 13,
 		q:'Respon yang ditunjukan oleh anak berusia 8-12 bulan pada saat ditunjukan suatu benda kepada dirinya yang kemudian tiba tiba dihilangkan dari pandangannya adalah',
 		options:['Anak menunjukan respon seperti mencari benda/atau mainan tersebut',
 			 	 'Anak hanya diam saja tanpa respon',
@@ -142,7 +142,7 @@ const quiz = [
 		paralel: '9-Kognitif'
 	},
 	{
-		id: 24,
+		id: 14,
 		q:'Berikut ini kemampuan sosial yang ditunjukan anak usia 1-3 bulan yaitu',
 		options:['Cooing, menggeliat, mengeluarkan suara dan menggerakan kaki dan tangan sambil membangun kontak mata',
 				 'Banyak menunjukan ekpresi marah  dan kondisi yang tidak nyaman',
@@ -153,7 +153,7 @@ const quiz = [
 		paralel: '9-Sosio'
 	},
 	{
-		id: 28,
+		id: 15,
 		q:"Respon yang ditunjukan oleh anak yang berusia 3-5 bulan saat melihat benda bergerak yang dihadapkan di depan mukanya yaitu ",
 		options:['Mengikuti kemana benda itu bergerak dan berusaha untuk menggapainya',
 				 'Mengangkat kedua kakinya melengkungkan badan dengan menggunakan tangannya',
@@ -164,7 +164,7 @@ const quiz = [
 		paralel: '10-Fisik'
 	},
 	{
-		id: 32,
+		id: 16,
 		q:"Berikut ini kemampuan yang sudah bisa ditunjukan oleh anak yang sudah memiliki kekuatan pada otot lehernya di usia 1-4 bulan, <strong>kecuali</strong>",
 		options:['Anak menegakkan kepalanya pada saat duduk sendiri',
 				 'Anak memutar kepalanya saat mengamati benda yang bergerak yang dihadapkan ke depan wajahnya',
@@ -175,7 +175,7 @@ const quiz = [
 		paralel: '12-Fisik'
 	},
 	{
-		id: 44,
+		id: 17,
 		q:"Berikut ini yang <strong>bukan</strong> kemampuan motorik yang ditunjukan oleh anak berusia 6-9 bulan adalah",
 		options:['Berjalan dengan satu atau dua langkah',
 				 'Duduk sendiri tanpa bantuan',
@@ -186,7 +186,7 @@ const quiz = [
 		paralel: '16-Fisik'
 	},
 	{
-		id: 45,
+		id: 18,
 		q:'Berikut ini perkembangan kemampuan belajar yang ditunjukan oleh anak usia 13-18 bulan, <strong>kecuali</strong>',
 		options:['Anak mampu mengenali warna dasar',
 			 	 'Anak gemar membongkar barang-barang dari tempatnya',
@@ -197,7 +197,7 @@ const quiz = [
 		paralel: '17-Kognitif'
 	},
 	{
-		id: 46,
+		id: 19,
 		q:'Ekspresi emosi yang ditunjukan anak usia 6-9  bulan  pada saat ia kehilangan benda atau objek yang menarik yaitu ',
 		options:['Menunjukan ekpresi marah yang dramatis bisa dengan ekpresi menangis',
 				 'Hanya diam saja dan tidak menunjukan ekpresi apapun',
@@ -208,7 +208,7 @@ const quiz = [
 		paralel: '17-Sosio'
 	},
 	{
-		id: 48,
+		id: 20,
 		q:'Pada saat orang tua menanyakan salah satu bagian tubuh dirinya, respon yang ditunjukan oleh anak berusia 13-18 bulan yaitu',
 		options:['Menunjukan bagian tubuh yang dimaksud oleh orang tua',
 			 	 'Menunjukan bagian tubuh lain yang bukan dimaksudkan oleh orang tua ',
@@ -219,7 +219,7 @@ const quiz = [
 		paralel: '18-Kognitif'
 	},
 	{
-		id: 50,
+		id: 21,
 		q:"Salah satu  pencapaian penting yang ditujukan oleh anak yang sdh berusia 9-12 bulan yaitu kemampuan untuk berjalan, berikut pernyataan yang mendukung hal ini <strong>kecuali</strong> ",
 		options:['Anak yang mampu berjalan tidak perlu untuk mahir duduk terlebih dahulu',
 				 'Anak mampu berjalan 9-12 bulan dengan variasi masing-masing anak dlm mencapainya sekitar 2-4 bulan',
@@ -230,7 +230,7 @@ const quiz = [
 		paralel: '18-Fisik'
 	},
 	{
-		id: 55,
+		id: 22,
 		q:'Reaksi emosi yang ditunjukan oleh anak usia 9-12 bulan ketika bermain bersama dengan orang tuanya adalah',
 		options:['Adanya kontak mata dan menunjukan ekpresi emosi positif seperti tawa yang lepas',
 				 'Sesekali tertawa dan sesekali kontak mata',
@@ -241,7 +241,7 @@ const quiz = [
 		paralel: '20-Sosio'
 	},
 	{
-		id: 59,
+		id: 23,
 		q:"Berikut ini kemampuan penting dalam perkembangan  motorik anak berusia 13-18 bulan , <strong>kecuali</strong>",
 		options:['Anak masih memerlukan bantuan orang tua dalam berjalan ',
 				 'Anak gemar mencoret-coret',
@@ -252,7 +252,7 @@ const quiz = [
 		paralel: '21-Fisik'
 	},
 	{
-		id: 60,
+		id: 24,
 		q:'Salah satu bentuk peningkatan kontrol motorik anak pada usia 18-24 bulan adalah ',
 		options:['Anak mampu mampu meletakkan berbagai bentuk (lingkaran, persegi) dalam papan cetak',
 			 	 'Anak mampu menggenggam benda yang ada didekatnya',
@@ -263,7 +263,7 @@ const quiz = [
 		paralel: '22-Kognitif'
 	},
 	{
-		id: 61,
+		id: 25,
 		q:'Berikut ini kemampuan sosial emosi dalam merespon interaksi sosial yang ditunjukan anak usia 9-12 bulan, <strong>kecuali</strong>',
 		options:['Anak sulit melakukan kontak mata dan lebih memilih untuk bermain sendiri dengan mainannya',
 				 'Anak akan banyak merespon senyum saat menanggapi orang tuanya dengan senyuman pipi mengangkat',
@@ -274,7 +274,7 @@ const quiz = [
 		paralel: '22-Sosio'
 	},
 	{
-		id: 62,
+		id: 26,
 		q:"Respon dari anak saat berusia 13-18 bulan saat melihat orang dewasa  melakukan gerakan ",
 		options:['Menepuk tangan dan ikut meniru gerakan orang dewasa tersebut ',
 				 'Hanya diam tanpa banyak merespon',
@@ -285,7 +285,7 @@ const quiz = [
 		paralel: '22-Fisik'
 	},
 	{
-		id: 63,
+		id: 27,
 		q:'Berikut ini yang termasuk respon anak usia 13 bulan  yang menunjukan kemampuannya dalam memahami kata-kata yang disampaikan oleh orang tua <strong>kecuali</strong> ',
 		options:['Saat orang tua bertanya tentang cara memainkan bola maka ia akan menjawab dengan menggunakan 3-4 kata ',
 			 	 'Saat orang tua berkata “ayo kemari” anak akan berespon dan mendekati orang tua ',
@@ -296,7 +296,7 @@ const quiz = [
 		paralel: '23-Kognitif'
 	},
 	{
-		id: 64,
+		id: 28,
 		q:'Berikut ini perkembangan emosi dan sosial  yang sudah bisa ditunjukan oleh anak usia 12-18 bulan, <strong>kecuali</strong> ',
 		options:['Tidak menangis pada saat ditinggal oleh orang tuanya',
 				 'Mencari-cari orang tuanya, atau melihat kearah orang tuanya pada saat ia bermain di lingkungan baru',
@@ -307,7 +307,7 @@ const quiz = [
 		paralel: '23-Sosio'
 	},
 	{
-		id: 65,
+		id: 29,
 		q:"Pada  usia  13-18 bulan, anak sudah mulai bisa melepas kaus kaki dan sepatu namun tidak bisa memasangnya kembali, pertanyaan berikut menunjukkan ",
 		options:['Anak sudah menujukkan kemampuan motorik halus yang sesuai usianya ',
 				 'Anak belum menunjukkan kemampuan motorik halus yang  sesuai dengan usianya',
@@ -318,7 +318,7 @@ const quiz = [
 		paralel: '23-Fisik'
 	},
 	{
-		id: 66,
+		id: 30,
 		q:'Anak usia 18-24 bulan mulai gemar menikmati permainan menempatkan  benda-benda ke dalam tempatnya seperti permainan menempatkan balok yang sesuai dengan bentuknya. Pernyataan tersebut itu berarti',
 		options:['Anak sudah menunjukan perkembangan dalam kemampuan belajarnya yang sesuai dengan usianya',
 			 	 'Anak tidak menunjukan kemampuan belajar yang sesuai dengan usianya',
@@ -329,7 +329,7 @@ const quiz = [
 		paralel: '24-Kognitif'
 	},
 	{
-		id: 69,
+		id: 31,
 		q:'Respon yang diberikan anak yang berusia 18-24 bulan  Ketika berdiri dihadapan cermin, yaitu  ',
 		options:['Tersenyum saat menyadari dirinya dan mulai mengujungi beberapa kali untuk memastikan dirinya yang berada di cermin',
 			 	 'Tidak memberikan respon apapun',
@@ -340,7 +340,7 @@ const quiz = [
 		paralel: '25-Kognitif'
 	},
 	{
-		id: 70,
+		id: 32,
 		q:'Berikut ini upaya yang ditunjukan oleh anak yang berusia 12-18 bulan dalam membangun interaksi sosial dengan pengasuhnya, <strong>kecuali</strong>',
 		options:['Anak akan berguling-guling tanpa penyebab kondisi yang jelas',
 				 'Anak akan menggunakan gestur atau menyebutkan satu kata dari apa yang dia inginkan atua dia tanyakan dengan melihat ke orang tua',
@@ -351,7 +351,7 @@ const quiz = [
 		paralel: '25-Sosio'
 	},
 	{
-		id: 71,
+		id: 33,
 		q:"Berikut ini kemampuan-kemampuan yang sudah bisa ditunjukan oleh anak usia 18-24 dalam hal perkembangan fisiknya, <strong>kecuali</strong>",
 		options:['Berjalan dengan satu kaki tanpa adanya bantuan',
 				 'Mulai belajar dalam melakukan toilet training',
@@ -362,7 +362,7 @@ const quiz = [
 		paralel: '25-Fisik'
 	},
 	{
-		id: 75,
+		id: 34,
 		q:'Respon yang sudah ditunjukan oleh anak usia 18-24 bulan pada saat orang tua menanyakan benda-benda yang familiar di rumahnya yaitu ',
 		options:['Anak menunjukan benda yang dimaksud dengan benar',
 			 	 'Anak hanya diam dan tidak merespon, mengalihkan pandangan',
@@ -373,7 +373,7 @@ const quiz = [
 		paralel: '27-Kognitif'
 	},
 	{
-		id: 78,
+		id: 35,
 		q:'Berikut ini kemampuan belajar yang sudah dimiliki anak berusianya 18-24 bulan, <strong>kecuali</strong>',
 		options:['Anak bisa menggunakan sepeda tanpa bantuan ',
 			 	 'Anak mampu membalikan halaman buku dan menunjukan gambar yang tepat yang ditanyakan oleh orang tua',
@@ -384,7 +384,7 @@ const quiz = [
 		paralel: '28-Kognitif'
 	},
 	{
-		id: 80,
+		id: 36,
 		q:"Anak yang berusia 18-24 bulan pada saat diberikan kertas dan baru bisa mengguakan alat tulis dengan membuat coretan, artinya",
 		options:['Anak menunjukan perkembangan motorik halus yang sudah sesuai dengan usianya',
 				 'Anak menunjukan perkembangan motorik halus yang belum sesuai dengan usianya',
@@ -395,7 +395,7 @@ const quiz = [
 		paralel: '28-Fisik'
 	},
 	{
-		id: 82,
+		id: 37,
 		q:'Kemampuan sosial dalam bermain yang ditunjukan oleh anak usia 18-24 bulan, <strong>kecuali</strong>',
 		options:['Anak enggan untuk bermain dengan menunjukan perilaku yang berguling-guling dan emosi yang intens',
 				 'Anak mampu untuk bermain sendiri  dengan mainan yang tampak dan disediakan oleh orang tua',
@@ -406,7 +406,7 @@ const quiz = [
 		paralel: '29-Sosio'
 	},
 	{
-		id: 83,
+		id: 38,
 		q:"Anak yang sudah mulai bisa menggerakan badannya  dari duduk kemudian berdiri dan berjalan sendiri diusia 18-24, pernyataan yang tidak mendukung yaitu",
 		options:['Anak sedang berlatih dalam memahirkan kemampuan motoric halusnya',
 				 'Anak sudah menunjukan pengendalian tubuh bagian bawah yang cukup kuat diusianya',
@@ -417,7 +417,7 @@ const quiz = [
 		paralel: '29-Fisik'
 	},
 	{
-		id: 85,
+		id: 39,
 		q:'Anak pada usia 18 bulan anak akan menunjukan ketergantungan pada sosok orang tuanya, selalu ingin berada di dekat dan ingin dipenuhi segala keinginannya dan  ingin ditenangkan saat menangis, pernyataan tersebut menunjukan bahwa',
 		options:['Anak menunjukan perkembangan emosi yang sesuai dengan usianya',
 				 'Anak tidak menunjukan perkembangan emosi yang sesuai dengan usianya',
@@ -428,7 +428,7 @@ const quiz = [
 		paralel: '30-Sosio'
 	},
 	{
-		id: 87,
+		id: 40,
 		q:'Berikut ini yang <strong>bukan</strong> termasuk capaian perkembangan sosial emosi anak usia 12-24 bulan yaitu',
 		options:['Anak selalu menggunakan gesture saat menunjukan sesuatu dan tidak pernah memverbalkan apa yang diinginkannya',
 				 'Anak sering kali meniru aktivitas yang sering dikerjakan oleh orang tua',
