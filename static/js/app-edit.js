@@ -165,50 +165,17 @@ function getQuestionNo(page){
 function pushAllQuestion(){
 	let questionIndex = "";
 	for(let i=0; i<quiz.length; i++){
-		//console.log(i);
-		questionIndex = availableQuestion[arrayReady[i]];
-		//console.log(questionIndex);
-		questionOrder.push(questionIndex.id);
-	}
-}
-
-function pushAllQuestionRe(){
-	let questionIndex = "";
-	for(let i=0; i<quiz.length; i++){
 		console.log(i);
-		questionIndex = availableQuestion[arrayReady[i]-1];
+		questionIndex = availableQuestion[arrayReady[i]];
 		console.log(questionIndex);
 		questionOrder.push(questionIndex.id);
 	}
 }
 
-function getFuckingCorrectNumber(){
-	var ckog = 0;
-	var csos = 0;
-	var cfis = 0;
-	for (const [key, value] of Object.entries(questSieve)) {
-		let question = availableQuestion[arrayReady[key-1]];
-		if (value == 1){
-			attempt++;
-			if(question.category == "Aspek Kognititf"){ckog++;}
-			if(question.category == "Aspek Sosio Emosional"){csos++;}
-			if(question.category == "Aspek Fisik"){cfis++;}
-		}
-		if (value == 0){
-			attempt++;
-		}
-	}
-	correctKognitif = ckog;
-	correctFisik = cfis;
-	correctSosio = csos;
-	correctAnswer = ckog+cfis+csos;
-}
-
-let flag = false;
-function getSelect(id, eventElement){
+function getSelect(id){
 	options = optionContainer.getElementsByClassName("option");
 	questAnsw[questionOrder[currentPage-1]] = id;
-
+	
 	for (let i=0; i<options.length; i++){
 		options[i].classList.remove("selected");
 		if (options[i].id === id){
@@ -216,10 +183,9 @@ function getSelect(id, eventElement){
 		}
 	}
 	
-	//console.log(currentPage-1);
-	//console.log("This : " + questionOrder[currentPage-1]);
+	console.log(currentPage-1);
+	console.log("This : " + questionOrder[currentPage-1]);
 	if(id == currentQuestion.answer){
-		flag = true;
 		questSieve[questionOrder[currentPage-1]] = 1;
 		/*
 		if(currentQuestion.category == "Chess"){correctChess++;}
@@ -231,47 +197,8 @@ function getSelect(id, eventElement){
 		if(currentQuestion.category == "Aspek Fisik"){correctFisik++;}
 
 	}else{
-		//console.log("else");
 		questSieve[questionOrder[currentPage-1]] = 0;//-1
-		
-		if (flag){
-			//console.log("flag");
-			if(currentQuestion.category == "Aspek Kognititf"){correctKognitif--;}
-			if(currentQuestion.category == "Aspek Sosio Emosional"){correctSosio--;}
-			if(currentQuestion.category == "Aspek Fisik"){correctFisik--;}
-		}
-		flag = false;
 	}
-
-	event.preventDefault();
-	quizOrder = JSON.stringify(arrayReady, null, ' ');
-	quizAnswer = JSON.stringify(questSieve, null, ' ');
-	quizChoice = JSON.stringify(questAnsw, null, ' ');
-	quizOption = JSON.stringify(optionReady, null, ' ');
-	//console.log(quizAnswer);
-	$.ajax({
-		type: 'POST',
-		url: $(eventElement).data('url'),
-		dataType: 'json',
-		data: {
-			'id' : 6,
-			'quizOrder' : quizOrder,	
-			'quizAnswer' : quizAnswer,
-			'quizChoice' : quizChoice,
-			'quizOption' : quizOption,
-		},
-		success: function (data){
-			if (data.msg === "Success"){
-				alert('Form is submitted');
-			}else{
-				alert('AJAX failed');
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown) { 
-	       //console.log(errorThrown);
-	    }
-	});
-
 	timercounter++;
 	timerLine(timercounter);
 	updateAnswerIndicator("selected");
@@ -326,11 +253,6 @@ function updateAnswerIndicator(mark){
 	answerIndicatorContainer.children[currentPage-1].classList.add(mark);
 }
 
-function updateAnswerIndicatorInAdvance(mark,page){
-	answerIndicatorContainer.children[page-1].classList.add(mark);
-}
-
-
 function next(){
 	currentPage++;
 	if(currentPage-1 === quiz.length){
@@ -379,7 +301,7 @@ function quizOver(){
 }
 
 function quizResult(){
-	getFuckingCorrectNumber();
+	countResult();
 	resultBox.querySelector(".total-question").innerHTML = quiz.length;
 	resultBox.querySelector(".total-attempt").innerHTML = attempt;
 	resultBox.querySelector(".total-correct").innerHTML = correctAnswer;
@@ -387,13 +309,17 @@ function quizResult(){
 	const percentage = (correctAnswer/quiz.length)*100;
 	resultBox.querySelector(".percentage").innerHTML = percentage.toFixed(2) + "%";
 	resultBox.querySelector(".total-score").innerHTML = correctAnswer + " / " + quiz.length;
-	
+	/*
+	resultBox.querySelector(".chess").innerHTML = correctChess + " / 4 (" + (correctChess/4)*100 + "%)";
+	resultBox.querySelector(".football").innerHTML = correctFootball + " / 4 (" + (correctFootball/4)*100 + "%)";
+	resultBox.querySelector(".geography").innerHTML = correctGeography + " / 4 (" + (correctGeography/4)*100 + "%)";
+	resultBox.querySelector(".math").innerHTML = correctMath + " / 4 (" + (correctMath/4)*100 + "%)";*/
 	const kogScore = correctKognitif*100/29
 	const sosScore = correctSosio*100/30
 	const fisScore = correctFisik*100/28
-	resultBox.querySelector(".kognitif").innerHTML = correctKognitif + " / 29 (" + kogScore.toFixed(2) + "%)";
-	resultBox.querySelector(".sosio").innerHTML = correctSosio + " / 30 (" + sosScore.toFixed(2) + "%)";
-	resultBox.querySelector(".fisik").innerHTML = correctFisik + " / 28 (" + fisScore.toFixed(2) + "%)";
+	resultBox.querySelector(".kognitif").innerHTML = correctKognitif + " / 14 (" + kogScore.toFixed(2) + "%)";
+	resultBox.querySelector(".sosio").innerHTML = correctSosio + " / 13 (" + sosScore.toFixed(2) + "%)";
+	resultBox.querySelector(".fisik").innerHTML = correctFisik + " / 13 (" + fisScore.toFixed(2) + "%)";
 	kognitifText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait bagaimana proses berfikir dan belajar anak usia 0-2 tahun sebesar <strong>" + kogScore.toFixed(2) + "%</strong>"
 	sosioText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait  kemampuan anak usia 0-2 tahun dalam berinteraksi sosial dan emosi sebesar <strong>" + sosScore.toFixed(2) + "%</strong>"
 	fisikText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait kemampuan  anak usia 0-2 tahun dalam menggunakan gerak tubuhnya sebesar <strong>" + fisScore.toFixed(2) + "%</strong>"
@@ -565,14 +491,14 @@ function showRegister(){
 }
 
 
-function startQuiz(eventElement){
+function startQuiz(){
 	setQuestAnswSieve();
-	//console.log(questAnsw);
+	console.log(questAnsw);
 	currentPage++;
 	getQuestionOrder()
-	//console.log(arrayReady);
+	console.log(arrayReady);
 	getOptionOrder()
-	//console.log(optionReady);
+	console.log(optionReady);
 	homeBox.classList.add("hide");
 	quizBox.classList.remove("hide");
 	menu.classList.remove("hide");
@@ -583,9 +509,9 @@ function startQuiz(eventElement){
 	clearInterval(counter);
     clearInterval(counterLine);
 	startTimer(quizTime);
+	startTimerLine(0);
 	loadAudio();
 	resumeAudio();
-	startTimerLine(0);
 }
 
 function loadAudio(){
@@ -658,7 +584,7 @@ function startTimerLine(time){
 */
 
 function timerLine(attempt){
-	time_line.style.width = Math.floor(attempt*100/87) + "%";
+	time_line.style.width = Math.floor(attempt*100/40) + "%";
 }
 
 function countAttempt(){
@@ -714,7 +640,7 @@ function postComment(event, eventElement){
 				}
 			},
 			complete: function(){
-				//console.log("Complete Submit Comment")
+				console.log("Complete Submit Comment")
 			},
 			error: function(jqXHR, textStatus, errorThrown) { 
 		       //console.log(errorThrown);
@@ -726,7 +652,7 @@ function postComment(event, eventElement){
 		text = "Pastikan saran anda melebihi 10 karakter"
 	}
 	commentStatus.innerHTML = text;
-	//console.log(userDataParse.nama);
+	console.log(userDataParse.nama);
 }
 
 function closeDialog(){
@@ -813,7 +739,7 @@ function handleFormSubmit(event, eventElement){
 	       //console.log(errorThrown);
 	    }
 	});
-	//console.log(userData);
+	console.log(userData);
 }
 function removeOptions(selectElement) {
    var i, L = selectElement.options.length - 1;
@@ -839,7 +765,7 @@ function getKab(eventElement){
 		url: $(eventElement).data('url'),
 		success: function(response){
 			removeOptions(document.getElementById('kabupaten'));
-	        //console.log(response.data) //works here
+	        console.log(response.data) //works here
 	        const carsData = response.data
 	        carsData.map(item=>{
 	        	const option = document.createElement('option')
@@ -850,7 +776,7 @@ function getKab(eventElement){
 	        })
 	    },
 		complete: function (){
-			//console.log("ok");
+			console.log("ok");
 			//removeOptions($("#kabupaten"));
 		},
 		error: function(jqXHR, textStatus, errorThrown) { 
@@ -887,7 +813,7 @@ $(document).ready(function() {
 		//send through ajax
 		document.getElementById("childrenage1").removeAttribute("disabled");
 		document.getElementById("childrenage2").removeAttribute("disabled");
-		//console.log(this.value);
+		console.log(this.value);
 		if(this.value == "0"){
 			document.getElementById("childrenage1").value = "-";
 			document.getElementById("childrenage2").value = "-";
@@ -923,8 +849,6 @@ function submitQuiz(event, eventElement){
 	quizAnswer = JSON.stringify(questSieve, null, ' ');
 	quizChoice = JSON.stringify(questAnsw, null, ' ');
 	
-	var respondenID = getCookie("idResponden");
-
 	//send through ajax
 	$.ajax({
 		type: 'POST',
@@ -932,7 +856,6 @@ function submitQuiz(event, eventElement){
 		dataType: 'json',
 		data: {
 			'id' : 4,
-			'idResponden' : respondenID,
 			'userData' : userData,
 			'quizOrder' : quizOrder,	
 			'quizAnswer' : quizAnswer,
@@ -957,86 +880,26 @@ function submitQuiz(event, eventElement){
 	       //console.log(errorThrown);
 	    }
 	});
-
-
-
 }
 btnSubmit = document.getElementById("submitQuiz");
 btnSubmit.addEventListener("click", submitQuiz);
+/*
+$(document).ready(function() {
+  var urls = ["../img/bg1.jpg", "../img/bg2.jpg", "../img/bg3.jpg", "../img/bg4.jpg"];
+  //var urls = ['https://pp.userapi.com/c629327/v629327473/db66/r051joYFRX0.jpg', 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', 'https://img.wikinut.com/img/gycf69_-6rv_5fol/jpeg/0/Best-Friends-Img-Src:Image:-FreeDigitalPhotos.net.jpeg', 'http://www.travelettes.net/wp-content/uploads/2014/03/IMG_3829-Medium-600x400.jpg'];
 
-function getCookie(name) {
-	const value = `; ${document.cookie}`;
-	const parts = value.split(`; ${name}=`);
-	if (parts.length === 2) return parts.pop().split(';').shift();
-}
+  var cout = 1;
+  //$('body').css('background-image', 'url("' + urls[0] + '")');
+  $('body').css('background-image', 'url("../img/bg1.jpg")');
+  setInterval(function() {
+    $('body').css('background-image', 'url("' + urls[cout] + '")');
+    console.log("change")
+    cout == urls.length-1 ? cout = 0 : cout++;
+  }, 5000);
 
-function getCookieW3(cname) {
-	let name = cname + "=";
-	let ca = document.cookie.split(';');
-	for(let i = 0; i < ca.length; i++) {
-		let c = ca[i];
-		while (c.charAt(0) == ' ') {
-			c = c.substring(1);
-		}
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-  return "";
-}
-
+});
+*/
 window.onload = function (){
-	
-	//homeBox.querySelector(".total-question").innerHTML = quiz.length;
-	//homeBox.querySelector(".quiz-time").innerHTML = quizTime/60 + " minute";
-
-	if (getCookie("isStart") == "1"){
-
-		console.log("LFC");
-		intro.classList.add("hide");
-		//setQuestAnswSieve();
-		questSieve2 = JSON.parse(getCookie("quizAnswer").replace(/\\054/g, ','));
-		questAnsw2 = JSON.parse(getCookie("quizChoice").replace(/\\054/g, ','));
-		questSieve = JSON.parse(questSieve2.replace(/'/g,'"'));
-		questAnsw = JSON.parse(questAnsw2.replace(/'/g,'"'));
-		//console.log(JSON.parse(questSieve));
-
-		currentPage++;
-		//getQuestionOrder()
-		arrayReady = JSON.parse(JSON.parse(getCookie("quizOrder").replace(/\\054/g, ',')));
-		//console.log(arrayReady);
-		//console.log(availableQuestion)
-		//getOptionOrder()
-		optionReady = JSON.parse(JSON.parse(getCookie("quizOption").replace(/\\054/g, ',')));
-		
-		homeBox.classList.add("hide");
-		quizBox.classList.remove("hide");
-
-		menu.classList.remove("hide");
-		setAvailableQuestions();
-		pushAllQuestion();
-		getQuestionNo(1);
-		answerIndicator();
-		clearInterval(counter);
-	    clearInterval(counterLine);
-		startTimer(quizTime);
-		loadAudio();
-		resumeAudio();
-		questionOrderToDict();
-		console.log(questOrderDict);
-		console.log(questSieve);
-		for (const [key, value] of Object.entries(questSieve)) {
-			if (value != -1){
-				let page = questOrderDict[key];
-				console.log(page);
-				updateAnswerIndicatorInAdvance("selected",page);
-			}
-		}
-
-		//register.classList.add("hide");
-		//homeBox.classList.add("hide");
-	}
-	else{
-		console.log(getCookie("isStart"));
-	}
+	homeBox.querySelector(".total-question").innerHTML = quiz.length;
+	homeBox.querySelector(".quiz-time").innerHTML = quizTime/60 + " minute";
 }

@@ -1,0 +1,441 @@
+//Array of Objects
+//Sosio 13
+//Kogni 14
+//Fisi  13
+
+const quiz = [
+	{
+		id: 2,
+		q:'Anak berusia 1 bulan mengkomunikasikan kebutuhannya seperti lapar, basah, tidak nyaman melalui',
+		options:['Menangis', 'Menggeliat', 'Mengendus', 'Menggerakkan tangannya'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '1-Sosio'
+	},
+	{
+		id: 4,
+		q:'Respon yang akan ditunjukan oleh anak usia 1-4 bulan pada saat berinteraksi dengan orang yang familiar dengannya adalah, <strong>kecuali</strong>',
+		options:['Anak hanya diam saja sambil sesekali menatap ke sumber suara ', 
+			     'Anak akan meresponnya dengan mengeluarkan suara ',
+			     'Anak berespon ke arah sumber suara dengan menatap mata dan mulut ', 
+			     'Anak akan menggerakan badannya dan tertawa sambil  mata menatap sumber suara '],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '2-Kognitif'
+	},
+	{
+		id: 7,
+		q:'Respon yang ditunjukan oleh anak yang berusia 1-4 bulan sebagai bentuk kegiatan dalam  mengenal lingkungannya, <strong>kecuali</strong>',
+		options:['Anak yang masih menangis pada saat kebutuhannya sudah dipenuhi oleh orang tua ', 
+			     'Anak memanjangkan kontak mata saat menatap orang tua ',
+			     'Anak memasukan tangannya ke dalam mulut secara berulang ', 
+			     'Anak bermain dengan tubuhnya sendiri, dan memegang kaki dengan tangannya '],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '3-Kognitif'
+	},
+	{
+		id: 9,
+		q:'Respon belajar yang ditunjukan oleh anak usia 4-6 bulan  pada saat dihadapkan mainan gemerincing di dekatnya yaitu ',
+		options:['Menatap mainan tersebut dan menggoncangkan mainan tersebut berulang kali',
+				 'Menatap mainan tersebut dan membiarkannya saja',
+				 'Menatap mainan tersebut, kemudian menangis',
+				 'Semua jawaban benar'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '4-Kognitif'
+	},
+	{
+		id: 12,
+		q:'Berikut ini yang <strong>tidak termasuk</strong> dalam respon kemampuan belajar anak usia 4-8 bulan  ketika ditunjukan sebuah mainan yang bersuara atau bergerak yaitu ',
+		options:['Menatap kemudian diam saja', 'Menggoyangkan mainan ', 'Melemparkan mainan', 'Memegang mainan dan menatap'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '5-Kognitif'
+	},
+	{
+		id: 13,
+		q:"Respon yang ditunjukan oleh anak berusia 0 bulan pada saat pipinya disentuh yaitu",
+		options:['Anak menoleh ke arah kepalanya ke sumber sentuhan itu datang',
+				 'Anak hanya diam dan tidak merasa terganggu',
+				 'Anak langsung menangis dengan suara yang sangat keras',
+				 'Anak mengedipkan matanya, dan menggerakan kaki dan tangannya '],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '5-Fisik'
+	},
+	{
+		id: 14,
+		q:'Salah satu bentuk respon yang ditunjukan oleh anak usia 4-6 bulan pada saat ia belajar untuk mengeluarkan suara tertentu dalam menanggapi orang tuanya adalah ',
+		options:['Anak merespon dengan mengoceh meskipun belum jelas',
+			 	 'Anak selalu merespon menangis',
+			 	 'Anak selalu merespon suara cegukan',
+			 	 'Anak merespon mengoceh dengan menyebutkan satu kata'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '6-Kognitif'
+	},
+	{
+		id: 15,
+		q:'Berikut ini yang <strong>bukan</strong> termasuk perkembangan emosi yang sudah ditunjukan anak usia 1-3 bulan yaitu :',
+		options:['Tidak  tersenyum atau menatap ketika orang tua tersenyum padanya ',
+				 'Tersenyum ketika melihat orang tuanya tersenyum',
+				 'Berespon pada saat  mendengar suara yang familiar',
+				 'Menunjukan kontak mata pada saat mendengar suara yang familiar '],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '6-Sosio'
+	},
+	{
+		id: 16,
+		q:"Respon yang ditunjukan oleh anak berusia 0 bulan pada saat mendengar suara yang sangat keras yaitu",
+		options:['Menunjukan respon anak terkejut dengan ada hentakan badan saat tertidur ',
+				 'Tidak menunjukan respon pada saat anak tertidur',
+				 'Menunjukan respon tersenyum pada saat anak tertidur',
+				 'Semua jawaban benar'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '6-Fisik'
+	},
+	{
+		id: 18,
+		q:'Respon yang ditunjukan anak usia 3 bulan pada saat orang tuanya melakukan cilukba adalah',
+		options:['Menunjukan ekpresi tertarik, berespon senyum saat orang tua melakukan permainan dengan kontak mata yang terjalin',
+				 'Diam, hanya menjalin kontak mata dengan orang tua',
+				 'Menunjukan ekpresi kaget dan tidak menjalin kontak mata dengan orang tua',
+				 'Menunjukan ekpresi takut dan menangis pada saat melihat orang tuanya'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '7-Sosio'
+	},
+	{
+		id: 19,
+		q:"Berikut ini kemampuan signifikan yang terlihat pada anak usia 1-4 bulan, <strong>kecuali</strong>",
+		options:['Anak sudah mulai bisa duduk dengan dibantu',
+				 'Anak sudah menunjukan pola tidur yang lebih terjadwal',
+				 'Anak sudah mampu menggerakan tangannya ke arah muka dan terkadang memasukan jari ke dalam mulut',
+				 'Anak sudah bisa menegakan kepalanya pada saat telungkup'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '7-Fisik'
+	},
+	{
+		id: 21,
+		q:'Berikut ini kemampuan yang ditunjukan anak usia 3 bulan pada saat melihat benda bergerak di depan matanya yaitu :',
+		options:['Menunjukan ekpresi tertarik dengan fokus melihat kearah mana benda itu akan bergerak ',
+				 'Diam, tidak menunjukan ekpresi ketertarikan',
+				 'Menangis  tetapi tetap melihat ke arah benda itu bergerak ',
+				 'Menunjukan ekpresi terkejut'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '8-Sosio'
+	},
+	{
+		id: 23,
+		q:'Respon yang ditunjukan oleh anak berusia 8-12 bulan pada saat ditunjukan suatu benda kepada dirinya yang kemudian tiba tiba dihilangkan dari pandangannya adalah',
+		options:['Anak menunjukan respon seperti mencari benda/atau mainan tersebut',
+			 	 'Anak hanya diam saja tanpa respon',
+			 	 'Anak tiba-tiba tertawa/ menangis',
+			 	 'Anak menggerakan tangan dan berkata "no"'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '9-Kognitif'
+	},
+	{
+		id: 24,
+		q:'Berikut ini kemampuan sosial yang ditunjukan anak usia 1-3 bulan yaitu',
+		options:['Cooing, menggeliat, mengeluarkan suara dan menggerakan kaki dan tangan sambil membangun kontak mata',
+				 'Banyak menunjukan ekpresi marah  dan kondisi yang tidak nyaman',
+				 'Hanya diam dan lebih banyak tertidur',
+				 'Cooing, menggeliat namun sulit untuk membangun kontak mata'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '9-Sosio'
+	},
+	{
+		id: 28,
+		q:"Respon yang ditunjukan oleh anak yang berusia 3-5 bulan saat melihat benda bergerak yang dihadapkan di depan mukanya yaitu ",
+		options:['Mengikuti kemana benda itu bergerak dan berusaha untuk menggapainya',
+				 'Mengangkat kedua kakinya melengkungkan badan dengan menggunakan tangannya',
+				 'Menggulingkan badannya kearah yang berlawanan dari datangnya benda',
+				 'Memasukan jari ke dalam mulutnya sambil menatap benda tersebut'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '10-Fisik'
+	},
+	{
+		id: 32,
+		q:"Berikut ini kemampuan yang sudah bisa ditunjukan oleh anak yang sudah memiliki kekuatan pada otot lehernya di usia 1-4 bulan, <strong>kecuali</strong>",
+		options:['Anak menegakkan kepalanya pada saat duduk sendiri',
+				 'Anak memutar kepalanya saat mengamati benda yang bergerak yang dihadapkan ke depan wajahnya',
+				 'Anak menegakkan kepalanya dengan di sangga dada, sambil sesekali memutar kepalanya',
+				 'Anak menegakkan kepalanya pada saat menelungkup'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '12-Fisik'
+	},
+	{
+		id: 44,
+		q:"Berikut ini yang <strong>bukan</strong> kemampuan motorik yang ditunjukan oleh anak berusia 6-9 bulan adalah",
+		options:['Berjalan dengan satu atau dua langkah',
+				 'Duduk sendiri tanpa bantuan',
+				 'Mulai untuk melangkah satu persatu di akhir bulan dengan berpengan pada benda untuk menarik dirinya',
+				 'Merangkak dengan menggunakan kedua tangan dan menganggkat kaki dan lututnya pada saat merangkak tersebut'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '16-Fisik'
+	},
+	{
+		id: 45,
+		q:'Berikut ini perkembangan kemampuan belajar yang ditunjukan oleh anak usia 13-18 bulan, <strong>kecuali</strong>',
+		options:['Anak mampu mengenali warna dasar',
+			 	 'Anak gemar membongkar barang-barang dari tempatnya',
+			 	 'Anak gemar memindahkan barang dari satu wadah ke wadah yang lainnya yang berbeda',
+			 	 'Anak gemar mencocokan benda yang sama atau mampu menunjukan benda yang sama'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '17-Kognitif'
+	},
+	{
+		id: 46,
+		q:'Ekspresi emosi yang ditunjukan anak usia 6-9  bulan  pada saat ia kehilangan benda atau objek yang menarik yaitu ',
+		options:['Menunjukan ekpresi marah yang dramatis bisa dengan ekpresi menangis',
+				 'Hanya diam saja dan tidak menunjukan ekpresi apapun',
+				 'Menunjukan ekpresi terkejut',
+				 'Menunjukan ekpresi senang kepada orang tuanya'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '17-Sosio'
+	},
+	{
+		id: 48,
+		q:'Pada saat orang tua menanyakan salah satu bagian tubuh dirinya, respon yang ditunjukan oleh anak berusia 13-18 bulan yaitu',
+		options:['Menunjukan bagian tubuh yang dimaksud oleh orang tua',
+			 	 'Menunjukan bagian tubuh lain yang bukan dimaksudkan oleh orang tua ',
+			 	 'Menatap orang tua kemudian tidak meresponnya',
+			 	 'Menyebutkan bagian tubuh yang dimaksud dengan kosa kata yang fasih'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '18-Kognitif'
+	},
+	{
+		id: 50,
+		q:"Salah satu  pencapaian penting yang ditujukan oleh anak yang sdh berusia 9-12 bulan yaitu kemampuan untuk berjalan, berikut pernyataan yang mendukung hal ini <strong>kecuali</strong> ",
+		options:['Anak yang mampu berjalan tidak perlu untuk mahir duduk terlebih dahulu',
+				 'Anak mampu berjalan 9-12 bulan dengan variasi masing-masing anak dlm mencapainya sekitar 2-4 bulan',
+				 'Anak yang mampu berjalan dimulai dari beberapa langkah yang masih di pegang oleh orang dewasa',
+				 'Anak yang mampu berjalan akan dimulai dari berdiri sejenak sambil menyeimbangkan badan lalu melangkah'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '18-Fisik'
+	},
+	{
+		id: 55,
+		q:'Reaksi emosi yang ditunjukan oleh anak usia 9-12 bulan ketika bermain bersama dengan orang tuanya adalah',
+		options:['Adanya kontak mata dan menunjukan ekpresi emosi positif seperti tawa yang lepas',
+				 'Sesekali tertawa dan sesekali kontak mata',
+				 'Tidak ada ekpresi emosi yang jelas dan dominan kemudian beralih ke aktivitas lain di sekitarnya',
+				 'Semua jawaban benar'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '20-Sosio'
+	},
+	{
+		id: 59,
+		q:"Berikut ini kemampuan penting dalam perkembangan  motorik anak berusia 13-18 bulan , <strong>kecuali</strong>",
+		options:['Anak masih memerlukan bantuan orang tua dalam berjalan ',
+				 'Anak gemar mencoret-coret',
+				 'Anak mulai belajar untuk menyuapi dirinya sendiri dan memindahkan sendok sendiri saat makan',
+				 'Anak sudah dapat menumpukkan dua benda'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '21-Fisik'
+	},
+	{
+		id: 60,
+		q:'Salah satu bentuk peningkatan kontrol motorik anak pada usia 18-24 bulan adalah ',
+		options:['Anak mampu mampu meletakkan berbagai bentuk (lingkaran, persegi) dalam papan cetak',
+			 	 'Anak mampu menggenggam benda yang ada didekatnya',
+			 	 'Anak memasukkan benda ke dalam mulutnya',
+			 	 'Anak hanya mampu menyentuh benda yang ada didekatnya'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '22-Kognitif'
+	},
+	{
+		id: 61,
+		q:'Berikut ini kemampuan sosial emosi dalam merespon interaksi sosial yang ditunjukan anak usia 9-12 bulan, <strong>kecuali</strong>',
+		options:['Anak sulit melakukan kontak mata dan lebih memilih untuk bermain sendiri dengan mainannya',
+				 'Anak akan banyak merespon senyum saat menanggapi orang tuanya dengan senyuman pipi mengangkat',
+				 'Anak menunjukan senyum lebar saar diajak bermain dengan orang tua',
+				 'Anak akan berkomunikasi dengan babbling dengan orang tua dan anak yang lebih tua ketika bermain'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '22-Sosio'
+	},
+	{
+		id: 62,
+		q:"Respon dari anak saat berusia 13-18 bulan saat melihat orang dewasa  melakukan gerakan ",
+		options:['Menepuk tangan dan ikut meniru gerakan orang dewasa tersebut ',
+				 'Hanya diam tanpa banyak merespon',
+				 'Mengangkat kaki dan melekungkan badannya',
+				 'Menggulingkan badan lalu duduk'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '22-Fisik'
+	},
+	{
+		id: 63,
+		q:'Berikut ini yang termasuk respon anak usia 13 bulan  yang menunjukan kemampuannya dalam memahami kata-kata yang disampaikan oleh orang tua <strong>kecuali</strong> ',
+		options:['Saat orang tua bertanya tentang cara memainkan bola maka ia akan menjawab dengan menggunakan 3-4 kata ',
+			 	 'Saat orang tua berkata “ayo kemari” anak akan berespon dan mendekati orang tua ',
+			 	 'Saat orang tua bertanya satu benda anak akan merespon dengan menunjuk benda yang dimaksud',
+			 	 'Saat orang tua bertanya dengan menyebutkan namanya seperti “mana ayah” ia akan menunjuknya'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '23-Kognitif'
+	},
+	{
+		id: 64,
+		q:'Berikut ini perkembangan emosi dan sosial  yang sudah bisa ditunjukan oleh anak usia 12-18 bulan, <strong>kecuali</strong> ',
+		options:['Tidak menangis pada saat ditinggal oleh orang tuanya',
+				 'Mencari-cari orang tuanya, atau melihat kearah orang tuanya pada saat ia bermain di lingkungan baru',
+				 'Menggoda orang tua atau keluarga dengan cara bermain sembunyi dan menunjukan senyuman yang lebar',
+				 'Melihat ke arah cermin dan menatap lama dirinya sambil memegang tubuhnya'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '23-Sosio'
+	},
+	{
+		id: 65,
+		q:"Pada  usia  13-18 bulan, anak sudah mulai bisa melepas kaus kaki dan sepatu namun tidak bisa memasangnya kembali, pertanyaan berikut menunjukkan ",
+		options:['Anak sudah menujukkan kemampuan motorik halus yang sesuai usianya ',
+				 'Anak belum menunjukkan kemampuan motorik halus yang  sesuai dengan usianya',
+				 'Anak belum menunjukan kemampuan motorik kasar yang sesuai dengan usianya ',
+				 'Anak sudah menunjukkan kemampuan motorik kasar yang sesuai dengan usianya'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '23-Fisik'
+	},
+	{
+		id: 66,
+		q:'Anak usia 18-24 bulan mulai gemar menikmati permainan menempatkan  benda-benda ke dalam tempatnya seperti permainan menempatkan balok yang sesuai dengan bentuknya. Pernyataan tersebut itu berarti',
+		options:['Anak sudah menunjukan perkembangan dalam kemampuan belajarnya yang sesuai dengan usianya',
+			 	 'Anak tidak menunjukan kemampuan belajar yang sesuai dengan usianya',
+			 	 'Anak terlambat dalam menunjukan kemampuan belajar yang sesuai dengan usianya ',
+			 	 'Anak sudah menunjukan perkembangan dalam kemampuan belajarnya Tetapi belum sesuai dengan usianya'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '24-Kognitif'
+	},
+	{
+		id: 69,
+		q:'Respon yang diberikan anak yang berusia 18-24 bulan  Ketika berdiri dihadapan cermin, yaitu  ',
+		options:['Tersenyum saat menyadari dirinya dan mulai mengujungi beberapa kali untuk memastikan dirinya yang berada di cermin',
+			 	 'Tidak memberikan respon apapun',
+			 	 'Anak menunjukan reaksi emosi yang negatif, marah dan memukul cermin',
+			 	 'Semua jawaban benar'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '25-Kognitif'
+	},
+	{
+		id: 70,
+		q:'Berikut ini upaya yang ditunjukan oleh anak yang berusia 12-18 bulan dalam membangun interaksi sosial dengan pengasuhnya, <strong>kecuali</strong>',
+		options:['Anak akan berguling-guling tanpa penyebab kondisi yang jelas',
+				 'Anak akan menggunakan gestur atau menyebutkan satu kata dari apa yang dia inginkan atua dia tanyakan dengan melihat ke orang tua',
+				 'Anak akan melihat benda/ permainan secara bersamaan dengan orang tua sambil menanyakan nya ',
+				 'Anak akan mengoceh, mengeluarkan gerakan, dan tertawa untuk menarik perhatian orang tua'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '25-Sosio'
+	},
+	{
+		id: 71,
+		q:"Berikut ini kemampuan-kemampuan yang sudah bisa ditunjukan oleh anak usia 18-24 dalam hal perkembangan fisiknya, <strong>kecuali</strong>",
+		options:['Berjalan dengan satu kaki tanpa adanya bantuan',
+				 'Mulai belajar dalam melakukan toilet training',
+				 'Mampu berjalan dan terkadang sesekali terjatuh di permukaan yang tidak rata dengan adanya bantuan',
+				 'Mulai ada ketertarikan untuk makan sendiri, sehingga bisa untuk menyuapi makanan ke mulutnya sendiri '],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '25-Fisik'
+	},
+	{
+		id: 75,
+		q:'Respon yang sudah ditunjukan oleh anak usia 18-24 bulan pada saat orang tua menanyakan benda-benda yang familiar di rumahnya yaitu ',
+		options:['Anak menunjukan benda yang dimaksud dengan benar',
+			 	 'Anak hanya diam dan tidak merespon, mengalihkan pandangan',
+			 	 'Anak tidak menjalin kontak mata pada saat orang tua bertanya',
+			 	 'Anak meresponnya tetapi banyak benda yang ditunjukanya tidak sesuai dengan yang dimaksud oleh orang tua'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '27-Kognitif'
+	},
+	{
+		id: 78,
+		q:'Berikut ini kemampuan belajar yang sudah dimiliki anak berusianya 18-24 bulan, <strong>kecuali</strong>',
+		options:['Anak bisa menggunakan sepeda tanpa bantuan ',
+			 	 'Anak mampu membalikan halaman buku dan menunjukan gambar yang tepat yang ditanyakan oleh orang tua',
+			 	 'Anak sudah mulai untuk membuat coret-coretan di kertas ',
+			 	 'Anak mampu menunjuk dirinya saat ditanya namanya'],
+		answer: 0,
+		category: 'Aspek Kognititf',
+		paralel: '28-Kognitif'
+	},
+	{
+		id: 80,
+		q:"Anak yang berusia 18-24 bulan pada saat diberikan kertas dan baru bisa mengguakan alat tulis dengan membuat coretan, artinya",
+		options:['Anak menunjukan perkembangan motorik halus yang sudah sesuai dengan usianya',
+				 'Anak menunjukan perkembangan motorik halus yang belum sesuai dengan usianya',
+				 'Anak menunjukan perkembangan motorik kasar yang sudah sesuai dengan usianya',
+				 'Anak menunjukan perkembangan motoric kasar yang belum sesuai dengan usianya'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '28-Fisik'
+	},
+	{
+		id: 82,
+		q:'Kemampuan sosial dalam bermain yang ditunjukan oleh anak usia 18-24 bulan, <strong>kecuali</strong>',
+		options:['Anak enggan untuk bermain dengan menunjukan perilaku yang berguling-guling dan emosi yang intens',
+				 'Anak mampu untuk bermain sendiri  dengan mainan yang tampak dan disediakan oleh orang tua',
+				 'Anak sering kali meniru perilaku yang ditunjukan oleh anak yang lebih besar (usia 2-3 tahun) pada saat bermain',
+				 'Anak mampu menanggapi orang tuanya dengan 1-2 kata yang bisa dipahami oleh orang tua saat bermain '],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '29-Sosio'
+	},
+	{
+		id: 83,
+		q:"Anak yang sudah mulai bisa menggerakan badannya  dari duduk kemudian berdiri dan berjalan sendiri diusia 18-24, pernyataan yang tidak mendukung yaitu",
+		options:['Anak sedang berlatih dalam memahirkan kemampuan motoric halusnya',
+				 'Anak sudah menunjukan pengendalian tubuh bagian bawah yang cukup kuat diusianya',
+				 'Anak sedang berlatih dalam memahirkan kemampuan motoric kasarnya',
+				 'Anak sedang belajar untuk mengendalikan keseimbangan tubuhnya di usianya'],
+		answer: 0,
+		category: 'Aspek Fisik',
+		paralel: '29-Fisik'
+	},
+	{
+		id: 85,
+		q:'Anak pada usia 18 bulan anak akan menunjukan ketergantungan pada sosok orang tuanya, selalu ingin berada di dekat dan ingin dipenuhi segala keinginannya dan  ingin ditenangkan saat menangis, pernyataan tersebut menunjukan bahwa',
+		options:['Anak menunjukan perkembangan emosi yang sesuai dengan usianya',
+				 'Anak tidak menunjukan perkembangan emosi yang sesuai dengan usianya',
+				 'Anak menunjukan keterlambatan dalam perkembangan emosinya diusia tersebut',
+				 'Anak menunjukan ketidakmampuan dalam mengendalikan emosinya di usia tersebut'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '30-Sosio'
+	},
+	{
+		id: 87,
+		q:'Berikut ini yang <strong>bukan</strong> termasuk capaian perkembangan sosial emosi anak usia 12-24 bulan yaitu',
+		options:['Anak selalu menggunakan gesture saat menunjukan sesuatu dan tidak pernah memverbalkan apa yang diinginkannya',
+				 'Anak sering kali meniru aktivitas yang sering dikerjakan oleh orang tua',
+				 'Anak mampu bermain sendiri, secara aktif mengekplorasi mainan dengan mengeluarkan suara dan menggerakan mainan',
+				 'Anak melakukan kegiatan berulang yang dapat membuat orang lain menjawa tertawa dan senang'],
+		answer: 0,
+		category: 'Aspek Sosio Emosional',
+		paralel: '31-Sosio'
+	},
+]
