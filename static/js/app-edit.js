@@ -308,9 +308,9 @@ function quizResult(){
 	resultBox.querySelector(".football").innerHTML = correctFootball + " / 4 (" + (correctFootball/4)*100 + "%)";
 	resultBox.querySelector(".geography").innerHTML = correctGeography + " / 4 (" + (correctGeography/4)*100 + "%)";
 	resultBox.querySelector(".math").innerHTML = correctMath + " / 4 (" + (correctMath/4)*100 + "%)";*/
-	const kogScore = correctKognitif*100/29
-	const sosScore = correctSosio*100/30
-	const fisScore = correctFisik*100/28
+	const kogScore = correctKognitif*100/14
+	const sosScore = correctSosio*100/13
+	const fisScore = correctFisik*100/13
 	resultBox.querySelector(".kognitif").innerHTML = correctKognitif + " / 14 (" + kogScore.toFixed(2) + "%)";
 	resultBox.querySelector(".sosio").innerHTML = correctSosio + " / 13 (" + sosScore.toFixed(2) + "%)";
 	resultBox.querySelector(".fisik").innerHTML = correctFisik + " / 13 (" + fisScore.toFixed(2) + "%)";
