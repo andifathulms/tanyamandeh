@@ -314,9 +314,9 @@ function quizResult(){
 	resultBox.querySelector(".kognitif").innerHTML = correctKognitif + " / 14 (" + kogScore.toFixed(2) + "%)";
 	resultBox.querySelector(".sosio").innerHTML = correctSosio + " / 13 (" + sosScore.toFixed(2) + "%)";
 	resultBox.querySelector(".fisik").innerHTML = correctFisik + " / 13 (" + fisScore.toFixed(2) + "%)";
-	kognitifText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait bagaimana proses berfikir dan belajar anak usia 0-2 tahun sebesar <strong>" + kogScore.toFixed(2) + "%</strong>"
-	sosioText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait  kemampuan anak usia 0-2 tahun dalam berinteraksi sosial dan emosi sebesar <strong>" + sosScore.toFixed(2) + "%</strong>"
-	fisikText.innerHTML = "Ayah/Bunda memiliki pengetahuan terkait kemampuan  anak usia 0-2 tahun dalam menggunakan gerak tubuhnya sebesar <strong>" + fisScore.toFixed(2) + "%</strong>"
+	kognitifText.innerHTML = "Ayah/Bunda dapat menjawab <strong>" + correctKognitif + "</strong> dari 14 soal terkait proses berfikir dan belajar anak usia 0-2 tahun"
+	sosioText.innerHTML = "Ayah/Bunda dapat menjawab <strong>" + correctSosio + "</strong> dari 14 soal terkait kemampuan anak usia 0-2 tahun dalam berinteraksi sosial dan emosi"
+	fisikText.innerHTML = "Ayah/Bunda dapat menjawab <strong>" + correctFisik + "</strong> dari 14 soal terkait kemampuan  anak usia 0-2 tahun dalam menggunakan gerak tubuhnya"
 	//for canvas
 	let myChart = document.getElementById('myChart').getContext('2d');
 	let specCanvas = document.getElementById('spec-canvas').getContext('2d');
