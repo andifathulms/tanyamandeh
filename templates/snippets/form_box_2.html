@@ -96,6 +96,7 @@
 	    <div class="input-group">
 		  <label class="input-group__label" for="prov">Provinsi</label>
 	      <select class="input-group__input" name="prov" id="prov" required>
+			<option value="" selected></option>
 	      	{% for region in regions %}
 			    <option value="{{ region.provinsi }}">{{ region.provinsi }}</option>
 			{% endfor %}
@@ -106,19 +107,7 @@
 	      <select class="input-group__input" name="kabupaten" id="kabupaten" required>
 	      	
 	      </select>
-	    </div>
-	    <div class="input-group">
-		  <label class="input-group__label" for="agama">Agama</label>
-	      <select class="input-group__input" name="agama" id="agama" required>
-	      	<option value="" disabled selected>Agama</option>
-	      	<option value="Islam">Islam</option>
-	      	<option value="Kristen">Kristen</option>
-	      	<option value="Katolik">Katolik</option>
-	      	<option value="Hindu">Hindu</option>
-	      	<option value="Buddha">Buddha</option>
-	      	<option value="Konghucu">Konghucu</option>
-	      	<option value="Other">Lainnya</option>
-	      </select>
+		  <!-- <input class="input-group__input" type="text" name="nama" id="nama" placeholder="Nama" required /> -->
 	    </div>
 	    <div class="input-group">
 		  <label class="input-group__label" for="marriage">Status Pernikahan</label>
@@ -172,14 +161,6 @@
 	      </select>
 	    </div>
 	    <div class="input-group">
-		  <label class="input-group__label" for="educbg">Latar Belakang Pendidikan</label>
-	      <select class="input-group__input" name="educbg" id="educbg" required>
-	      	<option value="" disabled selected> Latar Belakang Pendidikan </option>
-	      	<option value="Pendidikan medis/kesehatan">Pendidikan medis/kesehatan</option>
-	      	<option value="Pendidikan non medis/kesehatan">Pendidikan non medis/kesehatan</option>
-	      </select>
-	    </div>
-	    <div class="input-group">
 		  <label class="input-group__label" for="job">Pekerjaan</label>
 	      <select class="input-group__input" name="job" id="job" required>
 	      	<option value="" disabled selected> Pekerjaan </option>
@@ -190,15 +171,6 @@
 	      	<option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
 	      	<option value="Tidak Sedang Bekerja">Tidak Sedang Bekerja</option>
 	      	<option value="Lainnya">Lainnya</option>
-	      </select>
-	    </div>
-
-	    <div class="input-group">
-		  <label class="input-group__label" for="jobbg">Latar Belakang Pekerjaan</label>
-	      <select class="input-group__input" name="jobbg" id="jobbg" required>
-	      	<option value="" disabled selected> Latar Belakang Pekerjaan </option>
-	      	<option value="Pekerjaan medis/kesehatan">Pekerjaan medis/kesehatan</option>
-	      	<option value="Pekerjaan non medis/kesehatan">Pekerjaan non medis/kesehatan</option>
 	      </select>
 	    </div>
 

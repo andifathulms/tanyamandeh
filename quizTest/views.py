@@ -58,15 +58,12 @@ def home_view(request, *args, **kwargs):
 					prov = jsonData["prov"],
 					kab = jsonData["kabupaten"],
 					gender = jsonData["gender"],
-					agama = jsonData["agama"],
 					statusnikah = jsonData["marriage"],
 					jumlahanak = jsonData["children"],
 					usiaanak1 = jsonData["childrenage1"],
 					usiaanak2 = jsonData["childrenage2"],
 					educ = jsonData["pendidikan"],
-					educg = jsonData["educbg"],
 					job = jsonData["job"],
-					jobg = jsonData["jobbg"],
 					nohp = jsonData["nohp"])
 
 				r.save()
@@ -147,15 +144,12 @@ def home_view(request, *args, **kwargs):
 						prov = jsonData["prov"],
 						kab = jsonData["kabupaten"],
 						gender = jsonData["gender"],
-						agama = jsonData["agama"],
 						statusnikah = jsonData["marriage"],
 						jumlahanak = jsonData["children"],
 						usiaanak1 = jsonData["childrenage1"],
 						usiaanak2 = jsonData["childrenage2"],
 						educ = jsonData["pendidikan"],
-						educg = jsonData["educbg"],
 						job = jsonData["job"],
-						jobg = jsonData["jobbg"],
 						nohp = jsonData["nohp"])
 
 				mark = sessionMark.objects.create(
@@ -279,9 +273,9 @@ def exportsCSV(request):
 	response['Content-Disposition'] = 'attachment; filename=sessions.csv'
 	writer = csv.writer(response,delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 	header = ["ID"]
-	respHeader = ["Name","L/P","Age","Provinsi","Kabupaten","Agama","Status Nikah","Jumlah Anak",
-				  "Umur Anak1","Umur Anak2","Pendidikan","Latar Pendidikan",
-				  "Pekerjaan","Latar Pekerjaan","NoHP","Tanggal"]
+	respHeader = ["Name","L/P","Age","Provinsi","Kabupaten","Status Nikah","Jumlah Anak",
+				  "Umur Anak1","Umur Anak2","Pendidikan",
+				  "Pekerjaan","NoHP","Tanggal"]
 	sessHeader = ["Score Kognitif","Score Sosio","Score Fisik"," Score Total",
 				  "Time Start", "Time End", "Duration(Sec)"]
 	scoreHeader = ["Q1 Score","Q2 Score","Q3 Score","Q4 Score","Q5 Score","Q6 Score","Q7 Score","Q8 Score","Q9 Score","Q10 Score",
