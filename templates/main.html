@@ -2,7 +2,7 @@
 
 {% block content %}
 	<!-- Intro Box -->
-	{% include 'snippets/intro_box.html' %}
+	<!-- {% include 'snippets/intro_box.html' %} -->
 
 	<!-- Register Box -->
 	{% include 'snippets/form_box_2.html' %}
@@ -166,18 +166,20 @@
 
 	<!-- Media -->
 	<div class="menu hide">
-	   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-	   <label class="menu-open-button" for="menu-open">
-	    <span class="lines line-1"></span>
-	    <span class="lines line-2"></span>
-	    <span class="lines line-3"></span>
-	  </label>
+	   <div class=" d-none d-sm-block">
+		<input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+		<label class="menu-open-button" for="menu-open">
+			<span class="lines line-1"></span>
+			<span class="lines line-2"></span>
+			<span class="lines line-3"></span>
+		</label>
 
-	   <a href="#" class="menu-item blue" onclick="resumeAudio()"> <i class="fa fa-play"></i> </a>
-	   <a href="#" class="menu-item green" onclick="pauseAudio()"> <i class="fa fa-pause"></i> </a>
-	   <a href="#" class="menu-item red" onclick="increaseVolume()"> <i class="fa fa-volume-up"></i> </a>
-	   <a href="#" class="menu-item lightblue" onclick="mutedAudio()"> <i class="fa fa-volume-off" aria-hidden=true></i>
-	   <a href="#" class="menu-item orange" onclick="decreaseVolume()"> <i class="fa fa-volume-down"></i> </a>
-	   <a href="#" class="menu-item purple"> <i class="fa fa-step-forward" aria-hidden="true"></i></a>
+		<a href="#" class="menu-item blue" onclick="resumeAudio()"> <i class="fa fa-play"></i> </a>
+		<a href="#" class="menu-item green" onclick="pauseAudio()"> <i class="fa fa-pause"></i> </a>
+		<a href="#" class="menu-item red" onclick="increaseVolume()"> <i class="fa fa-volume-up"></i> </a>
+		<a href="#" class="menu-item lightblue" onclick="mutedAudio()"> <i class="fa fa-volume-off" aria-hidden=true></i>
+		<a href="#" class="menu-item orange" onclick="decreaseVolume()"> <i class="fa fa-volume-down"></i> </a>
+		<a href="#" class="menu-item purple"> <i class="fa fa-step-forward" aria-hidden="true"></i></a>
+	</div>
 	</div>
 {% endblock content %}

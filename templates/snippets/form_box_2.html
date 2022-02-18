@@ -9,6 +9,7 @@
 		 background-color: #ebecf0;
 		 border-radius: 13px;
 		 box-shadow: 3px 3px 5px #babecc, -5px -5px 10px #fff;
+		 width: 100%;
 	}
 	 .form__field {
 		 display: grid;
@@ -73,7 +74,7 @@
 
 </style>
 {% endblock head %}
-<div class="register-box hide">
+<div class="register-box">
 	<form class="form login-form mt-5" id="login-form"> {% csrf_token %}
 	  <div class="form__field">
 	    <div class="input-group">

@@ -487,12 +487,9 @@ function showRegister(){
 
 function startQuiz(){
 	setQuestAnswSieve();
-	console.log(questAnsw);
 	currentPage++;
 	getQuestionOrder()
-	console.log(arrayReady);
 	getOptionOrder()
-	console.log(optionReady);
 	homeBox.classList.add("hide");
 	quizBox.classList.remove("hide");
 	menu.classList.remove("hide");
